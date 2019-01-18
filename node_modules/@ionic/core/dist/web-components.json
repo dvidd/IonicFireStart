@@ -1,0 +1,2546 @@
+{
+  "tags": [
+    {
+      "label": "ion-action-sheet-controller",
+      "description": "Action Sheet controllers programmatically control the action sheet component. Action Sheets can be created and dismissed from the action sheet controller. View the [Action Sheet](../action-sheet) documentation for a full list of options to pass upon creation.",
+      "attributes": []
+    },
+    {
+      "label": "ion-action-sheet",
+      "description": "An Action Sheet is a dialog that displays a set of options. It appears on top of the app's content, and must be manually dismissed by the user before they can resume interaction with the app. Destructive options are made obvious in `ios` mode. There are multiple ways to dismiss the action sheet, including tapping the backdrop or hitting the escape key on desktop.",
+      "attributes": [
+        {
+          "label": "animated",
+          "description": "If `true`, the action sheet will animate.",
+          "required": false
+        },
+        {
+          "label": "backdrop-dismiss",
+          "description": "If `true`, the action sheet will be dismissed when the backdrop is clicked.",
+          "required": false
+        },
+        {
+          "label": "css-class",
+          "description": "Additional classes to apply for custom CSS. If multiple classes are\nprovided they should be separated by spaces.",
+          "required": false
+        },
+        {
+          "label": "header",
+          "description": "Title for the action sheet.",
+          "required": false
+        },
+        {
+          "label": "keyboard-close",
+          "description": "If `true`, the keyboard will be automatically dismissed when the overlay is presented.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "sub-header",
+          "description": "Subtitle for the action sheet.",
+          "required": false
+        },
+        {
+          "label": "translucent",
+          "description": "If `true`, the action sheet will be translucent.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-alert-controller",
+      "description": "Alert controllers programmatically control the alert component. Alerts can be created and dismissed from the alert controller. View the [Alert](../alert) documentation for a full list of options to pass upon creation.\n\n\n```javascript\nasync function presentAlert() {\n  const alertController = document.querySelector('ion-alert-controller');\n  await alertController.componentOnReady();\n\n  const alert = await alertController.create({\n    header: 'Alert',\n    subHeader: 'Subtitle',\n    message: 'This is an alert message.',\n    buttons: ['OK']\n  });\n  return await alert.present();\n}\n```",
+      "attributes": []
+    },
+    {
+      "label": "ion-alert",
+      "description": "An Alert is a dialog that presents users with information or collects information from the user using inputs. An alert appears on top of the app's content, and must be manually dismissed by the user before they can resume interaction with the app. It can also optionally have a `header`, `subHeader` and `message`.",
+      "attributes": [
+        {
+          "label": "animated",
+          "description": "If `true`, the alert will animate.",
+          "required": false
+        },
+        {
+          "label": "backdrop-dismiss",
+          "description": "If `true`, the alert will be dismissed when the backdrop is clicked.",
+          "required": false
+        },
+        {
+          "label": "css-class",
+          "description": "Additional classes to apply for custom CSS. If multiple classes are\nprovided they should be separated by spaces.",
+          "required": false
+        },
+        {
+          "label": "header",
+          "description": "The main title in the heading of the alert.",
+          "required": false
+        },
+        {
+          "label": "keyboard-close",
+          "description": "If `true`, the keyboard will be automatically dismissed when the overlay is presented.",
+          "required": false
+        },
+        {
+          "label": "message",
+          "description": "The main message to be displayed in the alert.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "sub-header",
+          "description": "The subtitle in the heading of the alert. Displayed under the title.",
+          "required": false
+        },
+        {
+          "label": "translucent",
+          "description": "If `true`, the alert will be translucent.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-anchor",
+      "description": "The Anchor component is used for navigating to a specified link. Similar to the browser's anchor tag, it can accept a href for the location, and a direction for the transition animation.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "href",
+          "description": "Contains a URL or a URL fragment that the hyperlink points to.\nIf this property is set, an anchor tag will be rendered.",
+          "required": false
+        },
+        {
+          "label": "router-direction",
+          "description": "When using a router, it specifies the transition direction when navigating to\nanother page using `href`.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-app",
+      "description": "App is a container element for an Ionic application. There should only be one `<ion-app>` element per project. An app can have many Ionic components including menus, headers, content, and footers. The overlay components get appended to the `<ion-app>` when they are presented.",
+      "attributes": []
+    },
+    {
+      "label": "ion-avatar",
+      "description": "Avatars are circular components that usually wrap an image or icon. They can be used to represent a person or an object.\n\nAvatars can be used by themselves or inside of any element. If placed inside of an `ion-chip` or `ion-item`, the avatar will resize to fit the parent component. To position an avatar on the left or right side of an item, set the slot to `start` or `end`, respectively.",
+      "attributes": []
+    },
+    {
+      "label": "ion-back-button",
+      "description": "The back button navigates back in the app's history upon click. It is smart enough to know what to render based on the mode and when to show based on the navigation stack.\n\nTo change what is displayed in the back button, use the `text` and `icon` properties.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "default-href",
+          "description": "The url to navigate back to by default when there is no history.",
+          "required": false
+        },
+        {
+          "label": "icon",
+          "description": "The icon name to use for the back button.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "text",
+          "description": "The text to display in the back button.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-backdrop",
+      "description": "Backdrops are full screen components that overlay other components. They are useful behind components that transition in on top of other content and can be used to dismiss that component.",
+      "attributes": [
+        {
+          "label": "stop-propagation",
+          "description": "If `true`, the backdrop will stop propagation on tap.",
+          "required": false
+        },
+        {
+          "label": "tappable",
+          "description": "If `true`, the backdrop will can be clicked and will emit the `ionBackdropTap` event.",
+          "required": false
+        },
+        {
+          "label": "visible",
+          "description": "If `true`, the backdrop will be visible.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-badge",
+      "description": "Badges are inline block elements that usually appear near another element. Typically they contain a number or other characters. They can be used as a notification that there are additional items associated with an element and indicate how many items there are.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-button",
+      "description": "Buttons provide a clickable element, which can be used in forms, or anywhere that needs simple, standard button functionality. They may display text, icons, or both. Buttons can be styled with several attributes to look a specific way.",
+      "attributes": [
+        {
+          "label": "button-type",
+          "description": "The type of button.",
+          "required": false
+        },
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the button.",
+          "required": false
+        },
+        {
+          "label": "expand",
+          "description": "Set to `\"block\"` for a full-width button or to `\"full\"` for a full-width button\nwithout left and right borders.",
+          "required": false
+        },
+        {
+          "label": "fill",
+          "description": "Set to `\"clear\"` for a transparent button, to `\"outline\"` for a transparent\nbutton with a border, or to `\"solid\"`. The default style is `\"solid\"` except inside of\na toolbar, where the default is `\"clear\"`.",
+          "required": false
+        },
+        {
+          "label": "href",
+          "description": "Contains a URL or a URL fragment that the hyperlink points to.\nIf this property is set, an anchor tag will be rendered.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "router-direction",
+          "description": "When using a router, it specifies the transition direction when navigating to\nanother page using `href`.",
+          "required": false
+        },
+        {
+          "label": "shape",
+          "description": "The button shape.",
+          "required": false
+        },
+        {
+          "label": "size",
+          "description": "The button size.",
+          "required": false
+        },
+        {
+          "label": "strong",
+          "description": "If `true`, activates a button with a heavier font weight.",
+          "required": false
+        },
+        {
+          "label": "type",
+          "description": "The type of the button.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-buttons",
+      "description": "The Buttons component is a container element. Buttons placed in a toolbar should be placed inside of the `<ion-buttons>` element.\n\nThe `<ion-buttons>` element can be positioned inside of the toolbar using a named slot. The below chart has a description of each slot.\n\n| Slot         | Description                                                                                              |\n|--------------|----------------------------------------------------------------------------------------------------------|\n| `secondary`  | Positions element to the `left` of the content in `ios` mode, and directly to the `right` in `md` mode.  |\n| `primary`    | Positions element to the `right` of the content in `ios` mode, and to the far `right` in `md` mode.      |\n| `start`      | Positions to the `left` of the content in LTR, and to the `right` in RTL.                                |\n| `end`        | Positions to the `right` of the content in LTR, and to the `left` in RTL.                                |",
+      "attributes": []
+    },
+    {
+      "label": "ion-card-content",
+      "description": "`ion-card-content` is child component of `ion-card` that adds some content padding.\nIt is recommended that any text content for a card should be placed in an `ion-card-content`.",
+      "attributes": [
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-card-header",
+      "description": "`ion-card-header` is a header component for `ion-card`.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "translucent",
+          "description": "If `true`, the card header will be translucent.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-card-subtitle",
+      "description": "`ion-card-subtitle` is a child component of `ion-card`",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-card-title",
+      "description": "`ion-card-title` is a child component of `ion-card`",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-card",
+      "description": "Cards are a standard piece of UI that serves as an entry point to more detailed\ninformation. A card can be a single component, but is often made up of some\nheader, title, subtitle, and content. `ion-card` is broken up into several\nsub-components to reflect this. Please see `ion-card-content`,\n`ion-card-header`, `ion-card-title`, `ion-card-subtitle`.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-checkbox",
+      "description": "Checkboxes allow the selection of multiple options from a set of options. They appear as checked (ticked) when activated. Clicking on a checkbox will toggle the `checked` property. They can also be checked programmatically by setting the `checked` property.",
+      "attributes": [
+        {
+          "label": "checked",
+          "description": "If `true`, the checkbox is selected.",
+          "required": false
+        },
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the checkbox.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "name",
+          "description": "The name of the control, which is submitted with the form data.",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "The value of the toggle does not mean if it's checked or not, use the `checked`\nproperty for that.\n\nThe value of a toggle is analogous to the value of a `<input type=\"checkbox\">`,\nit's only used when the toggle participates in a native `<form>`.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-chip",
+      "description": "Chips represent complex entities in small blocks, such as a contact. A chip can contain several different elements such as avatars, text, and icons.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "outline",
+          "description": "Display an outline style button.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-col",
+      "description": "Columns are cellular components of the [grid](../grid) system and go inside of a [row](../row).\nThey will expand to fill their row. All content within a grid should go inside of a column.\n\nSee [Grid Layout](/docs/layout/grid) for more information.",
+      "attributes": [
+        {
+          "label": "offset",
+          "description": "The amount to offset the column, in terms of how many columns it should shift to the end\nof the total available.",
+          "required": false
+        },
+        {
+          "label": "offset-lg",
+          "description": "The amount to offset the column for lg screens, in terms of how many columns it should shift\nto the end of the total available.",
+          "required": false
+        },
+        {
+          "label": "offset-md",
+          "description": "The amount to offset the column for md screens, in terms of how many columns it should shift\nto the end of the total available.",
+          "required": false
+        },
+        {
+          "label": "offset-sm",
+          "description": "The amount to offset the column for sm screens, in terms of how many columns it should shift\nto the end of the total available.",
+          "required": false
+        },
+        {
+          "label": "offset-xl",
+          "description": "The amount to offset the column for xl screens, in terms of how many columns it should shift\nto the end of the total available.",
+          "required": false
+        },
+        {
+          "label": "offset-xs",
+          "description": "The amount to offset the column for xs screens, in terms of how many columns it should shift\nto the end of the total available.",
+          "required": false
+        },
+        {
+          "label": "pull",
+          "description": "The amount to pull the column, in terms of how many columns it should shift to the start of\nthe total available.",
+          "required": false
+        },
+        {
+          "label": "pull-lg",
+          "description": "The amount to pull the column for lg screens, in terms of how many columns it should shift\nto the start of the total available.",
+          "required": false
+        },
+        {
+          "label": "pull-md",
+          "description": "The amount to pull the column for md screens, in terms of how many columns it should shift\nto the start of the total available.",
+          "required": false
+        },
+        {
+          "label": "pull-sm",
+          "description": "The amount to pull the column for sm screens, in terms of how many columns it should shift\nto the start of the total available.",
+          "required": false
+        },
+        {
+          "label": "pull-xl",
+          "description": "The amount to pull the column for xl screens, in terms of how many columns it should shift\nto the start of the total available.",
+          "required": false
+        },
+        {
+          "label": "pull-xs",
+          "description": "The amount to pull the column for xs screens, in terms of how many columns it should shift\nto the start of the total available.",
+          "required": false
+        },
+        {
+          "label": "push",
+          "description": "The amount to push the column, in terms of how many columns it should shift to the end\nof the total available.",
+          "required": false
+        },
+        {
+          "label": "push-lg",
+          "description": "The amount to push the column for lg screens, in terms of how many columns it should shift\nto the end of the total available.",
+          "required": false
+        },
+        {
+          "label": "push-md",
+          "description": "The amount to push the column for md screens, in terms of how many columns it should shift\nto the end of the total available.",
+          "required": false
+        },
+        {
+          "label": "push-sm",
+          "description": "The amount to push the column for sm screens, in terms of how many columns it should shift\nto the end of the total available.",
+          "required": false
+        },
+        {
+          "label": "push-xl",
+          "description": "The amount to push the column for xl screens, in terms of how many columns it should shift\nto the end of the total available.",
+          "required": false
+        },
+        {
+          "label": "push-xs",
+          "description": "The amount to push the column for xs screens, in terms of how many columns it should shift\nto the end of the total available.",
+          "required": false
+        },
+        {
+          "label": "size",
+          "description": "The size of the column, in terms of how many columns it should take up out of the total\navailable. If `\"auto\"` is passed, the column will be the size of its content.",
+          "required": false
+        },
+        {
+          "label": "size-lg",
+          "description": "The size of the column for lg screens, in terms of how many columns it should take up out\nof the total available. If `\"auto\"` is passed, the column will be the size of its content.",
+          "required": false
+        },
+        {
+          "label": "size-md",
+          "description": "The size of the column for md screens, in terms of how many columns it should take up out\nof the total available. If `\"auto\"` is passed, the column will be the size of its content.",
+          "required": false
+        },
+        {
+          "label": "size-sm",
+          "description": "The size of the column for sm screens, in terms of how many columns it should take up out\nof the total available. If `\"auto\"` is passed, the column will be the size of its content.",
+          "required": false
+        },
+        {
+          "label": "size-xl",
+          "description": "The size of the column for xl screens, in terms of how many columns it should take up out\nof the total available. If `\"auto\"` is passed, the column will be the size of its content.",
+          "required": false
+        },
+        {
+          "label": "size-xs",
+          "description": "The size of the column for xs screens, in terms of how many columns it should take up out\nof the total available. If `\"auto\"` is passed, the column will be the size of its content.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-content",
+      "description": "Content component provides an easy to use content area with some useful methods\nto control the scrollable area. There should only be one content in a single\nview component.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "force-overscroll",
+          "description": "If `true` and the content does not cause an overflow scroll, the scroll interaction will cause a bounce.\nIf the content exceeds the bounds of ionContent, nothing will change.\nNote, the does not disable the system bounce on iOS. That is an OS level setting.",
+          "required": false
+        },
+        {
+          "label": "fullscreen",
+          "description": "If `true`, the content will scroll behind the headers\nand footers. This effect can easily be seen by setting the toolbar\nto transparent.",
+          "required": false
+        },
+        {
+          "label": "scroll-events",
+          "description": "Because of performance reasons, ionScroll events are disabled by default, in order to enable them\nand start listening from (ionScroll), set this property to `true`.",
+          "required": false
+        },
+        {
+          "label": "scroll-x",
+          "description": "If you want to enable the content scrolling in the X axis, set this property to `true`.",
+          "required": false
+        },
+        {
+          "label": "scroll-y",
+          "description": "If you want to disable the content scrolling in the Y axis, set this property to `false`.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-datetime",
+      "description": "Datetimes present a picker interface from the bottom of a page, making it easy for users to select\ndates and times. The picker displays scrollable columns that can be used to individually select years,\nmonths, days, hours and minute values. Datetimes are similar to the native `input` elements of type\n`datetime-local`, however, Ionic's Datetime component makes it easy to display the date and time in a\npreferred format, and manage the datetime values.",
+      "attributes": [
+        {
+          "label": "cancel-text",
+          "description": "The text to display on the picker's cancel button.",
+          "required": false
+        },
+        {
+          "label": "day-names",
+          "description": "Full day of the week names. This can be used to provide\nlocale names for each day in the week. Defaults to English.",
+          "required": false
+        },
+        {
+          "label": "day-short-names",
+          "description": "Short abbreviated day of the week names. This can be used to provide\nlocale names for each day in the week. Defaults to English.",
+          "required": false
+        },
+        {
+          "label": "day-values",
+          "description": "Values used to create the list of selectable days. By default\nevery day is shown for the given month. However, to control exactly which days of\nthe month to display, the `dayValues` input can take a number, an array of numbers, or\na string of comma separated numbers. Note that even if the array days have an invalid\nnumber for the selected month, like `31` in February, it will correctly not show\ndays which are not valid for the selected month.",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the datetime.",
+          "required": false
+        },
+        {
+          "label": "display-format",
+          "description": "The display format of the date and time as text that shows\nwithin the item. When the `pickerFormat` input is not used, then the\n`displayFormat` is used for both display the formatted text, and determining\nthe datetime picker's columns. See the `pickerFormat` input description for\nmore info. Defaults to `MMM D, YYYY`.",
+          "required": false
+        },
+        {
+          "label": "done-text",
+          "description": "The text to display on the picker's \"Done\" button.",
+          "required": false
+        },
+        {
+          "label": "hour-values",
+          "description": "Values used to create the list of selectable hours. By default\nthe hour values range from `0` to `23` for 24-hour, or `1` to `12` for 12-hour. However,\nto control exactly which hours to display, the `hourValues` input can take a number, an\narray of numbers, or a string of comma separated numbers.",
+          "required": false
+        },
+        {
+          "label": "max",
+          "description": "The maximum datetime allowed. Value must be a date string\nfollowing the\n[ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime),\n`1996-12-19`. The format does not have to be specific to an exact\ndatetime. For example, the maximum could just be the year, such as `1994`.\nDefaults to the end of this year.",
+          "required": false
+        },
+        {
+          "label": "min",
+          "description": "The minimum datetime allowed. Value must be a date string\nfollowing the\n[ISO 8601 datetime format standard](https://www.w3.org/TR/NOTE-datetime),\nsuch as `1996-12-19`. The format does not have to be specific to an exact\ndatetime. For example, the minimum could just be the year, such as `1994`.\nDefaults to the beginning of the year, 100 years ago from today.",
+          "required": false
+        },
+        {
+          "label": "minute-values",
+          "description": "Values used to create the list of selectable minutes. By default\nthe minutes range from `0` to `59`. However, to control exactly which minutes to display,\nthe `minuteValues` input can take a number, an array of numbers, or a string of comma\nseparated numbers. For example, if the minute selections should only be every 15 minutes,\nthen this input value would be `minuteValues=\"0,15,30,45\"`.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "month-names",
+          "description": "Full names for each month name. This can be used to provide\nlocale month names. Defaults to English.",
+          "required": false
+        },
+        {
+          "label": "month-short-names",
+          "description": "Short abbreviated names for each month name. This can be used to provide\nlocale month names. Defaults to English.",
+          "required": false
+        },
+        {
+          "label": "month-values",
+          "description": "Values used to create the list of selectable months. By default\nthe month values range from `1` to `12`. However, to control exactly which months to\ndisplay, the `monthValues` input can take a number, an array of numbers, or a string of\ncomma separated numbers. For example, if only summer months should be shown, then this\ninput value would be `monthValues=\"6,7,8\"`. Note that month numbers do *not* have a\nzero-based index, meaning January's value is `1`, and December's is `12`.",
+          "required": false
+        },
+        {
+          "label": "name",
+          "description": "The name of the control, which is submitted with the form data.",
+          "required": false
+        },
+        {
+          "label": "picker-format",
+          "description": "The format of the date and time picker columns the user selects.\nA datetime input can have one or many datetime parts, each getting their\nown column which allow individual selection of that particular datetime part. For\nexample, year and month columns are two individually selectable columns which help\nchoose an exact date from the datetime picker. Each column follows the string\nparse format. Defaults to use `displayFormat`.",
+          "required": false
+        },
+        {
+          "label": "placeholder",
+          "description": "The text to display when there's no date selected yet.\nUsing lowercase to match the input attribute",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "The value of the datetime as a valid ISO 8601 datetime string.",
+          "required": false
+        },
+        {
+          "label": "year-values",
+          "description": "Values used to create the list of selectable years. By default\nthe year values range between the `min` and `max` datetime inputs. However, to\ncontrol exactly which years to display, the `yearValues` input can take a number, an array\nof numbers, or string of comma separated numbers. For example, to show upcoming and\nrecent leap years, then this input's value would be `yearValues=\"2024,2020,2016,2012,2008\"`.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-fab-button",
+      "description": "Floating Action Buttons (FABs) represent the primary action in an application. By default, they have a circular shape. When pressed, the button may open more related actions. As the name suggests, FABs generally float over the content in a fixed position. This is not achieved exclusively by using an `<ion-fab-button>FAB</ion-fab-button>`. They need to be wrapped with an `<ion-fab>` component in order to be fixed over the content.\n\nIf the FAB button is not wrapped with `<ion-fab>`, it will scroll with the content. FAB buttons have a default size, a mini size and can accept different colors:",
+      "attributes": [
+        {
+          "label": "activated",
+          "description": "If `true`, the fab button will be show a close icon.",
+          "required": false
+        },
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the fab button.",
+          "required": false
+        },
+        {
+          "label": "href",
+          "description": "Contains a URL or a URL fragment that the hyperlink points to.\nIf this property is set, an anchor tag will be rendered.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "router-direction",
+          "description": "When using a router, it specifies the transition direction when navigating to\nanother page using `href`.",
+          "required": false
+        },
+        {
+          "label": "show",
+          "description": "If `true`, the fab button will show when in a fab-list.",
+          "required": false
+        },
+        {
+          "label": "size",
+          "description": "The size of the button. Set this to `small` in order to have a mini fab.",
+          "required": false
+        },
+        {
+          "label": "translucent",
+          "description": "If `true`, the fab button will be translucent.",
+          "required": false
+        },
+        {
+          "label": "type",
+          "description": "The type of the button.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-fab-list",
+      "description": "The `ion-fab-list` element is a container for multiple fab buttons. This collection of fab buttons contains actions related to the main fab button and is flung out on click. To specify what side the buttons should appear on, set the `side` property to 'start', 'end', 'top', 'bottom'",
+      "attributes": [
+        {
+          "label": "activated",
+          "description": "If `true`, the fab list will be show all fab buttons in the list.",
+          "required": false
+        },
+        {
+          "label": "side",
+          "description": "The side the fab list will show on relative to the main fab button.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-fab",
+      "description": "Fabs are container elements that contain one or more fab buttons. They should be placed in a fixed position that does not scroll with the content. Fab should have one main fab-button. Fabs can also contain fab-lists which contain related buttons that show when the main fab button is clicked. The same fab container can contain several [fab-list](../../fab-list/FabList) elements with different side values.",
+      "attributes": [
+        {
+          "label": "activated",
+          "description": "If `true`, both the `ion-fab-button` and all `ion-fab-list` inside `ion-fab` will become active.\nThat means `ion-fab-button` will become a `close` icon and `ion-fab-list` will become visible.",
+          "required": false
+        },
+        {
+          "label": "edge",
+          "description": "If `true`, the fab will display on the edge of the header if\n`vertical` is `\"top\"`, and on the edge of the footer if\nit is `\"bottom\"`. Should be used with a `fixed` slot.",
+          "required": false
+        },
+        {
+          "label": "horizontal",
+          "description": "Where to align the fab horizontally in the viewport.",
+          "required": false
+        },
+        {
+          "label": "vertical",
+          "description": "Where to align the fab vertically in the viewport.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-footer",
+      "description": "Footer is a root component of a page that sits at the bottom of the page.\nFooter can be a wrapper for ion-toolbar to make sure the content area is sized correctly.",
+      "attributes": [
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "translucent",
+          "description": "If `true`, the footer will be translucent.\nNote: In order to scroll content behind the footer, the `fullscreen`\nattribute needs to be set on the content.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-grid",
+      "description": "The grid is a powerful mobile-first flexbox system for building custom layouts.\n\nIt is composed of three units — a grid, [row(s)](../row) and [column(s)](../col). Columns will expand to fill the row, and will resize to fit additional columns. It is based on a 12 column layout with different breakpoints based on the screen size. The number of columns can be customized using CSS.\n\nSee [Grid Layout](/docs/layout/grid) for more information.",
+      "attributes": [
+        {
+          "label": "fixed",
+          "description": "If `true`, the grid will have a fixed width based on the screen size.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-header",
+      "description": "Header is a parent component that holds the toolbar component.\nIt's important to note that ion-header needs to be the one of the three root elements of a page",
+      "attributes": [
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "translucent",
+          "description": "If `true`, the header will be translucent.\nNote: In order to scroll content behind the header, the `fullscreen`\nattribute needs to be set on the content.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-img",
+      "description": "Img is a tag that will lazily load an image when ever the tag is in the viewport. This is extremely useful when generating a large list as images are only loaded when they're visible. The component uses [Intersection Observer](https://caniuse.com/#feat=intersectionobserver) internally, which is supported in most modern browser, but falls back to a `setTimeout` when it is not supported.",
+      "attributes": [
+        {
+          "label": "alt",
+          "description": "This attribute defines the alternative text describing the image.\nUsers will see this text displayed if the image URL is wrong,\nthe image is not in one of the supported formats, or if the image is not yet downloaded.",
+          "required": false
+        },
+        {
+          "label": "src",
+          "description": "The image URL. This attribute is mandatory for the <img> element.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-infinite-scroll-content",
+      "description": "The `ion-infinite-scroll-content` component is the default child used by the `ion-infinite-scroll`. It displays an infinite scroll spinner that looks best based on the platform and changes the look depending on the infinite scroll's state. The default spinner can be changed and text can be added by setting the `loadingSpinner` and `loadingText` properties.",
+      "attributes": [
+        {
+          "label": "loading-spinner",
+          "description": "An animated SVG spinner that shows while loading.",
+          "required": false
+        },
+        {
+          "label": "loading-text",
+          "description": "Optional text to display while loading.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-infinite-scroll",
+      "description": "The Infinite Scroll component calls an action to be performed when the user scrolls a specified distance from the bottom or top of the page.\n\nThe expression assigned to the `ionInfinite` event is called when the user reaches that defined distance. When this expression has finished any and all tasks, it should call the `complete()` method on the infinite scroll instance.",
+      "attributes": [
+        {
+          "label": "disabled",
+          "description": "If `true`, the infinite scroll will be hidden and scroll event listeners\nwill be removed.\n\nSet this to true to disable the infinite scroll from actively\ntrying to receive new data while scrolling. This is useful\nwhen it is known that there is no more data that can be added, and\nthe infinite scroll is no longer needed.",
+          "required": false
+        },
+        {
+          "label": "position",
+          "description": "The position of the infinite scroll element.\nThe value can be either `top` or `bottom`.",
+          "required": false
+        },
+        {
+          "label": "threshold",
+          "description": "The threshold distance from the bottom\nof the content to call the `infinite` output event when scrolled.\nThe threshold value can be either a percent, or\nin pixels. For example, use the value of `10%` for the `infinite`\noutput event to get called when the user has scrolled 10%\nfrom the bottom of the page. Use the value `100px` when the\nscroll is within 100 pixels from the bottom of the page.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-input",
+      "description": "The input component is a wrapper to the HTML input element with custom styling and additional functionality. It accepts most of the same properties as the HTML input, but works great on desktop devices and integrates with the keyboard on mobile devices.\n\nIt is meant for text `type` inputs only, such as `\"text\"`, `\"password\"`, `\"email\"`, `\"number\"`, `\"search\"`, `\"tel\"`, and `\"url\"`. It supports all standard text input events including keyup, keydown, keypress, and more.",
+      "attributes": [
+        {
+          "label": "accept",
+          "description": "If the value of the type attribute is `\"file\"`, then this attribute will indicate the types of files that the server accepts, otherwise it will be ignored. The value must be a comma-separated list of unique content type specifiers.",
+          "required": false
+        },
+        {
+          "label": "autocapitalize",
+          "description": "Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.",
+          "required": false
+        },
+        {
+          "label": "autocomplete",
+          "description": "Indicates whether the value of the control can be automatically completed by the browser.",
+          "required": false
+        },
+        {
+          "label": "autocorrect",
+          "description": "Whether auto correction should be enabled when the user is entering/editing the text value.",
+          "required": false
+        },
+        {
+          "label": "autofocus",
+          "description": "This Boolean attribute lets you specify that a form control should have input focus when the page loads.",
+          "required": false
+        },
+        {
+          "label": "clear-input",
+          "description": "If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.",
+          "required": false
+        },
+        {
+          "label": "clear-on-edit",
+          "description": "If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `\"password\"`, `false` for all other types.",
+          "required": false
+        },
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "debounce",
+          "description": "Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke.",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the input.",
+          "required": false
+        },
+        {
+          "label": "inputmode",
+          "description": "A hint to the browser for which keyboard to display.\nThis attribute applies when the value of the type attribute is `\"text\"`, `\"password\"`, `\"email\"`, or `\"url\"`. Possible values are: `\"verbatim\"`, `\"latin\"`, `\"latin-name\"`, `\"latin-prose\"`, `\"full-width-latin\"`, `\"kana\"`, `\"katakana\"`, `\"numeric\"`, `\"tel\"`, `\"email\"`, `\"url\"`.",
+          "required": false
+        },
+        {
+          "label": "max",
+          "description": "The maximum value, which must not be less than its minimum (min attribute) value.",
+          "required": false
+        },
+        {
+          "label": "maxlength",
+          "description": "If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.",
+          "required": false
+        },
+        {
+          "label": "min",
+          "description": "The minimum value, which must not be greater than its maximum (max attribute) value.",
+          "required": false
+        },
+        {
+          "label": "minlength",
+          "description": "If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "multiple",
+          "description": "If `true`, the user can enter more than one value. This attribute applies when the type attribute is set to `\"email\"` or `\"file\"`, otherwise it is ignored.",
+          "required": false
+        },
+        {
+          "label": "name",
+          "description": "The name of the control, which is submitted with the form data.",
+          "required": false
+        },
+        {
+          "label": "pattern",
+          "description": "A regular expression that the value is checked against. The pattern must match the entire value, not just some subset. Use the title attribute to describe the pattern to help the user. This attribute applies when the value of the type attribute is `\"text\"`, `\"search\"`, `\"tel\"`, `\"url\"`, `\"email\"`, or `\"password\"`, otherwise it is ignored.",
+          "required": false
+        },
+        {
+          "label": "placeholder",
+          "description": "Instructional text that shows before the input has a value.",
+          "required": false
+        },
+        {
+          "label": "readonly",
+          "description": "If `true`, the user cannot modify the value.",
+          "required": false
+        },
+        {
+          "label": "required",
+          "description": "If `true`, the user must fill in a value before submitting a form.",
+          "required": false
+        },
+        {
+          "label": "size",
+          "description": "The initial size of the control. This value is in pixels unless the value of the type attribute is `\"text\"` or `\"password\"`, in which case it is an integer number of characters. This attribute applies only when the `type` attribute is set to `\"text\"`, `\"search\"`, `\"tel\"`, `\"url\"`, `\"email\"`, or `\"password\"`, otherwise it is ignored.",
+          "required": false
+        },
+        {
+          "label": "spellcheck",
+          "description": "If `true`, the element will have its spelling and grammar checked.",
+          "required": false
+        },
+        {
+          "label": "step",
+          "description": "Works with the min and max attributes to limit the increments at which a value can be set.\nPossible values are: `\"any\"` or a positive floating point number.",
+          "required": false
+        },
+        {
+          "label": "type",
+          "description": "The type of control to display. The default type is text.",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "The value of the input.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-item-divider",
+      "description": "Item Dividers are block elements that can be used to separate items in a list. They are similar to list headers, but instead of being placed at the top of a list, they should go in between groups of like items.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "sticky",
+          "description": "When it's set to `true`, the item-divider will stay visible when it reaches the top\nof the viewport until the next `ion-item-divider` replaces it.\n\nThis feature relies in `position:sticky`:\nhttps://caniuse.com/#feat=css-sticky",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-item-group",
+      "description": "Item groups are containers that organize similar items together. They can contain item dividers to divide the items into multiple sections.",
+      "attributes": []
+    },
+    {
+      "label": "ion-item-option",
+      "description": "The option button for an `ion-item-sliding`. Must be placed inside of an `<ion-item-options>`.\nYou can combine the `ionSwipe` event and the `expandable` directive to create a full swipe\naction for the item.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the item option.",
+          "required": false
+        },
+        {
+          "label": "expandable",
+          "description": "If `true`, the option will expand to take up the available width and cover any other options.",
+          "required": false
+        },
+        {
+          "label": "href",
+          "description": "Contains a URL or a URL fragment that the hyperlink points to.\nIf this property is set, an anchor tag will be rendered.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-item-options",
+      "description": "The option buttons for an `ion-item-sliding`. These buttons can be placed either on the [start or end side](#side-description).\nYou can combine the `ionSwipe` event plus the `expandable` directive to create a full swipe action for the item.",
+      "attributes": [
+        {
+          "label": "side",
+          "description": "The side the option button should be on. Possible values: `\"start\"` and `\"end\"`. If you have multiple `ion-item-options`, a side must be provided for each.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-item-sliding",
+      "description": "A sliding item contains an item that can be dragged to reveal buttons. It requires an [item](../item) component as a child. All options to reveal should be placed in the [item options](../item-options) element.",
+      "attributes": [
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the sliding-item.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-item",
+      "description": "Items are elements that can contain text, icons, avatars, images, inputs, and any other native or custom elements. Generally they are placed in a list with other items. Items can be swiped, deleted, reordered, edited, and more.",
+      "attributes": [
+        {
+          "label": "button",
+          "description": "If `true`, a button tag will be rendered and the item will be tappable.",
+          "required": false
+        },
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "detail",
+          "description": "If `true`, a detail arrow will appear on the item. Defaults to `false` unless the `mode`\nis `ios` and an `href`, `onclick` or `button` property is present.",
+          "required": false
+        },
+        {
+          "label": "detail-icon",
+          "description": "The icon to use when `detail` is set to `true`.",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the item.",
+          "required": false
+        },
+        {
+          "label": "href",
+          "description": "Contains a URL or a URL fragment that the hyperlink points to.\nIf this property is set, an anchor tag will be rendered.",
+          "required": false
+        },
+        {
+          "label": "lines",
+          "description": "How the bottom border should be displayed on the item.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "router-direction",
+          "description": "When using a router, it specifies the transition direction when navigating to\nanother page using `href`.",
+          "required": false
+        },
+        {
+          "label": "type",
+          "description": "The type of the button. Only used when an `onclick` or `button` property is present.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-label",
+      "description": "Label is a wrapper element that can be used in combination with `ion-item`, `ion-input`, `ion-toggle`, and more. The position of the label inside of an item can be inline, fixed, stacked, or floating.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "position",
+          "description": "The position determines where and how the label behaves inside an item.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-list-header",
+      "description": "ListHeader a header component for a list.\nUnlike ItemDivider, ListHeaders are styled to be stand-out from the rest of the list items.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-list",
+      "description": "Lists are made up of multiple rows of items which can contain text, buttons, toggles,\nicons, thumbnails, and much more. Lists generally contain items with similar data content, such as images and text.\n\nLists support several interactions including swiping items to reveal options, dragging to reorder items within the list, and deleting items.",
+      "attributes": [
+        {
+          "label": "inset",
+          "description": "If `true`, the list will have margin around it and rounded corners.",
+          "required": false
+        },
+        {
+          "label": "lines",
+          "description": "How the bottom border should be displayed on all items.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-loading-controller",
+      "description": "Loading controllers programmatically control the loading component. Loadings can be created and dismissed from the loading controller. View the [Loading](../loading) documentation for a full list of options to pass upon creation.",
+      "attributes": []
+    },
+    {
+      "label": "ion-loading",
+      "description": "An overlay that can be used to indicate activity while blocking user interaction. The loading indicator appears on top of the app's content, and can be dismissed by the app to resume user interaction with the app. It includes an optional backdrop, which can be disabled by setting `showBackdrop: false` upon creation.",
+      "attributes": [
+        {
+          "label": "animated",
+          "description": "If `true`, the loading indicator will animate.",
+          "required": false
+        },
+        {
+          "label": "backdrop-dismiss",
+          "description": "If `true`, the loading indicator will be dismissed when the backdrop is clicked.",
+          "required": false
+        },
+        {
+          "label": "css-class",
+          "description": "Additional classes to apply for custom CSS. If multiple classes are\nprovided they should be separated by spaces.",
+          "required": false
+        },
+        {
+          "label": "duration",
+          "description": "Number of milliseconds to wait before dismissing the loading indicator.",
+          "required": false
+        },
+        {
+          "label": "keyboard-close",
+          "description": "If `true`, the keyboard will be automatically dismissed when the overlay is presented.",
+          "required": false
+        },
+        {
+          "label": "message",
+          "description": "Optional text content to display in the loading indicator.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "show-backdrop",
+          "description": "If `true`, a backdrop will be displayed behind the loading indicator.",
+          "required": false
+        },
+        {
+          "label": "spinner",
+          "description": "The name of the spinner to display.",
+          "required": false
+        },
+        {
+          "label": "translucent",
+          "description": "If `true`, the loading indicator will be translucent.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-menu-button",
+      "description": "Menu Button is component that automatically creates the icon and functionality to open a menu on a page.",
+      "attributes": [
+        {
+          "label": "auto-hide",
+          "description": "Automatically hides the menu button when the corresponding menu is not active",
+          "required": false
+        },
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "menu",
+          "description": "Optional property that maps to a Menu's `menuId` prop. Can also be `start` or `end` for the menu side. This is used to find the correct menu to toggle",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-menu-controller",
+      "description": "The Menu Controller makes it easy to control a Menu. The methods provided can be used to display the menu, enable the menu, toggle the menu, and more. The controller will grab a reference to the menu by the side, or id. if neither of these are passed to it, it will grab the first menu it finds.",
+      "attributes": []
+    },
+    {
+      "label": "ion-menu-toggle",
+      "description": "The MenuToggle component can be used to toggle a menu open or closed.\n\nBy default, it's only visible when the selected menu is active. A menu is active when it can be opened/closed. If the menu is disabled or it's being presented as a split-pane, the menu is marked as non-active and ion-menu-toggle hides itself.\n\nIn case it's desired to keep `ion-menu-toggle` always visible, the `autoHide` property can be set to `false`.",
+      "attributes": [
+        {
+          "label": "auto-hide",
+          "description": "Automatically hides the content when the corresponding menu is not active.\n\nBy default, it's `true`. Change it to `false` in order to\nkeep `ion-menu-toggle` always visible regardless the state of the menu.",
+          "required": false
+        },
+        {
+          "label": "menu",
+          "description": "Optional property that maps to a Menu's `menuId` prop.\nCan also be `start` or `end` for the menu side.\nThis is used to find the correct menu to toggle.\n\nIf this property is not used, `ion-menu-toggle` will toggle the\nfirst menu that is active.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-menu",
+      "description": "The Menu component is a navigation drawer that slides in from the side of the current view.\nBy default, it slides in from the left, but the side can be overridden.\nThe menu will be displayed differently based on the mode, however the display type can be changed to any of the available menu types.\nThe menu element should be a sibling to the root content element.\nThere can be any number of menus attached to the content.\nThese can be controlled from the templates, or programmatically using the MenuController.",
+      "attributes": [
+        {
+          "label": "content-id",
+          "description": "The content's id the menu should use.",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the menu is disabled.",
+          "required": false
+        },
+        {
+          "label": "max-edge-start",
+          "description": "The edge threshold for dragging the menu open.\nIf a drag/swipe happens over this value, the menu is not triggered.",
+          "required": false
+        },
+        {
+          "label": "menu-id",
+          "description": "An id for the menu.",
+          "required": false
+        },
+        {
+          "label": "side",
+          "description": "Which side of the view the menu should be placed.",
+          "required": false
+        },
+        {
+          "label": "swipe-gesture",
+          "description": "If `true`, swiping the menu is enabled.",
+          "required": false
+        },
+        {
+          "label": "type",
+          "description": "The display type of the menu.\nAvailable options: `\"overlay\"`, `\"reveal\"`, `\"push\"`.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-modal-controller",
+      "description": "Modal controllers programmatically control the modal component. Modals can be created and dismissed from the modal controller. View the [Modal](../modal) documentation for a full list of options to pass upon creation.",
+      "attributes": []
+    },
+    {
+      "label": "ion-modal",
+      "description": "A Modal is a dialog that appears on top of the app's content, and must be dismissed by the app before interaction can resume. It is useful as a select component when there are a lot of options to choose from, or when filtering items in a list, as well as many other use cases.",
+      "attributes": [
+        {
+          "label": "animated",
+          "description": "If `true`, the modal will animate.",
+          "required": false
+        },
+        {
+          "label": "backdrop-dismiss",
+          "description": "If `true`, the modal will be dismissed when the backdrop is clicked.",
+          "required": false
+        },
+        {
+          "label": "component",
+          "description": "The component to display inside of the modal.",
+          "required": true
+        },
+        {
+          "label": "css-class",
+          "description": "Additional classes to apply for custom CSS. If multiple classes are\nprovided they should be separated by spaces.",
+          "required": false
+        },
+        {
+          "label": "keyboard-close",
+          "description": "If `true`, the keyboard will be automatically dismissed when the overlay is presented.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "show-backdrop",
+          "description": "If `true`, a backdrop will be displayed behind the modal.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-nav-pop",
+      "description": "`NavPop` is a component used the automatically go back in navigation. It is the element from of `NavController.pop()`",
+      "attributes": []
+    },
+    {
+      "label": "ion-nav-push",
+      "description": "`NavPush` is a component used to navigate to the specified component.\nIt is the element form of `NavController.push()`",
+      "attributes": [
+        {
+          "label": "component",
+          "description": "Component to navigate to",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-nav-set-root",
+      "description": "`NavSetRoot` is an element that allows you to set the root of the current navigation stack.\nIt is the element form a calling `NavController.setRoot()`",
+      "attributes": [
+        {
+          "label": "component",
+          "description": "Component you want to make root for the navigation stack",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-nav",
+      "description": "Nav is a standalone component for loading arbitrary components and pushing to new components on to the stack.\nUnlike RouterOutlet, Nav is not tied to a particular router. Meaning that if we load a Nav component, and push other components to the stack, they will not affect the apps overall router. This fits use cases where you could have a modal, which needs it's own sub-navigation, but not make it tied to the apps URL.",
+      "attributes": [
+        {
+          "label": "animated",
+          "description": "If `true`, the nav should animate the transition of components.",
+          "required": false
+        },
+        {
+          "label": "root",
+          "description": "Root NavComponent to load",
+          "required": false
+        },
+        {
+          "label": "swipe-gesture",
+          "description": "If the nav component should allow for swipe-to-go-back.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-note",
+      "description": "Notes are text elements generally used as subtitles that provide more information. Notes are styled to appear grey by default. Notes can be used in an item as metadata text.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-picker-controller",
+      "description": "",
+      "attributes": []
+    },
+    {
+      "label": "ion-picker",
+      "description": "A Picker is a dialog that displays a row of buttons and columns underneath. It appears on top of the app's content, and at the bottom of the viewport.",
+      "attributes": [
+        {
+          "label": "animated",
+          "description": "If `true`, the picker will animate.",
+          "required": false
+        },
+        {
+          "label": "backdrop-dismiss",
+          "description": "If `true`, the picker will be dismissed when the backdrop is clicked.",
+          "required": false
+        },
+        {
+          "label": "css-class",
+          "description": "Additional classes to apply for custom CSS. If multiple classes are\nprovided they should be separated by spaces.",
+          "required": false
+        },
+        {
+          "label": "duration",
+          "description": "Number of milliseconds to wait before dismissing the picker.",
+          "required": false
+        },
+        {
+          "label": "keyboard-close",
+          "description": "If `true`, the keyboard will be automatically dismissed when the overlay is presented.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "show-backdrop",
+          "description": "If `true`, a backdrop will be displayed behind the picker.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-popover-controller",
+      "description": "Popover controllers programmatically control the popover component. Popovers can be created and dismissed from the popover controller. View the [Popover](../popover) documentation for a full list of options to pass upon creation.",
+      "attributes": []
+    },
+    {
+      "label": "ion-popover",
+      "description": "A Popover is a dialog that appears on top of the current page. It can be used for anything, but generally it is used for overflow actions that don't fit in the navigation bar.",
+      "attributes": [
+        {
+          "label": "animated",
+          "description": "If `true`, the popover will animate.",
+          "required": false
+        },
+        {
+          "label": "backdrop-dismiss",
+          "description": "If `true`, the popover will be dismissed when the backdrop is clicked.",
+          "required": false
+        },
+        {
+          "label": "component",
+          "description": "The component to display inside of the popover.",
+          "required": true
+        },
+        {
+          "label": "css-class",
+          "description": "Additional classes to apply for custom CSS. If multiple classes are\nprovided they should be separated by spaces.",
+          "required": false
+        },
+        {
+          "label": "event",
+          "description": "The event to pass to the popover animation.",
+          "required": false
+        },
+        {
+          "label": "keyboard-close",
+          "description": "If `true`, the keyboard will be automatically dismissed when the overlay is presented.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "show-backdrop",
+          "description": "If `true`, a backdrop will be displayed behind the popover.",
+          "required": false
+        },
+        {
+          "label": "translucent",
+          "description": "If `true`, the popover will be translucent.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-progress-bar",
+      "description": "ion-progress-bar is a horizontal progress bar to visualize the progression of an operation and activity. You can choose between two types: `determinate` and `indeterminate`.",
+      "attributes": [
+        {
+          "label": "buffer",
+          "description": "If the buffer and value are smaller than 1, the buffer circles will show.\nThe buffer should be between [0, 1].",
+          "required": false
+        },
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "reversed",
+          "description": "If true, reverse the progress bar direction.",
+          "required": false
+        },
+        {
+          "label": "type",
+          "description": "The state of the progress bar, based on if the time the process takes is known or not.\nDefault options are: `\"determinate\"` (no animation), `\"indeterminate\"` (animate from left to right).",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "The value determines how much of the active bar should display when the\n`type` is `\"determinate\"`.\nThe value should be between [0, 1].",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-radio-group",
+      "description": "A radio group is a group of [radio buttons](../radio). It allows\na user to select at most one radio button from a set. Checking one radio\nbutton that belongs to a radio group unchecks any previous checked\nradio button within the same group.",
+      "attributes": [
+        {
+          "label": "allow-empty-selection",
+          "description": "If `true`, the radios can be deselected.",
+          "required": false
+        },
+        {
+          "label": "name",
+          "description": "The name of the control, which is submitted with the form data.",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "the value of the radio group.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-radio",
+      "description": "Radios are generally used as a set of related options inside of a group, but they can also be used alone. Pressing on a radio will check it. They can also be checked programmatically by setting the `checked` property.\n\nAn `ion-radio-group` can be used to group a set of radios. When radios are inside of a [radio group](../radio-group), only one radio in the group will be checked at any time. Pressing a radio will check it and uncheck the previously selected radio, if there is one. If a radio is not in a group with another radio, then both radios will have the ability to be checked at the same time.",
+      "attributes": [
+        {
+          "label": "checked",
+          "description": "If `true`, the radio is selected.",
+          "required": false
+        },
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the radio.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "name",
+          "description": "The name of the control, which is submitted with the form data.",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "the value of the radio.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-range",
+      "description": "The Range slider lets users select from a range of values by moving\nthe slider knob. It can accept dual knobs, but by default one knob\ncontrols the value of the range.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "debounce",
+          "description": "How long, in milliseconds, to wait to trigger the\n`ionChange` event after each change in the range value.",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the range.",
+          "required": false
+        },
+        {
+          "label": "dual-knobs",
+          "description": "Show two knobs.",
+          "required": false
+        },
+        {
+          "label": "max",
+          "description": "Maximum integer value of the range.",
+          "required": false
+        },
+        {
+          "label": "min",
+          "description": "Minimum integer value of the range.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "name",
+          "description": "The name of the control, which is submitted with the form data.",
+          "required": false
+        },
+        {
+          "label": "pin",
+          "description": "If `true`, a pin with integer value is shown when the knob\nis pressed.",
+          "required": false
+        },
+        {
+          "label": "snaps",
+          "description": "If `true`, the knob snaps to tick marks evenly spaced based\non the step property value.",
+          "required": false
+        },
+        {
+          "label": "step",
+          "description": "Specifies the value granularity.",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "the value of the range.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-refresher-content",
+      "description": "The refresher content contains the text, icon and spinner to display during a pull-to-refresh. Ionic provides the pulling icon and refreshing spinner based on the platform. However, the default icon, spinner, and text can be customized based on the state of the refresher.",
+      "attributes": [
+        {
+          "label": "pulling-icon",
+          "description": "A static icon to display when you begin to pull down",
+          "required": false
+        },
+        {
+          "label": "pulling-text",
+          "description": "The text you want to display when you begin to pull down",
+          "required": false
+        },
+        {
+          "label": "refreshing-spinner",
+          "description": "An animated SVG spinner that shows when refreshing begins",
+          "required": false
+        },
+        {
+          "label": "refreshing-text",
+          "description": "The text you want to display when performing a refresh",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-refresher",
+      "description": "The refresher provides pull-to-refresh functionality on a content component.\nThe pull-to-refresh pattern lets a user pull down on a list of data using touch\nin order to retrieve more data.\n\nData should be modified during the refresher's output events. Once the async\noperation has completed and the refreshing should end, call `complete()` on the\nrefresher.",
+      "attributes": [
+        {
+          "label": "close-duration",
+          "description": "Time it takes to close the refresher.",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the refresher will be hidden.",
+          "required": false
+        },
+        {
+          "label": "pull-max",
+          "description": "The maximum distance of the pull until the refresher\nwill automatically go into the `refreshing` state.\nDefaults to the result of `pullMin + 60`.",
+          "required": false
+        },
+        {
+          "label": "pull-min",
+          "description": "The minimum distance the user must pull down until the\nrefresher will go into the `refreshing` state.",
+          "required": false
+        },
+        {
+          "label": "snapback-duration",
+          "description": "Time it takes the refresher to to snap back to the `refreshing` state.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-reorder-group",
+      "description": "The reorder group is a wrapper component for items with the `ion-reorder` component, Check [Reorder documentation](../reorder/) for further information about the anchor component that is used to drag items within the `ion-reorder-group` list.\n\nOnce the user drags an item and drops it in a new position, the `ionItemReorder` event is dispatched. A handler for it must be implemented by the developer to commit changes.\n\n```js\nreorderGroup.addEventListener('ionItemReorder', (ev) => {\n  console.log(`Moving item from ${ev.detail.from} to ${ev.detail.to}`);\n\n  this.dataList = reorderArray(this.dataList, ev.detail.from, ev.detail.to);\n  ev.detail.complete();\n});\n```\n\nThe event's detail includes all the relevant information about the reorder operation, including the `from` and `to` indexes. The meaning of this indexes are pretty self-explanatory, the item **from** index X, moved **to** the index Y.\n\nFor example, in this list we move the item at index `0` to the index `3`:\n\n```\nBEFORE | AFTER\n  0    |   1\n  1    |   2\n  2    |   3\n  3    |   0\n  4    |   4\n```\n\n```\ndetail: {\n  from: 0\n  to: 3\n}\n```\n\nOnce the data structure has been updated to reflect the reorder change, the `complete()` method must be called.\nThis method finishes the reorder operation and resets all the CSS transforms applied by the `ion-reorder-group` component.\n\nFortunately this `complete()` method can optionally accept an array as input and it will return a reordered copy, based in `detail.from` and `detail.to`.\n\n```ts\nthis.dataList = reorderGroup.complete(this.dataList);\n```\n\nThis utility is really handy when",
+      "attributes": [
+        {
+          "label": "disabled",
+          "description": "If `true`, the reorder will be hidden.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-reorder",
+      "description": "Reorder is a component that allows an item to be dragged to change its order. It must be used within an `ion-reorder-group` to provide a visual drag and drop interface.\n\n`ion-reorder` is the anchor users will use to drag and drop items inside the `ion-reorder-group`. It must be added to `ion-item` in order for them to be draggable.\n\n```html\n<ion-item>\n  <ion-label>\n    Item\n  </ion-label>\n  <ion-reorder slot=\"end\"></ion-reorder>\n</ion-item>\n```\n\nThe position of the",
+      "attributes": []
+    },
+    {
+      "label": "ion-ripple-effect",
+      "description": "The ripple effect component adds the [Material Design ink ripple interaction effect](https://material.io/develop/web/components/ripples/). This component can be used without a button and can be added to any component.",
+      "attributes": [
+        {
+          "label": "type",
+          "description": "Sets the type of ripple-effect:\n\n- `bounded`: the ripple effect expands from the user's click position\n- `unbounded`: the ripple effect expands from the center of the button and overflows the container.\n\nNOTE: Surfaces for bounded ripples should have the overflow property set to hidden,\nwhile surfaces for unbounded ripples should have it set to visible.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-route-redirect",
+      "description": "A redirect router can only be used in the scope of `ion-router` as a direct children of it.\n\n> Note: this is only meant for vanilla JavaScript project. For Angular projects, use `ion-router-outlet` and the Angular router.\n\nThis route has only two configurable values:\n - `from`\n - `to`\n\nTheir meaning is obvious under the context of a redirection, that occurs `from` a given URL `to` another given URL.\n\nIn other for a redirection to occurs the `from` path needs to be an exact match of the navigated URL.",
+      "attributes": [
+        {
+          "label": "from",
+          "description": "A redirect route, redirects \"from\" a URL \"to\" another URL. This property is that \"from\" URL.\nIt needs to be an exact match of the navigated URL in order to apply.\n\nThe path specified in this value is always an absolute path, even if the initial `/` slash\nis not specified.",
+          "required": true
+        },
+        {
+          "label": "to",
+          "description": "A redirect route, redirects \"from\" a URL \"to\" another URL. This property is that \"to\" URL.\nWhen the defined `ion-route-redirect` rule matches, the router will redirect to the path\nspecified in this property.\n\nThe value of this property is always an absolute path inside the scope of routes defined in\n`ion-router` it can't be used with another router or to perform a redirection to a different domain.\n\nNote that this is a virtual redirect, it will not cause a real browser refresh, again, it's\na redirect inside the context of ion-router.\n\nWhen this property is not specified or his value is `undefined` the whole redirect route is noop,\neven if the \"from\" value matches.",
+          "required": true
+        }
+      ]
+    },
+    {
+      "label": "ion-route",
+      "description": "Router is a component that can take a component, and render it when the Browser URl matches the url prop\n\n> Note: this is only meant for vanilla JavaScript project. For Angular projects, use `ion-router-outlet` and the Angular router.",
+      "attributes": [
+        {
+          "label": "component",
+          "description": "Name of the component to load/select in the navigation outlet (`ion-tabs`, `ion-nav`)\nwhen the route matches.\n\nThe value of this property is not always the tagname of the component to load,\nin `ion-tabs` it actually refers to the name of the `ion-tab` to select.",
+          "required": true
+        },
+        {
+          "label": "url",
+          "description": "Relative path that needs to match in order for this route to apply.\n\nAccepts paths similar to expressjs so that you can define parameters\nin the url /foo/:bar where bar would be available in incoming props.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-router-outlet",
+      "description": "Router Outlet is a component used in routing within an Angular app.\nRouter Outlet behaves in a similar way as Angular's built-in Router Outlet component, but contains the logic for providing a stacked navigation, and animating views in and out.\n\n\n> Note: this is only meant for Angular projects. For vanilla JavaScript, use `ion-router` and `ion-route` instead.\n\nWhile Router Outlet has methods for navigating around, it's recommended to use the navigation methods in Angular's router.",
+      "attributes": [
+        {
+          "label": "animated",
+          "description": "If `true`, the router-outlet should animate the transition of components.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-router",
+      "description": "Router is a component for handling routing inside vanilla JavaScript projects. For Angular projects, use `ion-router-outlet` and the Angular router.\n\nApps should have a single `ion-router` component in the codebase.\nThis component controls all interactions with the browser history and it aggregates updates through an event system.\n\n`ion-router` is just a URL coordinator for the navigation outlets of ionic: `ion-nav` and `ion-tabs`.\n\nThat means the `ion-router` never touches the DOM, it does NOT show the components or emit any kind of lifecycle events, it just tells `ion-nav` and `ion-tabs` what and when to \"show\" based on the browser's URL.\n\nIn order to configure this relationship between components (to load/select) and URLs, `ion-router` uses a declarative syntax using JSX/HTML to define a tree of routes.\n\nIf you're using Angular, please see [ion-router-outlet](../router-outlet) instead.",
+      "attributes": [
+        {
+          "label": "root",
+          "description": "By default `ion-router` will match the routes at the root path (\"/\").\nThat can be changed when",
+          "required": false
+        },
+        {
+          "label": "use-hash",
+          "description": "The router can work in two \"modes\":\n- With hash: `/index.html#/path/to/page`\n- Without hash: `/path/to/page`\n\nUsing one or another might depend in the requirements of your app and/or where it's deployed.\n\nUsually \"hash-less\" navigation works better for SEO and it's more user friendly too, but it might\nrequires additional server-side configuration in order to properly work.\n\nOn the otherside hash-navigation is much easier to deploy, it even works over the file protocol.\n\nBy default, this property is `true`, change to `false` to allow hash-less URLs.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-row",
+      "description": "Rows are horizontal components of the [grid](../Grid) system and contain varying numbers of\n[columns](../Col). They ensure the columns are positioned properly.\n\nSee [Grid Layout](/docs/layout/grid) for more information.",
+      "attributes": []
+    },
+    {
+      "label": "ion-searchbar",
+      "description": "Searchbars represent a text field that can be used to search through a collection. They can be displayed inside of a toolbar or the main content.\n\nA Searchbar should be used instead of an input to search lists. A clear button is displayed upon entering input in the searchbar's text field. Clicking on the clear button will erase the text field and the input will remain focused. A cancel button can be enabled which will clear the input and lose the focus upon click.",
+      "attributes": [
+        {
+          "label": "animated",
+          "description": "If `true`, enable searchbar animation.",
+          "required": false
+        },
+        {
+          "label": "autocomplete",
+          "description": "Set the input's autocomplete property.",
+          "required": false
+        },
+        {
+          "label": "autocorrect",
+          "description": "Set the input's autocorrect property.",
+          "required": false
+        },
+        {
+          "label": "cancel-button-icon",
+          "description": "Set the cancel button icon. Only applies to `md` mode.",
+          "required": false
+        },
+        {
+          "label": "cancel-button-text",
+          "description": "Set the the cancel button text. Only applies to `ios` mode.",
+          "required": false
+        },
+        {
+          "label": "clear-icon",
+          "description": "Set the clear icon. Defaults to `\"close-circle\"` for `ios` and `\"close\"` for `md`.",
+          "required": false
+        },
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "debounce",
+          "description": "Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "placeholder",
+          "description": "Set the input's placeholder.",
+          "required": false
+        },
+        {
+          "label": "search-icon",
+          "description": "The icon to use as the search icon.",
+          "required": false
+        },
+        {
+          "label": "show-cancel-button",
+          "description": "If `true`, show the cancel button.",
+          "required": false
+        },
+        {
+          "label": "spellcheck",
+          "description": "If `true`, enable spellcheck on the input.",
+          "required": false
+        },
+        {
+          "label": "type",
+          "description": "Set the type of the input.",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "the value of the searchbar.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-segment-button",
+      "description": "Segment buttons are groups of related buttons inside of a [Segment](../../segment/Segment). They are displayed in a horizontal row. A segment button can be checked by default by adding the `checked` attribute or by setting the `value` of the segment to the `value` of the segment button. Only one segment button should be selected at a time.",
+      "attributes": [
+        {
+          "label": "checked",
+          "description": "If `true`, the segment button is selected.",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the segment button.",
+          "required": false
+        },
+        {
+          "label": "layout",
+          "description": "Set the layout of the text and icon in the segment.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "The value of the segment button.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-segment",
+      "description": "Segments display a group of related buttons, sometimes known as segmented controls, in a horizontal row. They can be displayed inside of a toolbar or the main content.\n\nTheir functionality is similar to tabs, where selecting one will deselect all others. Segments are useful for toggling between different views inside of the content. Tabs should be used instead of a segment when clicking on a control should navigate between pages.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the segment.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "scrollable",
+          "description": "If `true`, the segment buttons will overflow and the user can swipe to see them.",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "the value of the segment.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-select-option",
+      "description": "SelectOption is a component that is a child element of Select. For more information, see the [Select docs](../select).",
+      "attributes": [
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the select option.",
+          "required": false
+        },
+        {
+          "label": "selected",
+          "description": "If `true`, the element is selected.",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "The text value of the option.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-select",
+      "description": "Selects are form controls to select an option, or options, from a set of options, similar to a native `<select>` element. When a user taps the select, a dialog appears with all of the options in a large, easy to select list.\n\nA select should be used with child `<ion-select-option>` elements. If the child option is not given a `value` attribute then its text will be used as the value.\n\nIf `value` is set on the `<ion-select>`, the selected option will be chosen based on that value. Otherwise, the `selected` attribute can be used on the `<ion-select-option>`.",
+      "attributes": [
+        {
+          "label": "cancel-text",
+          "description": "The text to display on the cancel button.",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the select.",
+          "required": false
+        },
+        {
+          "label": "interface",
+          "description": "The interface the select should use: `action-sheet`, `popover` or `alert`.",
+          "required": false
+        },
+        {
+          "label": "interface-options",
+          "description": "Any additional options that the `alert`, `action-sheet` or `popover` interface\ncan take. See the [AlertController API docs](../../alert/AlertController/#create), the\n[ActionSheetController API docs](../../action-sheet/ActionSheetController/#create) and the\n[PopoverController API docs](../../popover/PopoverController/#create) for the\ncreate options for each interface.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "multiple",
+          "description": "If `true`, the select can accept multiple values.",
+          "required": false
+        },
+        {
+          "label": "name",
+          "description": "The name of the control, which is submitted with the form data.",
+          "required": false
+        },
+        {
+          "label": "ok-text",
+          "description": "The text to display on the ok button.",
+          "required": false
+        },
+        {
+          "label": "placeholder",
+          "description": "The text to display when the select is empty.",
+          "required": false
+        },
+        {
+          "label": "selected-text",
+          "description": "The text to display instead of the selected option's value.",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "the value of the select.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-skeleton-text",
+      "description": "Skeleton Text is a component for rendering placeholder content. The element will render a gray block at the specified width.",
+      "attributes": [
+        {
+          "label": "width",
+          "description": "Width for the element to render at.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-slide",
+      "description": "The Slide component is a child component of [Slides](../slides). The template\nshould be written as `ion-slide`. Any slide content should be written\nin this component and it should be used in conjunction with [Slides](../slides).\n\nSee the [Slides API Docs](../slides) for more usage information.",
+      "attributes": []
+    },
+    {
+      "label": "ion-slides",
+      "description": "The Slides component is a multi-section container. Each section can be swiped\nor dragged between. It contains any number of [Slide](../Slide) components.\n\n\nAdopted from Swiper.js:\nThe most modern mobile touch slider and framework with hardware accelerated transitions.\n\nhttp://www.idangero.us/swiper/\n\nCopyright 2016, Vladimir Kharlampidi\nThe iDangero.us\nhttp://www.idangero.us/\n\nLicensed under MIT",
+      "attributes": [
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "options",
+          "description": "Options to pass to the swiper instance.\nSee http://idangero.us/swiper/api/ for valid options",
+          "required": false
+        },
+        {
+          "label": "pager",
+          "description": "If `true`, show the pagination.",
+          "required": false
+        },
+        {
+          "label": "scrollbar",
+          "description": "If `true`, show the scrollbar.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-spinner",
+      "description": "The Spinner component provides a variety of animated SVG spinners. Spinners are visual indicators that the app is loading content or performing another process that the user needs to wait on.\n\nThe default spinner to use is based on the platform. The default spinner for `ios` is `\"lines\"`, and the default for `android` is `\"crescent\"`. If the platform is not `ios` or `android`, the spinner will default to `crescent`. If the `name` property is set, then that spinner will be used instead of the platform specific spinner.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "duration",
+          "description": "Duration of the spinner animation in milliseconds. The default varies based on the spinner.",
+          "required": false
+        },
+        {
+          "label": "name",
+          "description": "The name of the SVG spinner to use. If a name is not provided, the platform's default\nspinner will be used.",
+          "required": false
+        },
+        {
+          "label": "paused",
+          "description": "If `true`, the spinner's animation will be paused.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-split-pane",
+      "description": "SplitPane is a component that makes it possible to create multi-view layout.\nSimilar to iPad apps, SplitPane allows UI elements, like Menus, to be\ndisplayed as the viewport increases.\n\nIf the devices screen size is below a certain size, the SplitPane will\ncollapse and the menu will become hidden again. This is especially useful when\ncreating an app that will be served over a browser or deployed through the app\nstore to phones and tablets.",
+      "attributes": [
+        {
+          "label": "content-id",
+          "description": "The content `id` of the split-pane's main content.\nThis property can be used instead of the `[main]` attribute to select the `main`\ncontent of the split-pane.\n\n```html\n   * <ion-split-pane content-id=\"my-content\">\n   *   <ion-menu></ion-menu>\n   *   <div id=\"my-content\">\n   * </ion-split-pane>\n   * ```",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the split pane will be hidden.",
+          "required": false
+        },
+        {
+          "label": "when",
+          "description": "When the split-pane should be shown.\nCan be a CSS media query expression, or a shortcut expression.\nCan also be a boolean expression.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-tab-bar",
+      "description": "The tab bar is a UI component that contains a set of [tab buttons](../tab-button). A tab bar must be provided inside of [tabs](../tabs) to communicate with each [tab](../tab).",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "selected-tab",
+          "description": "The selected tab component",
+          "required": false
+        },
+        {
+          "label": "translucent",
+          "description": "If `true`, the tab bar will be translucent.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-tab-button",
+      "description": "A tab button is a UI component that is placed inside of a [tab bar](../tab-bar). The tab button can specify the layout of the icon and label and connect to a [tab view](../tab).\n\nSee the [tabs documentation](../tabs) for more details on configuring tabs.",
+      "attributes": [
+        {
+          "label": "disabled",
+          "description": "The selected tab component",
+          "required": false
+        },
+        {
+          "label": "href",
+          "description": "The URL which will be used as the `href` within this tab's button anchor.",
+          "required": false
+        },
+        {
+          "label": "layout",
+          "description": "Set the layout of the text and icon in the tab bar.\nIt defaults to `'icon-top'`.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "selected",
+          "description": "The selected tab component",
+          "required": false
+        },
+        {
+          "label": "tab",
+          "description": "A tab id must be provided for each `ion-tab`. It's used internally to reference\nthe selected tab or by the router to switch between them.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-tab",
+      "description": "The tab component is a child component of [tabs](../tabs). Each tab can contain a top level navigation stack for an app or a single view. An app can have many tabs, all with their own independent navigation.\n\nSee the [tabs documentation](../tabs/) for more details on configuring tabs.",
+      "attributes": [
+        {
+          "label": "component",
+          "description": "The component to display inside of the tab.",
+          "required": false
+        },
+        {
+          "label": "tab",
+          "description": "A tab id must be provided for each `ion-tab`. It's used internally to reference\nthe selected tab or by the router to switch between them.",
+          "required": true
+        }
+      ]
+    },
+    {
+      "label": "ion-tabs",
+      "description": "Tabs are a top level navigation component to implement a tab-based navigation.\nThe component is a container of individual [Tab](../tab/) components.\n\n`ion-tabs` is a styleless component that works as a router outlet in order to handle navigation.\nThis component does not provide any UI feedback or mechanism to switch between tabs.\nIn order to do so, an `ion-tab-bar` should be provided as a direct child of `ion-tabs`:\n\n```html\n<ion-tabs>\n  <ion-tab tab=\"home\">Home Content</ion-tab>\n  <ion-tab tab=\"settings\">Settings Content</ion-tab>\n\n  <ion-tab-bar slot=\"bottom\">\n\n    <ion-tab-button tab=\"home\">\n      <ion-label>Home</ion-label>\n      <ion-icon name=\"home\"></ion-icon>\n      <ion-badge>6</ion-badge>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"settings\">\n      <ion-label>Settings</ion-label>\n      <ion-icon name=\"settings\"></ion-icon>\n    </ion-tab-button>\n\n  </ion-tab-bar>\n</ion-tabs>\n```\n\nNote that both `ion-tabs` and `ion-tab-bar` can be used as standalone elements. They don’t depend on each other to work, but they are usually used together in order to implement a tab-based navigation that feels like a native app.\n\n`ion-tab-bar` always needs `slot=\"bottom\"` in order to be projected into `ion-tabs` at the right place.",
+      "attributes": []
+    },
+    {
+      "label": "ion-text",
+      "description": "The text component is a simple component that can be used to style the text color of any element. The `ion-text` element should wrap the element in order to change the text color of that element.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-textarea",
+      "description": "The textarea component is used for multi-line text input. A native textarea element is rendered inside of the component. The user experience and interactivity of the textarea component is improved by having control over the native textarea.\n\nUnlike the native textarea element, the Ionic textarea does not support loading its value from the inner content. The textarea value should be set in the `value` attribute.\n\nThe textarea component accepts the [native textarea attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) in addition to the Ionic properties.",
+      "attributes": [
+        {
+          "label": "autocapitalize",
+          "description": "Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.",
+          "required": false
+        },
+        {
+          "label": "autofocus",
+          "description": "This Boolean attribute lets you specify that a form control should have input focus when the page loads.",
+          "required": false
+        },
+        {
+          "label": "clear-on-edit",
+          "description": "If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `\"password\"`, `false` for all other types.",
+          "required": false
+        },
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "cols",
+          "description": "The visible width of the text control, in average character widths. If it is specified, it must be a positive integer.",
+          "required": false
+        },
+        {
+          "label": "debounce",
+          "description": "Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke.",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the textarea.",
+          "required": false
+        },
+        {
+          "label": "maxlength",
+          "description": "If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the maximum number of characters that the user can enter.",
+          "required": false
+        },
+        {
+          "label": "minlength",
+          "description": "If the value of the type attribute is `text`, `email`, `search`, `password`, `tel`, or `url`, this attribute specifies the minimum number of characters that the user can enter.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "name",
+          "description": "The name of the control, which is submitted with the form data.",
+          "required": false
+        },
+        {
+          "label": "placeholder",
+          "description": "Instructional text that shows before the input has a value.",
+          "required": false
+        },
+        {
+          "label": "readonly",
+          "description": "If `true`, the user cannot modify the value.",
+          "required": false
+        },
+        {
+          "label": "required",
+          "description": "If `true`, the user must fill in a value before submitting a form.",
+          "required": false
+        },
+        {
+          "label": "rows",
+          "description": "The number of visible text lines for the control.",
+          "required": false
+        },
+        {
+          "label": "spellcheck",
+          "description": "If `true`, the element will have its spelling and grammar checked.",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "The value of the textarea.",
+          "required": false
+        },
+        {
+          "label": "wrap",
+          "description": "Indicates how the control wraps text.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-thumbnail",
+      "description": "Thumbnails are square components that usually wrap an image or icon. They can be used to make it easier to display a group of larger images or provide a preview of the full-size image.\n\nThumbnails can be used by themselves or inside of any element. If placed inside of an `ion-item`, the thumbnail will resize to fit the parent component. To position a thumbnail on the left or right side of an item, set the slot to `start` or `end`, respectively.",
+      "attributes": []
+    },
+    {
+      "label": "ion-title",
+      "description": "`ion-title` is a component that sets the title of the `Toolbar`.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-toast-controller",
+      "description": "ToastController is a component use to create Toast components. Please see the docs for [Toast](../toast).",
+      "attributes": []
+    },
+    {
+      "label": "ion-toast",
+      "description": "A Toast is a subtle notification commonly used in modern applications. It can be used to provide feedback about an operation or to display a system message. The toast appears on top of the app's content, and can be dismissed by the app to resume user interaction with the app.",
+      "attributes": [
+        {
+          "label": "animated",
+          "description": "If `true`, the toast will animate.",
+          "required": false
+        },
+        {
+          "label": "close-button-text",
+          "description": "Text to display in the close button.",
+          "required": false
+        },
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "css-class",
+          "description": "Additional classes to apply for custom CSS. If multiple classes are\nprovided they should be separated by spaces.",
+          "required": false
+        },
+        {
+          "label": "duration",
+          "description": "How many milliseconds to wait before hiding the toast. By default, it will show\nuntil `dismiss()` is called.",
+          "required": false
+        },
+        {
+          "label": "keyboard-close",
+          "description": "If `true`, the keyboard will be automatically dismissed when the overlay is presented.",
+          "required": false
+        },
+        {
+          "label": "message",
+          "description": "Message to be shown in the toast.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "position",
+          "description": "The position of the toast on the screen.",
+          "required": false
+        },
+        {
+          "label": "show-close-button",
+          "description": "If `true`, the close button will be displayed.",
+          "required": false
+        },
+        {
+          "label": "translucent",
+          "description": "If `true`, the toast will be translucent.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-toggle",
+      "description": "Toggles change the state of a single option. Toggles can be switched on or off by pressing or swiping them. They can also be checked programmatically by setting the `checked` property.",
+      "attributes": [
+        {
+          "label": "checked",
+          "description": "If `true`, the toggle is selected.",
+          "required": false
+        },
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "disabled",
+          "description": "If `true`, the user cannot interact with the toggle.",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        },
+        {
+          "label": "name",
+          "description": "The name of the control, which is submitted with the form data.",
+          "required": false
+        },
+        {
+          "label": "value",
+          "description": "The value of the toggle does not mean if it's checked or not, use the `checked`\nproperty for that.\n\nThe value of a toggle is analogous to the value of a `<input type=\"checkbox\">`,\nit's only used when the toggle participates in a native `<form>`.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-toolbar",
+      "description": "Toolbars are positioned above or below content. When a toolbar is placed in an `<ion-header>` it will appear fixed at the top of the content, and when it is in an `<ion-footer>` it will appear fixed at the bottom. Fullscreen content will scroll behind a toolbar in a header or footer. When placed within an `<ion-content>`, toolbars will scroll with the content.",
+      "attributes": [
+        {
+          "label": "color",
+          "description": "The color to use from your application's color palette.\nDefault options are: `\"primary\"`, `\"secondary\"`, `\"tertiary\"`, `\"success\"`, `\"warning\"`, `\"danger\"`, `\"light\"`, `\"medium\"`, and `\"dark\"`.\nFor more information on colors, see [theming](/docs/theming/basics).",
+          "required": false
+        },
+        {
+          "label": "mode",
+          "description": "The mode determines which platform styles to use.",
+          "required": false
+        }
+      ]
+    },
+    {
+      "label": "ion-virtual-scroll",
+      "description": "Virtual Scroll displays a virtual, \"infinite\" list. An array of records\nis passed to the virtual scroll containing the data to create templates\nfor. The template created for each record, referred to as a cell, can\nconsist of items, headers, and footers.\nFor performance reasons, not every record in the list is rendered at once;\ninstead a small subset of records (enough to fill the viewport) are rendered\nand reused as the user scrolls.",
+      "attributes": [
+        {
+          "label": "approx-footer-height",
+          "description": "The approximate width of each footer template's cell.\nThis dimension is used to help determine how many cells should\nbe created when initialized, and to help calculate the height of\nthe scrollable area. This height value can only use `px` units.\nNote that the actual rendered size of each cell comes from the\napp's CSS, whereas this approximation is used to help calculate\ninitial dimensions before the item has been rendered.",
+          "required": false
+        },
+        {
+          "label": "approx-header-height",
+          "description": "The approximate height of each header template's cell.\nThis dimension is used to help determine how many cells should\nbe created when initialized, and to help calculate the height of\nthe scrollable area. This height value can only use `px` units.\nNote that the actual rendered size of each cell comes from the\napp's CSS, whereas this approximation is used to help calculate\ninitial dimensions before the item has been rendered.",
+          "required": false
+        },
+        {
+          "label": "approx-item-height",
+          "description": "It is important to provide this\nif virtual item height will be significantly larger than the default\nThe approximate height of each virtual item template's cell.\nThis dimension is used to help determine how many cells should\nbe created when initialized, and to help calculate the height of\nthe scrollable area. This height value can only use `px` units.\nNote that the actual rendered size of each cell comes from the\napp's CSS, whereas this approximation is used to help calculate\ninitial dimensions before the item has been rendered.",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

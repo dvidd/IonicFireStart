@@ -1,0 +1,1 @@
+Ionic.loadBundle("chunk-7348297b.js",["exports"],function(L){window,L.LIFECYCLE_WILL_LEAVE="ionViewWillLeave",L.LIFECYCLE_WILL_ENTER="ionViewWillEnter",L.LIFECYCLE_DID_ENTER="ionViewDidEnter",L.LIFECYCLE_DID_LEAVE="ionViewDidLeave",L.LIFECYCLE_WILL_UNLOAD="ionViewWillUnload"});

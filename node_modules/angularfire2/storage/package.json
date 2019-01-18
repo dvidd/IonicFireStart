@@ -1,0 +1,16 @@
+{
+  "name": "angularfire2/storage",
+  "version": "5.1.1",
+  "main": "index.js",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angularfire2.git"
+  },
+  "author": "angular,firebase",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/fire": "5.1.1"
+  },
+  "typings": "index.d.ts"
+}

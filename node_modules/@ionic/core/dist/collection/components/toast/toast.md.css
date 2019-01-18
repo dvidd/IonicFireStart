@@ -1,0 +1,104 @@
+:host {
+  /**
+   * @prop --background: Background of the toast
+   * @prop --color: Color of the toast text
+   *
+   * @prop --border-color: Border color of the toast
+   * @prop --border-radius: Border radius of the toast
+   * @prop --border-width: Border width of the toast
+   * @prop --border-style: Border style of the toast
+   *
+   * @prop --box-shadow: Box shadow of the toast
+   *
+   * @prop --min-width: Minimum width of the toast
+   * @prop --width: Width of the toast
+   * @prop --max-width: Maximum width of the toast
+   *
+   * @prop --min-height: Minimum height of the toast
+   * @prop --height: Height of the toast
+   * @prop --max-height: Maximum height of the toast
+   *
+   * @prop --button-color: Color of the button text
+   */
+  --border-width: 0;
+  --border-style: none;
+  --border-color: initial;
+  --box-shadow: none;
+  --min-width: auto;
+  --width: auto;
+  --min-height: auto;
+  --height: auto;
+  --max-height: auto;
+  left: 0;
+  top: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: var(--color);
+  font-family: var(--ion-font-family, inherit);
+  contain: strict;
+  z-index: 1000;
+  pointer-events: none; }
+
+:host(.overlay-hidden) {
+  display: none; }
+
+:host(.ion-color) {
+  --button-color: inherit;
+  color: var(--ion-color-contrast); }
+
+:host(.ion-color) .toast-wrapper {
+  background: var(--ion-color-base); }
+
+.toast-wrapper {
+  border-radius: var(--border-radius);
+  width: var(--width);
+  min-width: var(--min-width);
+  max-width: var(--max-width);
+  height: var(--height);
+  min-height: var(--min-height);
+  max-height: var(--max-height);
+  border-width: var(--border-width);
+  border-style: var(--border-style);
+  border-color: var(--border-color);
+  background: var(--background);
+  box-shadow: var(--box-shadow); }
+
+.toast-container {
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+  contain: content; }
+
+.toast-button {
+  color: var(--button-color); }
+
+.toast-message {
+  flex: 1;
+  white-space: pre-wrap; }
+
+:host {
+  --background: var(--ion-color-step-800, #333333);
+  --border-radius: 4px;
+  --box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  --button-color: var(--ion-color-primary, #3880ff);
+  --color: var(--ion-color-step-50, #f2f2f2);
+  --max-width: 700px;
+  font-size: 14px; }
+
+.toast-wrapper {
+  left: 8px;
+  right: 8px;
+  margin: auto;
+  display: block;
+  position: absolute;
+  opacity: .01;
+  z-index: 10; }
+
+.toast-message {
+  padding: 14px 16px;
+  line-height: 20px; }
+
+.toast-button {
+  --margin-end: 0; }

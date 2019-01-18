@@ -1,0 +1,1 @@
+[{"__symbolic":"module","version":4,"metadata":{"AngularFireMessagingModule":{"__symbolic":"class","decorators":[{"__symbolic":"call","expression":{"__symbolic":"reference","module":"@angular/core","name":"NgModule","line":3,"character":1},"arguments":[{"providers":[{"__symbolic":"reference","module":"./messaging","name":"AngularFireMessaging","line":4,"character":15}]}]}]}}}]

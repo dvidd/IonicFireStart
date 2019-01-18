@@ -1,0 +1,30 @@
+{
+  "name": "@angular/fire/auth",
+  "version": "5.1.1",
+  "description": "The auth module",
+  "main": "../bundles/auth.umd.js",
+  "module": "index.js",
+  "es2015": "./es2015/index.js",
+  "keywords": [
+    "angular",
+    "firebase",
+    "rxjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angularfire2.git"
+  },
+  "author": "angular,firebase",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/fire": "5.1.1",
+    "@angular/common": ">=6.0.0 <8",
+    "@angular/core": ">=6.0.0 <8",
+    "@angular/platform-browser": ">=6.0.0 <8",
+    "@angular/platform-browser-dynamic": ">=6.0.0 <8",
+    "firebase": "^5.5.0",
+    "rxjs": "^6.0.0",
+    "zone.js": "^0.8.0"
+  },
+  "typings": "index.d.ts"
+}

@@ -1,0 +1,1 @@
+[{"__symbolic":"module","version":4,"metadata":{},"exports":[{"from":"./firestore"},{"from":"./firestore.module"},{"from":"./collection/collection"},{"from":"./document/document"},{"from":"./collection/changes"},{"from":"./observable/fromRef"},{"from":"./interfaces"}]}]

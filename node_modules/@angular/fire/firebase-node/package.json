@@ -1,0 +1,27 @@
+{
+    "name": "@angular/fire/firebase-node",
+    "version": "5.1.1",
+    "description": "Fixes for Node.js",
+    "main": "index.js",
+    "keywords": [
+      "angular",
+      "firebase",
+      "rxjs"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/angular/angularfire2.git"
+    },
+    "author": "angular,firebase",
+    "license": "MIT",
+    "dependencies": {
+      "xhr2": "^0.1.4",
+      "ws": "^3.3.2"
+    },
+    "optionalDependencies": {
+      "bufferutil": "~3.0.0",
+      "utf-8-validate": "~4.0.0"
+    },
+    "typings": "index.d.ts"
+  }
+  
