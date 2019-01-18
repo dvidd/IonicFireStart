@@ -31,7 +31,7 @@
     "core-js": "^2.5.4",
     "firebase": "^5.7.3",
     "promise-polyfill": "^8.1.0",
-    "rxjs": "~6.3.3",
+    "rxjs": "^6.3.3",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
