@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+// Just testing
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
