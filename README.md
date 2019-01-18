@@ -24,3 +24,5 @@ You have to change the firebase configuration, with is in the envioriments/ fold
 This is how it should look at the final step
 
 
+<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/Sketch.png?raw=true">
+<br>
