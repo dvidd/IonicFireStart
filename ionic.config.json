@@ -1,0 +1,7 @@
+{
+  "name": "IonicFirebaseSK",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

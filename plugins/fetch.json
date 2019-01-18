@@ -1,0 +1,12 @@
+{
+  "cordova-plugin-telerik-imagepicker": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-telerik-imagepicker"
+    },
+    "is_top_level": true,
+    "variables": {
+      "PHOTO_LIBRARY_USAGE_DESCRIPTION": "“img"
+    }
+  }
+}
