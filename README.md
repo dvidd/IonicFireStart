@@ -1,7 +1,5 @@
 # ionic3-firebase-auth
-An Ionic 3 application based on the Supermodular2 starter. This project is the source code of the tutorial on "How To Authenticate with Firebase and Ionic 3 - Email/Password and Google Sign-In", originally published at http://appseed.io/blog/how-authenticate-firebase-and-ionic-3-emailpassword-and-google-sign
-<ul><li>Project's Home: https://github.com/appseed-io/supermodular2</li></ul>
-<blockquote>
+An Ionic 4 firebase starter.
   <p>
     To find many more features and make the most of Firebase for your Ionic 3 mobile app, check out <a href="http://appseed.io/ionic-toolkit-firebase">Ionic 3 Toolkit Firebase</a>.
   </p>
@@ -68,11 +66,11 @@ $ ionic platform add android</pre>
   <ul><li><a href="https://ionicframework.com/">Ionic Framework</a></li></ul>
 
 
-<h2>Third Party Licenses</h2>
-
-  <ul>
-  <li><a href="http://www.apache.org/licenses/">Apache License</a></li>
-  <li><a href="https://opensource.org/licenses/MIT">MIT License</a></li>
-  </ul>
 
 
+
+This is how it should look at the final step
+
+
+<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/Sketch.png?raw=true">
+<br>
