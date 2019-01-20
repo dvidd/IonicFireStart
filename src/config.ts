@@ -7,11 +7,11 @@ export class Config {
 
 export const firebaseConfig = {
 	fire: {
-		apiKey: "AIzaSyDW6woVw3gDQVvKtreZ4g9igRW92knq4Sg",
-		authDomain: "supermodular-c9b81.firebaseapp.com",
-		databaseURL: "https://supermodular-c9b81.firebaseio.com",
-		projectId: "supermodular-c9b81",
-		storageBucket: "supermodular-c9b81.appspot.com",
-		messagingSenderId: "374150420031"
+		apiKey: 'AIzaSyBBwjIYNbZjQeDzSxNWYjEz6sBXSXJEfts',
+		authDomain: 'ionic4firebase-st.firebaseapp.com',
+		databaseURL: 'https://ionic4firebase-st.firebaseio.com',
+		projectId: 'ionic4firebase-st',
+		storageBucket: 'ionic4firebase-st.appspot.com',
+		messagingSenderId: '5463921528'
 	}
 };

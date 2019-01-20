@@ -1951,12 +1951,9 @@ var MyApp = (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/davidbarrero/Desktop/100/47 Ionic 4 Firebase /Ionic-4-firebase/Ionic-4-firebase/src/app/app.html"*/'<ion-menu id="leftMenu" [content]="content" type="overlay">\n\n    <ion-header>\n\n        <ion-toolbar>\n\n            <ion-title>Pages</ion-title>\n\n        </ion-toolbar>\n\n    </ion-header>\n\n\n\n    <ion-content>\n\n        <ion-list>\n\n\n\n            <ion-list-header *ngIf="auth.getEmail()">{{auth.getEmail()}}</ion-list-header>\n\n\n\n            <ion-item (click)="logout()" *ngIf="auth.authenticated">\n\n                <ion-icon name="log-out" item-left></ion-icon>\n\n                Log out\n\n            </ion-item>\n\n\n\n            <ion-item (click)="login()" *ngIf="!auth.authenticated">\n\n                <ion-icon name="log-in" item-left></ion-icon>\n\n                Log in\n\n            </ion-item>\n\n        </ion-list>\n\n\n\n    </ion-content>\n\n\n\n</ion-menu>\n\n\n\n<ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>'/*ion-inline-end:"/Users/davidbarrero/Desktop/100/47 Ionic 4 Firebase /Ionic-4-firebase/Ionic-4-firebase/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/davidbarrero/Desktop/100/47 Ionic 4 Firebase /Ionic-4-firebase/Ionic-4-firebase/src/app/app.html"*/'<ion-menu id="leftMenu" [content]="content" type="overlay">\n\n    <ion-header>\n\n        <ion-toolbar>\n\n            <ion-title>Opciones</ion-title>\n\n        </ion-toolbar>\n\n    </ion-header>\n\n\n\n    <ion-content>\n\n        <ion-list>\n\n\n\n            <ion-list-header *ngIf="auth.getEmail()">{{auth.getEmail()}}</ion-list-header>\n\n\n\n            <ion-item (click)="logout()" *ngIf="auth.authenticated">\n\n                <ion-icon name="log-out" item-left></ion-icon>\n\n                Log out\n\n            </ion-item>\n\n\n\n            <ion-item (click)="login()" *ngIf="!auth.authenticated">\n\n                <ion-icon name="log-in" item-left></ion-icon>\n\n                Log in\n\n            </ion-item>\n\n        </ion-list>\n\n\n\n    </ion-content>\n\n\n\n</ion-menu>\n\n\n\n<ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>'/*ion-inline-end:"/Users/davidbarrero/Desktop/100/47 Ionic 4 Firebase /Ionic-4-firebase/Ionic-4-firebase/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* MenuController */],
-            __WEBPACK_IMPORTED_MODULE_1__ionic_native_status_bar__["a" /* StatusBar */],
-            __WEBPACK_IMPORTED_MODULE_5__services_auth_service__["a" /* AuthService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* App */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* MenuController */], __WEBPACK_IMPORTED_MODULE_1__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_5__services_auth_service__["a" /* AuthService */]])
     ], MyApp);
     return MyApp;
 }());
@@ -2170,12 +2167,12 @@ var Config = (function () {
 
 var firebaseConfig = {
     fire: {
-        apiKey: "AIzaSyDW6woVw3gDQVvKtreZ4g9igRW92knq4Sg",
-        authDomain: "supermodular-c9b81.firebaseapp.com",
-        databaseURL: "https://supermodular-c9b81.firebaseio.com",
-        projectId: "supermodular-c9b81",
-        storageBucket: "supermodular-c9b81.appspot.com",
-        messagingSenderId: "374150420031"
+        apiKey: 'AIzaSyBBwjIYNbZjQeDzSxNWYjEz6sBXSXJEfts',
+        authDomain: 'ionic4firebase-st.firebaseapp.com',
+        databaseURL: 'https://ionic4firebase-st.firebaseio.com',
+        projectId: 'ionic4firebase-st',
+        storageBucket: 'ionic4firebase-st.appspot.com',
+        messagingSenderId: '5463921528'
     }
 };
 //# sourceMappingURL=config.js.map

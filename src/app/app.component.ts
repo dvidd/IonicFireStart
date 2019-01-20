@@ -24,7 +24,7 @@ export class MyApp {
 
 	@ViewChild(Nav) nav: Nav;
 
-	constructor(app: App, platform: Platform, menu: MenuController, private statusBar: StatusBar, private auth: AuthService ) {
+	constructor(app: App, platform: Platform, menu: MenuController, private statusBar: StatusBar, public auth: AuthService ) {
 		this.menu = menu;
 		this.app = app;
 		this.platform = platform;
