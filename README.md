@@ -1,9 +1,14 @@
 # ionic3-firebase-auth
 An Ionic 4 firebase starter.
-  <p>
-    To find many more features and make the most of Firebase for your Ionic 3 mobile app, check out <a href="http://appseed.io/ionic-toolkit-firebase">Ionic 3 Toolkit Firebase</a>.
-  </p>
-</blockquote>
+
+This is how it should look at the final step
+
+
+<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/Sketch.png?raw=true">
+<br>
+
+
+
 <h2>Dependecies, Run and Build</h2>
 <h3>NodeJS</h3>
 
@@ -69,8 +74,3 @@ $ ionic platform add android</pre>
 
 
 
-This is how it should look at the final step
-
-
-<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/Sketch.png?raw=true">
-<br>
