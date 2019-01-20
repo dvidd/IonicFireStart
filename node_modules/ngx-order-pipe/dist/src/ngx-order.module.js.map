@@ -1,0 +1,1 @@
+{"version":3,"file":"ngx-order.module.js","sourceRoot":"","sources":["../../src/ngx-order.module.ts"],"names":[],"mappings":";;;;;;;AAAA;;GAEG;AACH,sCAAyC;AACzC,mDAA6C;AAM7C,IAAa,WAAW;IAAxB;IAA0B,CAAC;IAAD,kBAAC;AAAD,CAAC,AAA3B,IAA2B;AAAd,WAAW;IAJvB,eAAQ,CAAC;QACR,YAAY,EAAE,CAAC,0BAAS,CAAC;QACzB,OAAO,EAAE,CAAC,0BAAS,CAAC;KACrB,CAAC;GACW,WAAW,CAAG;AAAd,kCAAW"}

@@ -5,31 +5,19 @@
 "use strict";
 
 class FlagInitialModulesAsUsedPlugin {
-	constructor(explanation) {
-		this.explanation = explanation;
-	}
-
 	apply(compiler) {
-		compiler.hooks.compilation.tap(
-			"FlagInitialModulesAsUsedPlugin",
-			compilation => {
-				compilation.hooks.afterOptimizeChunks.tap(
-					"FlagInitialModulesAsUsedPlugin",
-					chunks => {
-						for (const chunk of chunks) {
-							if (!chunk.isOnlyInitial()) {
-								return;
-							}
-							for (const module of chunk.modulesIterable) {
-								module.used = true;
-								module.usedExports = true;
-								module.addReason(null, null, this.explanation);
-							}
-						}
+		compiler.plugin("compilation", (compilation) => {
+			compilation.plugin("after-optimize-chunks", (chunks) => {
+				chunks.forEach((chunk) => {
+					if(!chunk.isInitial()) {
+						return;
 					}
-				);
-			}
-		);
+					chunk.forEachModule((module) => {
+						module.usedExports = true;
+					});
+				});
+			});
+		});
 	}
 }
 

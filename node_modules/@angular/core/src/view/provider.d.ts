@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { BindingDef, DepDef, DepFlags, NodeDef, NodeFlags, OutputDef, QueryValueType, ViewData } from './types';
 export declare function directiveDef(checkIndex: number, flags: NodeFlags, matchedQueries: null | [string | number, QueryValueType][], childCount: number, ctor: any, deps: ([DepFlags, any] | any)[], props?: null | {
     [name: string]: [number, string];

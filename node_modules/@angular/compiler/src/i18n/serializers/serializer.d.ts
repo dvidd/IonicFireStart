@@ -42,5 +42,5 @@ export declare class SimplePlaceholderMapper extends i18n.RecurseVisitor impleme
     visitTagPlaceholder(ph: i18n.TagPlaceholder, context?: any): any;
     visitPlaceholder(ph: i18n.Placeholder, context?: any): any;
     visitIcuPlaceholder(ph: i18n.IcuPlaceholder, context?: any): any;
-    private visitPlaceholderName;
+    private visitPlaceholderName(internalName);
 }

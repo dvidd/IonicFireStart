@@ -7,9 +7,13 @@ const ContextDependency = require("./ContextDependency");
 const ModuleDependencyTemplateAsRequireId = require("./ModuleDependencyTemplateAsRequireId");
 
 class RequireContextDependency extends ContextDependency {
-	constructor(options, range) {
-		super(options);
+	constructor(request, recursive, regExp, asyncMode, range) {
+		super(request, recursive, regExp);
 		this.range = range;
+
+		if(asyncMode) {
+			this.async = asyncMode;
+		}
 	}
 
 	get type() {

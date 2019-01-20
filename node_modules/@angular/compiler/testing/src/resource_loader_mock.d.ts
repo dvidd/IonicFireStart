@@ -40,5 +40,5 @@ export declare class MockResourceLoader extends ResourceLoader {
      * Throw an exception if any expectations have not been satisfied.
      */
     verifyNoOutstandingExpectations(): void;
-    private _processRequest;
+    private _processRequest(request);
 }

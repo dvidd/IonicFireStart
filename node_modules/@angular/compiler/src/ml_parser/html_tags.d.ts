@@ -18,7 +18,7 @@ export declare class HtmlTagDefinition implements TagDefinition {
     isVoid: boolean;
     ignoreFirstLf: boolean;
     canSelfClose: boolean;
-    constructor({ closedByChildren, requiredParents, implicitNamespacePrefix, contentType, closedByParent, isVoid, ignoreFirstLf }?: {
+    constructor({closedByChildren, requiredParents, implicitNamespacePrefix, contentType, closedByParent, isVoid, ignoreFirstLf}?: {
         closedByChildren?: string[];
         closedByParent?: boolean;
         requiredParents?: string[];

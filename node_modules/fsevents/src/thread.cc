@@ -30,13 +30,13 @@
 
 void FSEvents::threadStart() {
   if (threadloop) return;
-  if (uv_thread_create(&thread, &FSEvents::threadRun, this)) abort();
+  pthread_create(&thread, NULL, &FSEvents::threadRun, this);
 }
 
 void HandleStreamEvents(ConstFSEventStreamRef stream, void *ctx, size_t numEvents, void *eventPaths, const FSEventStreamEventFlags eventFlags[], const FSEventStreamEventId eventIds[]) {
   FSEvents * fse = (FSEvents *)ctx;
   size_t idx;
-  uv_mutex_lock(&fse->mutex);
+  fse->lock();
   for (idx=0; idx < numEvents; idx++) {
     fse_event *event = new fse_event(
         (CFStringRef)CFArrayGetValueAtIndex((CFArrayRef)eventPaths, idx),
@@ -46,10 +46,10 @@ void HandleStreamEvents(ConstFSEventStreamRef stream, void *ctx, size_t numEvent
     fse->events.push_back(event);
   }
   fse->asyncTrigger();
-  uv_mutex_unlock(&fse->mutex);
+  fse->unlock();
 }
 
-void FSEvents::threadRun(void *ctx) {
+void *FSEvents::threadRun(void *ctx) {
   FSEvents *fse = (FSEvents*)ctx;
   FSEventStreamContext context = { 0, ctx, NULL, NULL, NULL };
   fse->threadloop = CFRunLoopGetCurrent();
@@ -62,10 +62,11 @@ void FSEvents::threadRun(void *ctx) {
   FSEventStreamInvalidate(stream);
   FSEventStreamRelease(stream);
   fse->threadloop = NULL;
+  return NULL;
 }
 
 void FSEvents::threadStop() {
   if (!threadloop) return;
   CFRunLoopStop(threadloop);
-  if (uv_thread_join(&thread)) abort();
+  pthread_join(thread, NULL);
 }

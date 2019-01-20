@@ -10,7 +10,7 @@
  * particular offset in a source file. The head of the list is the top
  * most node. The tail is the node that contains the offset directly.
  *
- * For example, the expression `a + b + c` might have an ast that looks
+ * For example, the expresion `a + b + c` might have an ast that looks
  * like:
  *     +
  *    / \

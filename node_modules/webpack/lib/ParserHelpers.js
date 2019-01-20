@@ -11,12 +11,12 @@ const UnsupportedFeatureWarning = require("./UnsupportedFeatureWarning");
 
 const ParserHelpers = exports;
 
-ParserHelpers.addParsedVariableToModule = (parser, name, expression) => {
-	if (!parser.state.current.addVariable) return false;
+ParserHelpers.addParsedVariableToModule = function(parser, name, expression) {
+	if(!parser.state.current.addVariable) return false;
 	var deps = [];
 	parser.parse(expression, {
 		current: {
-			addDependency: dep => {
+			addDependency: function(dep) {
 				dep.userRequest = name;
 				deps.push(dep);
 			}
@@ -27,69 +27,51 @@ ParserHelpers.addParsedVariableToModule = (parser, name, expression) => {
 	return true;
 };
 
-ParserHelpers.requireFileAsExpression = (context, pathToModule) => {
+ParserHelpers.requireFileAsExpression = function(context, pathToModule) {
 	var moduleJsPath = path.relative(context, pathToModule);
-	if (!/^[A-Z]:/i.test(moduleJsPath)) {
+	if(!/^[A-Z]:/i.test(moduleJsPath)) {
 		moduleJsPath = "./" + moduleJsPath.replace(/\\/g, "/");
 	}
 	return "require(" + JSON.stringify(moduleJsPath) + ")";
 };
 
-ParserHelpers.toConstantDependency = (parser, value) => {
+ParserHelpers.toConstantDependency = function(value) {
 	return function constDependency(expr) {
-		var dep = new ConstDependency(value, expr.range, false);
+		var dep = new ConstDependency(value, expr.range);
 		dep.loc = expr.loc;
-		parser.state.current.addDependency(dep);
+		this.state.current.addDependency(dep);
 		return true;
 	};
 };
 
-ParserHelpers.toConstantDependencyWithWebpackRequire = (parser, value) => {
-	return function constDependencyWithWebpackRequire(expr) {
-		var dep = new ConstDependency(value, expr.range, true);
-		dep.loc = expr.loc;
-		parser.state.current.addDependency(dep);
-		return true;
-	};
-};
-
-ParserHelpers.evaluateToString = value => {
+ParserHelpers.evaluateToString = function(value) {
 	return function stringExpression(expr) {
 		return new BasicEvaluatedExpression().setString(value).setRange(expr.range);
 	};
 };
 
-ParserHelpers.evaluateToBoolean = value => {
+ParserHelpers.evaluateToBoolean = function(value) {
 	return function booleanExpression(expr) {
-		return new BasicEvaluatedExpression()
-			.setBoolean(value)
-			.setRange(expr.range);
+		return new BasicEvaluatedExpression().setBoolean(value).setRange(expr.range);
 	};
 };
 
-ParserHelpers.evaluateToIdentifier = (identifier, truthy) => {
+ParserHelpers.evaluateToIdentifier = function(identifier, truthy) {
 	return function identifierExpression(expr) {
-		let evex = new BasicEvaluatedExpression()
-			.setIdentifier(identifier)
-			.setRange(expr.range);
-		if (truthy === true) {
-			evex = evex.setTruthy();
-		} else if (truthy === false) {
-			evex = evex.setFalsy();
-		}
+		let evex = new BasicEvaluatedExpression().setIdentifier(identifier).setRange(expr.range);
+		if(truthy === true) evex = evex.setTruthy();
+		else if(truthy === false) evex = evex.setFalsy();
 		return evex;
 	};
 };
 
-ParserHelpers.expressionIsUnsupported = (parser, message) => {
+ParserHelpers.expressionIsUnsupported = function(message) {
 	return function unsupportedExpression(expr) {
-		var dep = new ConstDependency("(void 0)", expr.range, false);
+		var dep = new ConstDependency("(void 0)", expr.range);
 		dep.loc = expr.loc;
-		parser.state.current.addDependency(dep);
-		if (!parser.state.module) return;
-		parser.state.module.warnings.push(
-			new UnsupportedFeatureWarning(parser.state.module, message, expr.loc)
-		);
+		this.state.current.addDependency(dep);
+		if(!this.state.module) return;
+		this.state.module.warnings.push(new UnsupportedFeatureWarning(this.state.module, message));
 		return true;
 	};
 };

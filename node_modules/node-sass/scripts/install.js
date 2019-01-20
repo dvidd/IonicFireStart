@@ -51,26 +51,23 @@ function download(url, dest, cb) {
   console.log('Downloading binary from', url);
 
   try {
-    request(url, downloadOptions(), function(err, response, buffer) {
+    request(url, downloadOptions(), function(err, response) {
       if (err) {
         reportError(err);
       } else if (!successful(response)) {
         reportError(['HTTP error', response.statusCode, response.statusMessage].join(' '));
       } else {
         console.log('Download complete');
-
-        if (successful(response)) {
-          fs.createWriteStream(dest)
-            .on('error', cb)
-            .end(buffer, cb);
-        } else {
-          cb();
-        }
+        cb();
       }
     })
     .on('response', function(response) {
       var length = parseInt(response.headers['content-length'], 10);
       var progress = log.newItem('', length);
+
+      if (successful(response)) {
+        response.pipe(fs.createWriteStream(dest));
+      }
 
       // The `progress` is true by default. However if it has not
       // been explicitly set it's `undefined` which is considered

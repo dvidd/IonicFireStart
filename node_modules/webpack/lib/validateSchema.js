@@ -13,17 +13,16 @@ const ajv = new Ajv({
 require("ajv-keywords")(ajv, ["instanceof"]);
 require("../schemas/ajv.absolutePath")(ajv);
 
-const validateSchema = (schema, options) => {
-	if (Array.isArray(options)) {
-		const errors = options.map(options => validateObject(schema, options));
+function validateSchema(schema, options) {
+	if(Array.isArray(options)) {
+		const errors = options.map((options) => validateObject(schema, options));
 		errors.forEach((list, idx) => {
-			const applyPrefix = err => {
+			list.forEach(function applyPrefix(err) {
 				err.dataPath = `[${idx}]${err.dataPath}`;
-				if (err.children) {
+				if(err.children) {
 					err.children.forEach(applyPrefix);
 				}
-			};
-			list.forEach(applyPrefix);
+			});
 		});
 		return errors.reduce((arr, items) => {
 			return arr.concat(items);
@@ -31,22 +30,22 @@ const validateSchema = (schema, options) => {
 	} else {
 		return validateObject(schema, options);
 	}
-};
+}
 
-const validateObject = (schema, options) => {
+function validateObject(schema, options) {
 	const validate = ajv.compile(schema);
 	const valid = validate(options);
 	return valid ? [] : filterErrors(validate.errors);
-};
+}
 
-const filterErrors = errors => {
+function filterErrors(errors) {
 	let newErrors = [];
-	for (const err of errors) {
+	errors.forEach((err) => {
 		const dataPath = err.dataPath;
 		let children = [];
-		newErrors = newErrors.filter(oldError => {
-			if (oldError.dataPath.includes(dataPath)) {
-				if (oldError.children) {
+		newErrors = newErrors.filter((oldError) => {
+			if(oldError.dataPath.includes(dataPath)) {
+				if(oldError.children) {
 					children = children.concat(oldError.children.slice(0));
 				}
 				oldError.children = undefined;
@@ -55,13 +54,13 @@ const filterErrors = errors => {
 			}
 			return true;
 		});
-		if (children.length) {
+		if(children.length) {
 			err.children = children;
 		}
 		newErrors.push(err);
-	}
+	});
 
 	return newErrors;
-};
+}
 
 module.exports = validateSchema;

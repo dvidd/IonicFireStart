@@ -50,5 +50,5 @@ export declare class AotSummaryResolver implements SummaryResolver<StaticSymbol>
      */
     getKnownModuleName(importedFilePath: string): string | null;
     addSummary(summary: Summary<StaticSymbol>): void;
-    private _loadSummaryFile;
+    private _loadSummaryFile(filePath);
 }

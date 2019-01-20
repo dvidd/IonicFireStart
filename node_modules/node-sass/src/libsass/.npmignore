@@ -12,8 +12,6 @@ VERSION
 .cproject
 .project
 .settings/
-*.db
-*.aps
 
 # Configuration stuff
 
@@ -70,7 +68,6 @@ bin/*
 .libs/
 win/bin
 *.user
-win/*.db
 
 # Final results
 

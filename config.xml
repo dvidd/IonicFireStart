@@ -12,7 +12,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="ScrollEnabled" value="false" />
-    <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
@@ -76,13 +76,22 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
-    <plugin name="cordova-plugin-whitelist" spec="1.3.3" />
-    <plugin name="cordova-plugin-statusbar" spec="2.4.2" />
-    <plugin name="cordova-plugin-device" spec="2.0.2" />
-    <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
-    <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
-    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <plugin name="cordova-plugin-telerik-imagepicker" spec="2.2.2">
-        <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="“img" />
+    <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
+    <plugin name="cordova-plugin-whitelist" spec="1.3.1" />
+    <plugin name="cordova-plugin-device" spec="1.1.4" />
+    <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
+    <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
+    <plugin name="cordova-plugin-buildinfo" spec="^2.0.1" />
+    <plugin name="cordova-universal-links-plugin" spec="^1.2.1" />
+    <plugin name="cordova-plugin-browsertab" spec="^0.2.0" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
+    <universal-links>
+        <host name="https://hpt54.app.goo.gl/ugkL" scheme="https" />
+        <host name="supermodular-c9b81.firebaseapp.com" scheme="https">
+            <path url="/__/auth/callback" />
+        </host>
+    </universal-links>
+    <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
+        <variable name="URL_SCHEME" value="io.ionic.starter" />
     </plugin>
 </widget>

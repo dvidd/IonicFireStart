@@ -299,7 +299,7 @@ install-shared: $(DESTDIR)$(PREFIX)/lib/libsass.so \
                 install-headers
 
 $(SASSC_BIN): $(BUILD)
-	$(MAKE) -C $(SASS_SASSC_PATH) build-$(BUILD)-dev
+	$(MAKE) -C $(SASS_SASSC_PATH)
 
 sassc: $(SASSC_BIN)
 	$(SASSC_BIN) -v

@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { ParseError, ParseSourceSpan } from '../parse_util';
 import { InterpolationConfig } from './interpolation_config';
 import { TagDefinition } from './tags';
@@ -28,7 +21,7 @@ export declare enum TokenType {
     EXPANSION_CASE_EXP_START = 16,
     EXPANSION_CASE_EXP_END = 17,
     EXPANSION_FORM_END = 18,
-    EOF = 19
+    EOF = 19,
 }
 export declare class Token {
     type: TokenType;

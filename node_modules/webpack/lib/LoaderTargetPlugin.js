@@ -10,13 +10,8 @@ class LoaderTargetPlugin {
 	}
 
 	apply(compiler) {
-		compiler.hooks.compilation.tap("LoaderTargetPlugin", compilation => {
-			compilation.hooks.normalModuleLoader.tap(
-				"LoaderTargetPlugin",
-				loaderContext => {
-					loaderContext.target = this.target;
-				}
-			);
+		compiler.plugin("compilation", (compilation) => {
+			compilation.plugin("normal-module-loader", (loaderContext) => loaderContext.target = this.target);
 		});
 	}
 }

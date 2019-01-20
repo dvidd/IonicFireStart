@@ -5,26 +5,13 @@
 "use strict";
 
 class Semaphore {
-	/**
-	 * Creates an instance of Semaphore.
-	 *
-	 * @param {number} available the amount available number of "tasks"
-	 * in the Semaphore
-	 */
 	constructor(available) {
 		this.available = available;
-		/** @type {(function(): void)[]} */
 		this.waiters = [];
-		/** @private */
-		this._continue = this._continue.bind(this);
 	}
 
-	/**
-	 * @param {function(): void} callback function block to capture and run
-	 * @returns {void}
-	 */
 	acquire(callback) {
-		if (this.available > 0) {
+		if(this.available > 0) {
 			this.available--;
 			callback();
 		} else {
@@ -33,19 +20,11 @@ class Semaphore {
 	}
 
 	release() {
-		this.available++;
-		if (this.waiters.length > 0) {
-			process.nextTick(this._continue);
-		}
-	}
-
-	_continue() {
-		if (this.available > 0) {
-			if (this.waiters.length > 0) {
-				this.available--;
-				const callback = this.waiters.pop();
-				callback();
-			}
+		if(this.waiters.length > 0) {
+			const callback = this.waiters.pop();
+			process.nextTick(callback);
+		} else {
+			this.available++;
 		}
 	}
 }

@@ -6,8 +6,9 @@
 const PrefetchDependency = require("./dependencies/PrefetchDependency");
 
 class PrefetchPlugin {
+
 	constructor(context, request) {
-		if (!request) {
+		if(!request) {
 			this.request = context;
 		} else {
 			this.context = context;
@@ -16,22 +17,15 @@ class PrefetchPlugin {
 	}
 
 	apply(compiler) {
-		compiler.hooks.compilation.tap(
-			"PrefetchPlugin",
-			(compilation, { normalModuleFactory }) => {
-				compilation.dependencyFactories.set(
-					PrefetchDependency,
-					normalModuleFactory
-				);
-			}
-		);
-		compiler.hooks.make.tapAsync("PrefetchPlugin", (compilation, callback) => {
-			compilation.prefetch(
-				this.context || compiler.context,
-				new PrefetchDependency(this.request),
-				callback
-			);
+		compiler.plugin("compilation", (compilation, params) => {
+			const normalModuleFactory = params.normalModuleFactory;
+
+			compilation.dependencyFactories.set(PrefetchDependency, normalModuleFactory);
+		});
+		compiler.plugin("make", (compilation, callback) => {
+			compilation.prefetch(this.context || compiler.context, new PrefetchDependency(this.request), callback);
 		});
 	}
+
 }
 module.exports = PrefetchPlugin;

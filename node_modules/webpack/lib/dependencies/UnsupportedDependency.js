@@ -15,12 +15,8 @@ class UnsupportedDependency extends NullDependency {
 }
 
 UnsupportedDependency.Template = class UnsupportedDependencyTemplate {
-	apply(dep, source, runtime) {
-		source.replace(
-			dep.range[0],
-			dep.range[1],
-			webpackMissingModule(dep.request)
-		);
+	apply(dep, source, outputOptions, requestShortener) {
+		source.replace(dep.range[0], dep.range[1], webpackMissingModule(dep.request));
 	}
 };
 

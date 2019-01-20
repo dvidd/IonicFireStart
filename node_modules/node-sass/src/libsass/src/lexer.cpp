@@ -49,12 +49,6 @@ namespace Sass {
       return unsigned(chr - '0') <= '9' - '0';
     }
 
-    bool is_number(const char& chr)
-    {
-      // adapted the technique from is_alpha
-      return is_digit(chr) || chr == '-' || chr == '+';
-    }
-
     bool is_xdigit(const char& chr)
     {
       // adapted the technique from is_alpha
@@ -85,11 +79,10 @@ namespace Sass {
     // but with specific ranges (copied from Ruby Sass)
     bool is_nonascii(const char& chr)
     {
-      unsigned int cmp = unsigned(chr);
       return (
-        (cmp >= 128 && cmp <= 15572911) ||
-        (cmp >= 15630464 && cmp <= 15712189) ||
-        (cmp >= 4036001920)
+        (unsigned(chr) >= 128 && unsigned(chr) <= 15572911) ||
+        (unsigned(chr) >= 15630464 && unsigned(chr) <= 15712189) ||
+        (unsigned(chr) >= 4036001920)
       );
     }
 
@@ -97,17 +90,15 @@ namespace Sass {
     // valid in a uri (copied from Ruby Sass)
     bool is_uri_character(const char& chr)
     {
-      unsigned int cmp = unsigned(chr);
-      return (cmp > 41 && cmp < 127) ||
-             cmp == ':' || cmp == '/';
+      return (unsigned(chr) > 41 && unsigned(chr) < 127) ||
+             unsigned(chr) == ':' || unsigned(chr) == '/';
     }
 
     // check if char is within a reduced ascii range
     // valid for escaping (copied from Ruby Sass)
     bool is_escapable_character(const char& chr)
     {
-      unsigned int cmp = unsigned(chr);
-      return cmp > 31 && cmp < 127;
+      return unsigned(chr) > 31 && unsigned(chr) < 127;
     }
 
     // Match word character (look ahead)

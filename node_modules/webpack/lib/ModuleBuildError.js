@@ -5,43 +5,33 @@
 "use strict";
 
 const WebpackError = require("./WebpackError");
-const { cutOffLoaderExecution } = require("./ErrorHelpers");
+const cutOffLoaderExecution = require("./ErrorHelpers").cutOffLoaderExecution;
 
 class ModuleBuildError extends WebpackError {
-	constructor(module, err, { from = null } = {}) {
-		let message = "Module build failed";
-		let details = undefined;
-		if (from) {
-			message += ` (from ${from}):\n`;
-		} else {
-			message += ": ";
-		}
-		if (err !== null && typeof err === "object") {
-			if (typeof err.stack === "string" && err.stack) {
-				const stack = cutOffLoaderExecution(err.stack);
-				if (!err.hideStack) {
-					message += stack;
-				} else {
-					details = stack;
-					if (typeof err.message === "string" && err.message) {
-						message += err.message;
-					} else {
-						message += err;
-					}
-				}
-			} else if (typeof err.message === "string" && err.message) {
-				message += err.message;
-			} else {
-				message += err;
-			}
-		} else {
-			message = err;
-		}
-
-		super(message);
+	constructor(module, err) {
+		super();
 
 		this.name = "ModuleBuildError";
-		this.details = details;
+		this.message = "Module build failed: ";
+		if(err !== null && typeof err === "object") {
+			if(typeof err.stack === "string" && err.stack) {
+				var stack = cutOffLoaderExecution(err.stack);
+				if(!err.hideStack) {
+					this.message += stack;
+				} else {
+					this.details = stack;
+					if(typeof err.message === "string" && err.message) {
+						this.message += err.message;
+					} else {
+						this.message += err;
+					}
+				}
+			} else if(typeof err.message === "string" && err.message) {
+				this.message += err.message;
+			} else {
+				this.message += err;
+			}
+		}
 		this.module = module;
 		this.error = err;
 

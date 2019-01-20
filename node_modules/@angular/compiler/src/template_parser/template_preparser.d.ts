@@ -12,7 +12,7 @@ export declare enum PreparsedElementType {
     STYLE = 1,
     STYLESHEET = 2,
     SCRIPT = 3,
-    OTHER = 4
+    OTHER = 4,
 }
 export declare class PreparsedElement {
     type: PreparsedElementType;

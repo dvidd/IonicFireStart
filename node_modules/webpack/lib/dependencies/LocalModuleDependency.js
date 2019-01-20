@@ -6,22 +6,18 @@
 const NullDependency = require("./NullDependency");
 
 class LocalModuleDependency extends NullDependency {
-	constructor(localModule, range, callNew) {
+	constructor(localModule, range) {
 		super();
 		localModule.flagUsed();
 		this.localModule = localModule;
 		this.range = range;
-		this.callNew = callNew;
 	}
 }
 
 LocalModuleDependency.Template = class LocalModuleDependencyTemplate {
 	apply(dep, source) {
-		if (!dep.range) return;
-		const moduleInstance = dep.callNew
-			? `new (function () { return ${dep.localModule.variableName()}; })()`
-			: dep.localModule.variableName();
-		source.replace(dep.range[0], dep.range[1] - 1, moduleInstance);
+		if(!dep.range) return;
+		source.replace(dep.range[0], dep.range[1] - 1, dep.localModule.variableName());
 	}
 };
 

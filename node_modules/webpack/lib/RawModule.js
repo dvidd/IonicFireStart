@@ -5,14 +5,17 @@
 "use strict";
 
 const Module = require("./Module");
-const { OriginalSource, RawSource } = require("webpack-sources");
+const OriginalSource = require("webpack-sources").OriginalSource;
+const RawSource = require("webpack-sources").RawSource;
 
 module.exports = class RawModule extends Module {
+
 	constructor(source, identifier, readableIdentifier) {
-		super("javascript/dynamic", null);
+		super();
 		this.sourceStr = source;
 		this.identifierStr = identifier || this.sourceStr;
 		this.readableIdentifierStr = readableIdentifier || this.identifierStr;
+		this.cacheable = true;
 		this.built = false;
 	}
 
@@ -33,20 +36,15 @@ module.exports = class RawModule extends Module {
 	}
 
 	build(options, compilations, resolver, fs, callback) {
-		this.built = true;
-		this.buildMeta = {};
-		this.buildInfo = {
-			cacheable: true
-		};
+		this.builtTime = Date.now();
 		callback();
 	}
 
 	source() {
-		if (this.useSourceMap) {
+		if(this.useSourceMap)
 			return new OriginalSource(this.sourceStr, this.identifier());
-		} else {
+		else
 			return new RawSource(this.sourceStr);
-		}
 	}
 
 	updateHash(hash) {

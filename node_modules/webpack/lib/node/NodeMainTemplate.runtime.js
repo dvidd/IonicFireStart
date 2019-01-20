@@ -4,24 +4,21 @@
 */
 /*global installedChunks $hotChunkFilename$ hotAddUpdateChunk $hotMainFilename$ */
 module.exports = function() {
-	// eslint-disable-next-line no-unused-vars
-	function hotDownloadUpdateChunk(chunkId) {
+	function hotDownloadUpdateChunk(chunkId) { // eslint-disable-line no-unused-vars
 		var chunk = require("./" + $hotChunkFilename$);
 		hotAddUpdateChunk(chunk.id, chunk.modules);
 	}
 
-	// eslint-disable-next-line no-unused-vars
-	function hotDownloadManifest() {
+	function hotDownloadManifest() { // eslint-disable-line no-unused-vars
 		try {
 			var update = require("./" + $hotMainFilename$);
-		} catch (e) {
+		} catch(e) {
 			return Promise.resolve();
 		}
 		return Promise.resolve(update);
 	}
 
-	//eslint-disable-next-line no-unused-vars
-	function hotDisposeChunk(chunkId) {
+	function hotDisposeChunk(chunkId) { //eslint-disable-line no-unused-vars
 		delete installedChunks[chunkId];
 	}
 };

@@ -3,25 +3,14 @@
 	Author Tobias Koppers @sokra
 */
 "use strict";
+const NullDependency = require("./NullDependency");
 
-const DependencyReference = require("./DependencyReference");
-const HarmonyImportDependency = require("./HarmonyImportDependency");
-const HarmonyLinkingError = require("../HarmonyLinkingError");
-
-class HarmonyImportSpecifierDependency extends HarmonyImportDependency {
-	constructor(
-		request,
-		originModule,
-		sourceOrder,
-		parserScope,
-		id,
-		name,
-		range,
-		strictExportPresence
-	) {
-		super(request, originModule, sourceOrder, parserScope);
-		this.id = id === null ? null : `${id}`;
-		this.redirectedId = undefined;
+class HarmonyImportSpecifierDependency extends NullDependency {
+	constructor(importDependency, importedVar, id, name, range, strictExportPresence) {
+		super();
+		this.importDependency = importDependency;
+		this.importedVar = importedVar;
+		this.id = id;
 		this.name = name;
 		this.range = range;
 		this.strictExportPresence = strictExportPresence;
@@ -29,138 +18,111 @@ class HarmonyImportSpecifierDependency extends HarmonyImportDependency {
 		this.callArgs = undefined;
 		this.call = undefined;
 		this.directImport = undefined;
-		this.shorthand = undefined;
 	}
 
 	get type() {
 		return "harmony import specifier";
 	}
 
-	get _id() {
-		return this.redirectedId || this.id;
-	}
-
 	getReference() {
-		if (!this._module) return null;
-		return new DependencyReference(
-			this._module,
-			this._id && !this.namespaceObjectAsContext ? [this._id] : true,
-			false,
-			this.sourceOrder
-		);
+		if(!this.importDependency.module) return null;
+		return {
+			module: this.importDependency.module,
+			importedNames: this.id && !this.namespaceObjectAsContext ? [this.id] : true
+		};
 	}
 
 	getWarnings() {
-		if (
-			this.strictExportPresence ||
-			this.originModule.buildMeta.strictHarmonyModule
-		) {
+		if(this.strictExportPresence) {
 			return [];
 		}
 		return this._getErrors();
 	}
 
 	getErrors() {
-		if (
-			this.strictExportPresence ||
-			this.originModule.buildMeta.strictHarmonyModule
-		) {
+		if(this.strictExportPresence) {
 			return this._getErrors();
 		}
 		return [];
 	}
 
 	_getErrors() {
-		const importedModule = this._module;
-		if (!importedModule) {
+		const importedModule = this.importDependency.module;
+		if(!importedModule || !importedModule.meta || !importedModule.meta.harmonyModule) {
 			return;
 		}
 
-		if (!importedModule.buildMeta || !importedModule.buildMeta.exportsType) {
-			// It's not an harmony module
-			if (
-				this.originModule.buildMeta.strictHarmonyModule &&
-				this._id !== "default"
-			) {
-				// In strict harmony modules we only support the default export
-				const exportName = this._id
-					? `the named export '${this._id}'`
-					: "the namespace object";
-				return [
-					new HarmonyLinkingError(
-						`Can't import ${exportName} from non EcmaScript module (only default export is available)`
-					)
-				];
-			}
+		if(!this.id) {
 			return;
 		}
 
-		if (!this._id) {
+		if(importedModule.isProvided(this.id) !== false) {
 			return;
 		}
 
-		if (importedModule.isProvided(this._id) !== false) {
-			// It's provided or we are not sure
-			return;
-		}
-
-		// We are sure that it's not provided
-		const idIsNotNameMessage =
-			this._id !== this.name ? ` (imported as '${this.name}')` : "";
-		const errorMessage = `"export '${
-			this._id
-		}'${idIsNotNameMessage} was not found in '${this.userRequest}'`;
-		return [new HarmonyLinkingError(errorMessage)];
-	}
-
-	// implement this method to allow the occurrence order plugin to count correctly
-	getNumberOfIdOccurrences() {
-		return 0;
+		const idIsNotNameMessage = this.id !== this.name ? ` (imported as '${this.name}')` : "";
+		const errorMessage = `"export '${this.id}'${idIsNotNameMessage} was not found in '${this.importDependency.userRequest}'`;
+		const err = new Error(errorMessage);
+		err.hideStack = true;
+		return [err];
 	}
 
 	updateHash(hash) {
 		super.updateHash(hash);
-		const importedModule = this._module;
-		hash.update((importedModule && this._id) + "");
-		hash.update(
-			(importedModule && this._id && importedModule.isUsed(this._id)) + ""
-		);
-		hash.update(
-			(importedModule &&
-				(!importedModule.buildMeta || importedModule.buildMeta.exportsType)) +
-				""
-		);
-		hash.update(
-			(importedModule &&
-				importedModule.used + JSON.stringify(importedModule.usedExports)) + ""
-		);
-	}
-
-	disconnect() {
-		super.disconnect();
-		this.redirectedId = undefined;
+		const importedModule = this.importDependency.module;
+		hash.update((importedModule && importedModule.id) + "");
+		hash.update((importedModule && this.id) + "");
+		hash.update((importedModule && this.importedVar) + "");
+		hash.update((importedModule && this.id && importedModule.isUsed(this.id)) + "");
+		hash.update((importedModule && (!importedModule.meta || importedModule.meta.harmonyModule)) + "");
+		hash.update((importedModule && (importedModule.used + JSON.stringify(importedModule.usedExports))) + "");
 	}
 }
 
-HarmonyImportSpecifierDependency.Template = class HarmonyImportSpecifierDependencyTemplate extends HarmonyImportDependency.Template {
-	apply(dep, source, runtime) {
-		super.apply(dep, source, runtime);
-		const content = this.getContent(dep, runtime);
+HarmonyImportSpecifierDependency.Template = class HarmonyImportSpecifierDependencyTemplate {
+	apply(dep, source) {
+		const content = this.getContent(dep);
 		source.replace(dep.range[0], dep.range[1] - 1, content);
 	}
 
-	getContent(dep, runtime) {
-		const exportExpr = runtime.exportFromImport({
-			module: dep._module,
-			request: dep.request,
-			exportName: dep._id,
-			originModule: dep.originModule,
-			asiSafe: dep.shorthand,
-			isCall: dep.call,
-			callContext: !dep.directImport,
-			importVar: dep.getImportVar()
-		});
-		return dep.shorthand ? `${dep.name}: ${exportExpr}` : exportExpr;
+	getContent(dep) {
+		const importedModule = dep.importDependency.module;
+		const defaultImport = dep.directImport && dep.id === "default" && !(importedModule && (!importedModule.meta || importedModule.meta.harmonyModule));
+		const shortHandPrefix = this.getShortHandPrefix(dep);
+		const importedVar = dep.importedVar;
+		const importedVarSuffix = this.getImportVarSuffix(dep, defaultImport, importedModule);
+
+		if(dep.call && defaultImport) {
+			return `${shortHandPrefix}${importedVar}_default()`;
+		}
+
+		if(dep.call && dep.id) {
+			return `${shortHandPrefix}Object(${importedVar}${importedVarSuffix})`;
+		}
+
+		return `${shortHandPrefix}${importedVar}${importedVarSuffix}`;
+	}
+
+	getImportVarSuffix(dep, defaultImport, importedModule) {
+		if(defaultImport) {
+			return "_default.a";
+		}
+
+		if(dep.id) {
+			const used = importedModule ? importedModule.isUsed(dep.id) : dep.id;
+			const optionalComment = dep.id !== used ? " /* " + dep.id + " */" : "";
+			return `[${JSON.stringify(used)}${optionalComment}]`;
+		}
+
+		return "";
+	}
+
+	getShortHandPrefix(dep) {
+		if(!dep.shorthand) {
+			return "";
+		}
+
+		return dep.name + ": ";
 	}
 };
 

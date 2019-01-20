@@ -5,23 +5,19 @@
 
 "use strict";
 
-const { ConcatSource } = require("webpack-sources");
+const ConcatSource = require("webpack-sources").ConcatSource;
 
 class NodeChunkTemplatePlugin {
+
 	apply(chunkTemplate) {
-		chunkTemplate.hooks.render.tap(
-			"NodeChunkTemplatePlugin",
-			(modules, chunk) => {
-				const source = new ConcatSource();
-				source.add(
-					`exports.ids = ${JSON.stringify(chunk.ids)};\nexports.modules = `
-				);
-				source.add(modules);
-				source.add(";");
-				return source;
-			}
-		);
-		chunkTemplate.hooks.hash.tap("NodeChunkTemplatePlugin", hash => {
+		chunkTemplate.plugin("render", function(modules, chunk) {
+			const source = new ConcatSource();
+			source.add(`exports.ids = ${JSON.stringify(chunk.ids)};\nexports.modules = `);
+			source.add(modules);
+			source.add(";");
+			return source;
+		});
+		chunkTemplate.plugin("hash", function(hash) {
 			hash.update("node");
 			hash.update("3");
 		});

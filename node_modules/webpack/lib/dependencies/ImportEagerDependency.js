@@ -4,28 +4,42 @@
 */
 "use strict";
 const ModuleDependency = require("./ModuleDependency");
+const webpackMissingPromiseModule = require("./WebpackMissingModule").promise;
 
 class ImportEagerDependency extends ModuleDependency {
-	constructor(request, originModule, range) {
+	constructor(request, range) {
 		super(request);
-		this.originModule = originModule;
 		this.range = range;
 	}
 
 	get type() {
-		return "import() eager";
+		return "import()";
 	}
 }
 
 ImportEagerDependency.Template = class ImportEagerDependencyTemplate {
-	apply(dep, source, runtime) {
-		const content = runtime.moduleNamespacePromise({
-			module: dep.module,
-			request: dep.request,
-			strict: dep.originModule.buildMeta.strictHarmonyModule,
-			message: "import() eager"
-		});
+	apply(dep, source, outputOptions, requestShortener) {
+		const comment = this.getOptionalComment(outputOptions.pathinfo, requestShortener.shorten(dep.request));
+
+		const content = this.getContent(dep, comment);
 		source.replace(dep.range[0], dep.range[1] - 1, content);
+	}
+
+	getOptionalComment(pathinfo, shortenedRequest) {
+		if(!pathinfo) {
+			return "";
+		}
+
+		return `/*! ${shortenedRequest} */ `;
+	}
+
+	getContent(dep, comment) {
+		if(dep.module) {
+			const stringifiedId = JSON.stringify(dep.module.id);
+			return `new Promise(function(resolve) { resolve(__webpack_require__(${comment}${stringifiedId})); })`;
+		}
+
+		return webpackMissingPromiseModule(dep.request);
 	}
 };
 

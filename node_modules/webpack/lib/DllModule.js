@@ -4,18 +4,17 @@
 	*/
 "use strict";
 
-const { RawSource } = require("webpack-sources");
 const Module = require("./Module");
-
-/** @typedef {import("./util/createHash").Hash} Hash */
+const RawSource = require("webpack-sources").RawSource;
 
 class DllModule extends Module {
 	constructor(context, dependencies, name, type) {
-		super("javascript/dynamic", context);
-
-		// Info from Factory
+		super();
+		this.context = context;
 		this.dependencies = dependencies;
 		this.name = name;
+		this.built = false;
+		this.cacheable = true;
 		this.type = type;
 	}
 
@@ -27,10 +26,13 @@ class DllModule extends Module {
 		return `dll ${this.name}`;
 	}
 
+	disconnect() {
+		this.built = false;
+		super.disconnect();
+	}
+
 	build(options, compilation, resolver, fs, callback) {
 		this.built = true;
-		this.buildMeta = {};
-		this.buildInfo = {};
 		return callback();
 	}
 
@@ -46,10 +48,6 @@ class DllModule extends Module {
 		return 12;
 	}
 
-	/**
-	 * @param {Hash} hash the hash used to track dependencies
-	 * @returns {void}
-	 */
 	updateHash(hash) {
 		hash.update("dll module");
 		hash.update(this.name || "");

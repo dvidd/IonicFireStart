@@ -1,1 +1,0 @@
-{"version":3,"file":"public_api.js","sourceRoot":"","sources":["../../../src/messaging/public_api.ts"],"names":[],"mappings":"AAAA,cAAc,aAAa,CAAC;AAC5B,cAAc,oBAAoB,CAAC","sourcesContent":["export * from './messaging';\nexport * from './messaging.module';\n"]}

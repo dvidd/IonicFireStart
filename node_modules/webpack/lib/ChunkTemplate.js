@@ -4,84 +4,33 @@
 */
 "use strict";
 
-const { Tapable, SyncWaterfallHook, SyncHook } = require("tapable");
+const ConcatSource = require("webpack-sources").ConcatSource;
+const Template = require("./Template");
 
-/** @typedef {import("./ModuleTemplate")} ModuleTemplate */
-/** @typedef {import("./Chunk")} Chunk */
-/** @typedef {import("./Module")} Module} */
-/** @typedef {import("./Dependency").DependencyTemplate} DependencyTemplate} */
-/** @typedef {import("./util/createHash").Hash} Hash} */
-
-/**
- * @typedef {Object} RenderManifestOptions
- * @property {Chunk} chunk the chunk used to render
- * @property {string} hash
- * @property {string} fullHash
- * @property {TODO} outputOptions
- * @property {{javascript: ModuleTemplate, webassembly: ModuleTemplate}} moduleTemplates
- * @property {Map<TODO, TODO>} dependencyTemplates
- */
-
-module.exports = class ChunkTemplate extends Tapable {
+module.exports = class ChunkTemplate extends Template {
 	constructor(outputOptions) {
-		super();
-		this.outputOptions = outputOptions || {};
-		this.hooks = {
-			/** @type {SyncWaterfallHook<TODO[], RenderManifestOptions>} */
-			renderManifest: new SyncWaterfallHook(["result", "options"]),
-			modules: new SyncWaterfallHook([
-				"source",
-				"chunk",
-				"moduleTemplate",
-				"dependencyTemplates"
-			]),
-			render: new SyncWaterfallHook([
-				"source",
-				"chunk",
-				"moduleTemplate",
-				"dependencyTemplates"
-			]),
-			renderWithEntry: new SyncWaterfallHook(["source", "chunk"]),
-			hash: new SyncHook(["hash"]),
-			hashForChunk: new SyncHook(["hash", "chunk"])
-		};
+		super(outputOptions);
 	}
 
-	/**
-	 *
-	 * @param {RenderManifestOptions} options render manifest options
-	 * @returns {TODO[]} returns render manifest
-	 */
-	getRenderManifest(options) {
-		const result = [];
-
-		this.hooks.renderManifest.call(result, options);
-
-		return result;
+	render(chunk, moduleTemplate, dependencyTemplates) {
+		const moduleSources = this.renderChunkModules(chunk, moduleTemplate, dependencyTemplates);
+		const core = this.applyPluginsWaterfall("modules", moduleSources, chunk, moduleTemplate, dependencyTemplates);
+		let source = this.applyPluginsWaterfall("render", core, chunk, moduleTemplate, dependencyTemplates);
+		if(chunk.hasEntryModule()) {
+			source = this.applyPluginsWaterfall("render-with-entry", source, chunk);
+		}
+		chunk.rendered = true;
+		return new ConcatSource(source, ";");
 	}
 
-	/**
-	 * Updates hash with information from this template
-	 * @param {Hash} hash the hash to update
-	 * @returns {void}
-	 */
 	updateHash(hash) {
 		hash.update("ChunkTemplate");
 		hash.update("2");
-		this.hooks.hash.call(hash);
+		this.applyPlugins("hash", hash);
 	}
 
-	/**
-	 * TODO webpack 5: remove moduleTemplate and dependencyTemplates
-	 * Updates hash with chunk-specific information from this template
-	 * @param {Hash} hash the hash to update
-	 * @param {Chunk} chunk the chunk
-	 * @param {ModuleTemplate} moduleTemplate ModuleTemplate instance for render
-	 * @param {Map<Function, DependencyTemplate>} dependencyTemplates dependency templates
-	 * @returns {void}
-	 */
-	updateHashForChunk(hash, chunk, moduleTemplate, dependencyTemplates) {
+	updateHashForChunk(hash, chunk) {
 		this.updateHash(hash);
-		this.hooks.hashForChunk.call(hash, chunk);
+		this.applyPlugins("hash-for-chunk", hash, chunk);
 	}
 };

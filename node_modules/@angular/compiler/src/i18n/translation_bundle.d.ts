@@ -16,7 +16,7 @@ import { PlaceholderMapper, Serializer } from './serializers/serializer';
 export declare class TranslationBundle {
     private _i18nNodesByMsgId;
     digest: (m: i18n.Message) => string;
-    mapperFactory?: ((m: i18n.Message) => PlaceholderMapper) | undefined;
+    mapperFactory: ((m: i18n.Message) => PlaceholderMapper) | undefined;
     private _i18nToHtml;
     constructor(_i18nNodesByMsgId: {
         [msgId: string]: i18n.Node[];

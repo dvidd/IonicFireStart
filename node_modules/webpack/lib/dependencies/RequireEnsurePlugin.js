@@ -14,61 +14,27 @@ const RequireEnsureDependenciesBlockParserPlugin = require("./RequireEnsureDepen
 const ParserHelpers = require("../ParserHelpers");
 
 class RequireEnsurePlugin {
+
 	apply(compiler) {
-		compiler.hooks.compilation.tap(
-			"RequireEnsurePlugin",
-			(compilation, { normalModuleFactory }) => {
-				compilation.dependencyFactories.set(
-					RequireEnsureItemDependency,
-					normalModuleFactory
-				);
-				compilation.dependencyTemplates.set(
-					RequireEnsureItemDependency,
-					new RequireEnsureItemDependency.Template()
-				);
+		compiler.plugin("compilation", (compilation, params) => {
+			const normalModuleFactory = params.normalModuleFactory;
 
-				compilation.dependencyFactories.set(
-					RequireEnsureDependency,
-					new NullFactory()
-				);
-				compilation.dependencyTemplates.set(
-					RequireEnsureDependency,
-					new RequireEnsureDependency.Template()
-				);
+			compilation.dependencyFactories.set(RequireEnsureItemDependency, normalModuleFactory);
+			compilation.dependencyTemplates.set(RequireEnsureItemDependency, new RequireEnsureItemDependency.Template());
 
-				const handler = (parser, parserOptions) => {
-					if (
-						parserOptions.requireEnsure !== undefined &&
-						!parserOptions.requireEnsure
-					)
-						return;
+			compilation.dependencyFactories.set(RequireEnsureDependency, new NullFactory());
+			compilation.dependencyTemplates.set(RequireEnsureDependency, new RequireEnsureDependency.Template());
 
-					new RequireEnsureDependenciesBlockParserPlugin().apply(parser);
-					parser.hooks.evaluateTypeof
-						.for("require.ensure")
-						.tap(
-							"RequireEnsurePlugin",
-							ParserHelpers.evaluateToString("function")
-						);
-					parser.hooks.typeof
-						.for("require.ensure")
-						.tap(
-							"RequireEnsurePlugin",
-							ParserHelpers.toConstantDependency(
-								parser,
-								JSON.stringify("function")
-							)
-						);
-				};
+			params.normalModuleFactory.plugin("parser", (parser, parserOptions) => {
 
-				normalModuleFactory.hooks.parser
-					.for("javascript/auto")
-					.tap("RequireEnsurePlugin", handler);
-				normalModuleFactory.hooks.parser
-					.for("javascript/dynamic")
-					.tap("RequireEnsurePlugin", handler);
-			}
-		);
+				if(typeof parserOptions.requireEnsure !== "undefined" && !parserOptions.requireEnsure)
+					return;
+
+				parser.apply(new RequireEnsureDependenciesBlockParserPlugin());
+				parser.plugin("evaluate typeof require.ensure", ParserHelpers.evaluateToString("function"));
+				parser.plugin("typeof require.ensure", ParserHelpers.toConstantDependency(JSON.stringify("function")));
+			});
+		});
 	}
 }
 module.exports = RequireEnsurePlugin;

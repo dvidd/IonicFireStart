@@ -14,7 +14,7 @@ export declare enum LifecycleHooks {
     AfterContentInit = 4,
     AfterContentChecked = 5,
     AfterViewInit = 6,
-    AfterViewChecked = 7
+    AfterViewChecked = 7,
 }
 export declare const LIFECYCLE_HOOKS_VALUES: LifecycleHooks[];
 export declare function hasLifecycleHook(reflector: CompileReflector, hook: LifecycleHooks, token: any): boolean;

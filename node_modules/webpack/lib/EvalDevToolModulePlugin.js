@@ -7,19 +7,14 @@
 const EvalDevToolModuleTemplatePlugin = require("./EvalDevToolModuleTemplatePlugin");
 
 class EvalDevToolModulePlugin {
-	constructor(options) {
-		this.sourceUrlComment = options.sourceUrlComment;
-		this.moduleFilenameTemplate = options.moduleFilenameTemplate;
-		this.namespace = options.namespace;
+	constructor(sourceUrlComment, moduleFilenameTemplate) {
+		this.sourceUrlComment = sourceUrlComment;
+		this.moduleFilenameTemplate = moduleFilenameTemplate;
 	}
 
 	apply(compiler) {
-		compiler.hooks.compilation.tap("EvalDevToolModulePlugin", compilation => {
-			new EvalDevToolModuleTemplatePlugin({
-				sourceUrlComment: this.sourceUrlComment,
-				moduleFilenameTemplate: this.moduleFilenameTemplate,
-				namespace: this.namespace
-			}).apply(compilation.moduleTemplates.javascript);
+		compiler.plugin("compilation", (compilation) => {
+			compilation.moduleTemplate.apply(new EvalDevToolModuleTemplatePlugin(this.sourceUrlComment, this.moduleFilenameTemplate));
 		});
 	}
 }

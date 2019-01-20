@@ -8,7 +8,7 @@
 export declare enum TagContentType {
     RAW_TEXT = 0,
     ESCAPABLE_RAW_TEXT = 1,
-    PARSABLE_DATA = 2
+    PARSABLE_DATA = 2,
 }
 export interface TagDefinition {
     closedByParent: boolean;
@@ -34,4 +34,4 @@ export declare function mergeNsAndName(prefix: string, localName: string): strin
 export declare const NAMED_ENTITIES: {
     [k: string]: string;
 };
-export declare const NGSP_UNICODE = "\uE500";
+export declare const NGSP_UNICODE = "";

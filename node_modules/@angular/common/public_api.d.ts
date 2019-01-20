@@ -11,4 +11,3 @@
  * Entry point for all public APIs of this package.
  */
 export * from './src/common';
-export { registerLocaleData as ɵregisterLocaleData } from './src/i18n/locale_data';

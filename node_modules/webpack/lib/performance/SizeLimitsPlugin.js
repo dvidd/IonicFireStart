@@ -18,88 +18,85 @@ module.exports = class SizeLimitsPlugin {
 		const entrypointSizeLimit = this.maxEntrypointSize;
 		const assetSizeLimit = this.maxAssetSize;
 		const hints = this.hints;
-		const assetFilter = this.assetFilter || (asset => !asset.endsWith(".map"));
+		const assetFilter = this.assetFilter || (asset => !(/\.map$/.test(asset)));
 
-		compiler.hooks.afterEmit.tap("SizeLimitsPlugin", compilation => {
+		compiler.plugin("after-emit", (compilation, callback) => {
 			const warnings = [];
 
 			const getEntrypointSize = entrypoint =>
-				entrypoint.getFiles().reduce((currentSize, file) => {
-					if (assetFilter(file) && compilation.assets[file]) {
-						return currentSize + compilation.assets[file].size();
-					}
-
-					return currentSize;
-				}, 0);
+				entrypoint.getFiles()
+				.filter(assetFilter)
+				.map(file => compilation.assets[file])
+				.filter(Boolean)
+				.map(asset => asset.size())
+				.reduce((currentSize, nextSize) => currentSize + nextSize, 0);
 
 			const assetsOverSizeLimit = [];
-			for (const assetName of Object.keys(compilation.assets)) {
-				if (!assetFilter(assetName)) {
-					continue;
-				}
+			Object.keys(compilation.assets)
+				.filter(assetFilter)
+				.forEach(assetName => {
+					const asset = compilation.assets[assetName];
+					const size = asset.size();
 
-				const asset = compilation.assets[assetName];
-				const size = asset.size();
-				if (size > assetSizeLimit) {
-					assetsOverSizeLimit.push({
-						name: assetName,
-						size: size
-					});
-					asset.isOverSizeLimit = true;
-				}
-			}
+					if(size > assetSizeLimit) {
+						assetsOverSizeLimit.push({
+							name: assetName,
+							size: size,
+						});
+						asset.isOverSizeLimit = true;
+					}
+				});
 
 			const entrypointsOverLimit = [];
-			for (const pair of compilation.entrypoints) {
-				const name = pair[0];
-				const entry = pair[1];
-				const size = getEntrypointSize(entry);
+			Object.keys(compilation.entrypoints)
+				.forEach(key => {
+					const entry = compilation.entrypoints[key];
+					const size = getEntrypointSize(entry, compilation);
 
-				if (size > entrypointSizeLimit) {
-					entrypointsOverLimit.push({
-						name: name,
-						size: size,
-						files: entry.getFiles().filter(assetFilter)
-					});
-					entry.isOverSizeLimit = true;
-				}
-			}
+					if(size > entrypointSizeLimit) {
+						entrypointsOverLimit.push({
+							name: key,
+							size: size,
+							files: entry.getFiles().filter(assetFilter)
+						});
+						entry.isOverSizeLimit = true;
+					}
+				});
 
-			if (hints) {
+			if(hints) {
 				// 1. Individual Chunk: Size < 250kb
 				// 2. Collective Initial Chunks [entrypoint] (Each Set?): Size < 250kb
 				// 3. No Async Chunks
 				// if !1, then 2, if !2 return
-				if (assetsOverSizeLimit.length > 0) {
+				if(assetsOverSizeLimit.length > 0) {
 					warnings.push(
-						new AssetsOverSizeLimitWarning(assetsOverSizeLimit, assetSizeLimit)
-					);
+						new AssetsOverSizeLimitWarning(
+							assetsOverSizeLimit,
+							assetSizeLimit));
 				}
-				if (entrypointsOverLimit.length > 0) {
+				if(entrypointsOverLimit.length > 0) {
 					warnings.push(
 						new EntrypointsOverSizeLimitWarning(
 							entrypointsOverLimit,
-							entrypointSizeLimit
-						)
-					);
+							entrypointSizeLimit));
 				}
 
-				if (warnings.length > 0) {
-					const hasAsyncChunks =
-						compilation.chunks.filter(chunk => !chunk.canBeInitial()).length >
-						0;
+				if(warnings.length > 0) {
+					const hasAsyncChunks = compilation.chunks.filter(chunk => !chunk.isInitial()).length > 0;
 
-					if (!hasAsyncChunks) {
+					if(!hasAsyncChunks) {
 						warnings.push(new NoAsyncChunksWarning());
 					}
 
-					if (hints === "error") {
-						compilation.errors.push(...warnings);
+					if(hints === "error") {
+						Array.prototype.push.apply(compilation.errors, warnings);
 					} else {
-						compilation.warnings.push(...warnings);
+						Array.prototype.push.apply(compilation.warnings, warnings);
 					}
 				}
 			}
+
+			callback();
 		});
 	}
 };

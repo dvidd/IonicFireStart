@@ -1,7 +1,8 @@
 {
-  "name": "IonicFirebaseSK",
+  "name": "supermodular2",
   "integrations": {
     "cordova": {}
   },
-  "type": "angular"
+  "type": "ionic-angular",
+  "id": "51793f4b"
 }

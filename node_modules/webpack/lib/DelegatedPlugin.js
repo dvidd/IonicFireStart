@@ -16,22 +16,13 @@ class DelegatedPlugin {
 	}
 
 	apply(compiler) {
-		compiler.hooks.compilation.tap(
-			"DelegatedPlugin",
-			(compilation, { normalModuleFactory }) => {
-				compilation.dependencyFactories.set(
-					DelegatedSourceDependency,
-					normalModuleFactory
-				);
-				compilation.dependencyFactories.set(
-					DelegatedExportsDependency,
-					new NullFactory()
-				);
-			}
-		);
+		compiler.plugin("compilation", (compilation, params) => {
+			compilation.dependencyFactories.set(DelegatedSourceDependency, params.normalModuleFactory);
+			compilation.dependencyFactories.set(DelegatedExportsDependency, new NullFactory());
+		});
 
-		compiler.hooks.compile.tap("DelegatedPlugin", ({ normalModuleFactory }) => {
-			new DelegatedModuleFactoryPlugin(this.options).apply(normalModuleFactory);
+		compiler.plugin("compile", (params) => {
+			params.normalModuleFactory.apply(new DelegatedModuleFactoryPlugin(this.options));
 		});
 	}
 }

@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/database-deprecated/index.ts"],"names":[],"mappings":"AAIA,cAAc,cAAc,CAAC","sourcesContent":["/**\n * Generated bundle index. Do not edit.\n */\n\nexport * from './public_api';\n\nexport {QueryReference as ɵb,Reference as ɵa} from './interfaces';"]}

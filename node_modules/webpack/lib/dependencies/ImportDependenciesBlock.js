@@ -7,11 +7,10 @@ const AsyncDependenciesBlock = require("../AsyncDependenciesBlock");
 const ImportDependency = require("./ImportDependency");
 
 module.exports = class ImportDependenciesBlock extends AsyncDependenciesBlock {
-	// TODO webpack 5 reorganize arguments
-	constructor(request, range, groupOptions, module, loc, originModule) {
-		super(groupOptions, module, loc, request);
+	constructor(request, range, chunkName, module, loc) {
+		super(chunkName, module, loc);
 		this.range = range;
-		const dep = new ImportDependency(request, originModule, this);
+		const dep = new ImportDependency(request, this);
 		dep.loc = loc;
 		this.addDependency(dep);
 	}

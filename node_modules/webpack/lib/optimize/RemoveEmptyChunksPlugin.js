@@ -5,37 +5,16 @@
 "use strict";
 
 class RemoveEmptyChunksPlugin {
+
 	apply(compiler) {
-		compiler.hooks.compilation.tap("RemoveEmptyChunksPlugin", compilation => {
-			const handler = chunks => {
-				for (let i = chunks.length - 1; i >= 0; i--) {
-					const chunk = chunks[i];
-					if (
-						chunk.isEmpty() &&
-						!chunk.hasRuntime() &&
-						!chunk.hasEntryModule()
-					) {
+		compiler.plugin("compilation", (compilation) => {
+			compilation.plugin(["optimize-chunks-basic", "optimize-extracted-chunks-basic"], (chunks) => {
+				chunks.filter((chunk) => chunk.isEmpty() && !chunk.hasRuntime() && !chunk.hasEntryModule())
+					.forEach((chunk) => {
 						chunk.remove("empty");
-						chunks.splice(i, 1);
-					}
-				}
-			};
-			compilation.hooks.optimizeChunksBasic.tap(
-				"RemoveEmptyChunksPlugin",
-				handler
-			);
-			compilation.hooks.optimizeChunksAdvanced.tap(
-				"RemoveEmptyChunksPlugin",
-				handler
-			);
-			compilation.hooks.optimizeExtractedChunksBasic.tap(
-				"RemoveEmptyChunksPlugin",
-				handler
-			);
-			compilation.hooks.optimizeExtractedChunksAdvanced.tap(
-				"RemoveEmptyChunksPlugin",
-				handler
-			);
+						chunks.splice(chunks.indexOf(chunk), 1);
+					});
+			});
 		});
 	}
 }

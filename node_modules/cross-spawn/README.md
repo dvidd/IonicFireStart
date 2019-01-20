@@ -32,8 +32,8 @@ Node has issues when using spawn on Windows:
 
 - It ignores [PATHEXT](https://github.com/joyent/node/issues/2318)
 - It does not support [shebangs](http://pt.wikipedia.org/wiki/Shebang)
+- No `options.shell` support on node < v6
 - It does not allow you to run `del` or `dir`
-- It does not properly escape arguments with spaces or special characters
 
 All these issues are handled correctly by `cross-spawn`.
 There are some known modules, such as [win-spawn](https://github.com/ForbesLindesay/win-spawn), that try to solve this but they are either broken or provide faulty escaping of shell arguments.
@@ -43,7 +43,8 @@ There are some known modules, such as [win-spawn](https://github.com/ForbesLinde
 
 Exactly the same way as node's [`spawn`](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) or [`spawnSync`](https://nodejs.org/api/child_process.html#child_process_child_process_spawnsync_command_args_options), so it's a drop in replacement.
 
-```javascript
+
+```js
 var spawn = require('cross-spawn');
 
 // Spawn NPM asynchronously
@@ -52,6 +53,26 @@ var child = spawn('npm', ['list', '-g', '-depth', '0'], { stdio: 'inherit' });
 // Spawn NPM synchronously
 var results = spawn.sync('npm', ['list', '-g', '-depth', '0'], { stdio: 'inherit' });
 ```
+
+
+## Caveats
+
+#### `options.shell` as an alternative to `cross-spawn`
+
+Starting from node v6, `spawn` has a `shell` option that allows you run commands from within a shell. This new option solves most of the problems that `cross-spawn` attempts to solve, but:
+
+- It's not supported in node < v6
+- It has no support for shebangs on Windows
+- You must manually escape the command and arguments which is very error prone, specially when passing user input
+
+If you are using the `shell` option to spawn a command in a cross platform way, consider using `cross-spawn` instead. You have been warned.
+
+
+#### Shebangs
+
+While `cross-spawn` handles shebangs on Windows, its support is limited: e.g.: it doesn't handle arguments after the path, e.g.: `#!/bin/bash -e`.
+
+Remember to always test your code on Windows!
 
 
 ## Tests

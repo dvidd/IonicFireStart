@@ -1,1 +1,0 @@
-[{"__symbolic":"module","version":4,"metadata":{"AngularFireAuthModule":{"__symbolic":"class","decorators":[{"__symbolic":"call","expression":{"__symbolic":"reference","module":"@angular/core","name":"NgModule","line":5,"character":1},"arguments":[{"providers":[{"__symbolic":"reference","module":"./auth","name":"AngularFireAuth","line":6,"character":15}]}]}]}}}]

@@ -3,8 +3,6 @@
 	Author Tobias Koppers @sokra
 */
 "use strict";
-
-const DependencyReference = require("./DependencyReference");
 const NullDependency = require("./NullDependency");
 
 class DelegatedExportsDependency extends NullDependency {
@@ -19,13 +17,15 @@ class DelegatedExportsDependency extends NullDependency {
 	}
 
 	getReference() {
-		return new DependencyReference(this.originModule, true, false);
+		return {
+			module: this.originModule,
+			importedNames: true
+		};
 	}
 
 	getExports() {
 		return {
-			exports: this.exports,
-			dependencies: undefined
+			exports: this.exports
 		};
 	}
 }

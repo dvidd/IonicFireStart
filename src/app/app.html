@@ -1,0 +1,28 @@
+<ion-menu id="leftMenu" [content]="content" type="overlay">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>Opciones</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+
+            <ion-list-header *ngIf="auth.getEmail()">{{auth.getEmail()}}</ion-list-header>
+
+            <ion-item (click)="logout()" *ngIf="auth.authenticated">
+                <ion-icon name="log-out" item-left></ion-icon>
+                Log out
+            </ion-item>
+
+            <ion-item (click)="login()" *ngIf="!auth.authenticated">
+                <ion-icon name="log-in" item-left></ion-icon>
+                Log in
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+
+</ion-menu>
+
+<ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>

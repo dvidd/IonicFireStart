@@ -10,6 +10,10 @@ class NullDependency extends Dependency {
 		return "null";
 	}
 
+	isEqualResource() {
+		return false;
+	}
+
 	updateHash() {}
 }
 

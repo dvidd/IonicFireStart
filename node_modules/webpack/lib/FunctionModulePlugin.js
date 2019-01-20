@@ -5,13 +5,18 @@
 "use strict";
 
 const FunctionModuleTemplatePlugin = require("./FunctionModuleTemplatePlugin");
+const RequestShortener = require("./RequestShortener");
 
 class FunctionModulePlugin {
+	constructor(options, requestShortener) {
+		this.options = options;
+		this.requestShortener = requestShortener;
+	}
+
 	apply(compiler) {
-		compiler.hooks.compilation.tap("FunctionModulePlugin", compilation => {
-			new FunctionModuleTemplatePlugin().apply(
-				compilation.moduleTemplates.javascript
-			);
+		compiler.plugin("compilation", (compilation) => {
+			compilation.moduleTemplate.requestShortener = this.requestShortener || new RequestShortener(compiler.context);
+			compilation.moduleTemplate.apply(new FunctionModuleTemplatePlugin());
 		});
 	}
 }

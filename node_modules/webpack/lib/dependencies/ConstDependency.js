@@ -6,11 +6,10 @@
 const NullDependency = require("./NullDependency");
 
 class ConstDependency extends NullDependency {
-	constructor(expression, range, requireWebpackRequire) {
+	constructor(expression, range) {
 		super();
 		this.expression = expression;
 		this.range = range;
-		this.requireWebpackRequire = requireWebpackRequire;
 	}
 
 	updateHash(hash) {
@@ -21,7 +20,7 @@ class ConstDependency extends NullDependency {
 
 ConstDependency.Template = class ConstDependencyTemplate {
 	apply(dep, source) {
-		if (typeof dep.range === "number") {
+		if(typeof dep.range === "number") {
 			source.insert(dep.range, dep.expression);
 			return;
 		}

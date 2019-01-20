@@ -1,0 +1,98 @@
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports"], factory);
+    }
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    function getCss(docEle) {
+        var css = {};
+        // transform
+        var i;
+        var keys = ['webkitTransform', '-webkit-transform', 'webkit-transform', 'transform'];
+        for (i = 0; i < keys.length; i++) {
+            if (docEle.style[keys[i]] !== undefined) {
+                css.transform = keys[i];
+                break;
+            }
+        }
+        // transition
+        keys = ['webkitTransition', 'transition'];
+        for (i = 0; i < keys.length; i++) {
+            if (docEle.style[keys[i]] !== undefined) {
+                css.transition = keys[i];
+                break;
+            }
+        }
+        // The only prefix we care about is webkit for transitions.
+        var isWebkit = css.transition.indexOf('webkit') > -1;
+        // transition duration
+        css.transitionDuration = (isWebkit ? '-webkit-' : '') + 'transition-duration';
+        // transition timing function
+        css.transitionTimingFn = (isWebkit ? '-webkit-' : '') + 'transition-timing-function';
+        // transition delay
+        css.transitionDelay = (isWebkit ? '-webkit-' : '') + 'transition-delay';
+        // To be sure transitionend works everywhere, include *both* the webkit and non-webkit events
+        css.transitionEnd = (isWebkit ? 'webkitTransitionEnd ' : '') + 'transitionend';
+        // transform origin
+        css.transformOrigin = (isWebkit ? '-webkit-' : '') + 'transform-origin';
+        // animation delay
+        css.animationDelay = (isWebkit ? 'webkitAnimationDelay' : 'animationDelay');
+        return css;
+    }
+    exports.getCss = getCss;
+    function pointerCoord(ev) {
+        // get coordinates for either a mouse click
+        // or a touch depending on the given event
+        if (ev) {
+            var changedTouches = ev.changedTouches;
+            if (changedTouches && changedTouches.length > 0) {
+                var touch = changedTouches[0];
+                return { x: touch.clientX, y: touch.clientY };
+            }
+            var pageX = ev.pageX;
+            if (pageX !== undefined) {
+                return { x: pageX, y: ev.pageY };
+            }
+        }
+        return { x: 0, y: 0 };
+    }
+    exports.pointerCoord = pointerCoord;
+    function hasPointerMoved(threshold, startCoord, endCoord) {
+        if (startCoord && endCoord) {
+            var deltaX = (startCoord.x - endCoord.x);
+            var deltaY = (startCoord.y - endCoord.y);
+            var distance = deltaX * deltaX + deltaY * deltaY;
+            return distance > (threshold * threshold);
+        }
+        return false;
+    }
+    exports.hasPointerMoved = hasPointerMoved;
+    function isTextInput(ele) {
+        return !!ele &&
+            (ele.tagName === 'TEXTAREA' ||
+                ele.contentEditable === 'true' ||
+                (ele.tagName === 'INPUT' && !(exports.NON_TEXT_INPUT_REGEX.test(ele.type))));
+    }
+    exports.isTextInput = isTextInput;
+    exports.NON_TEXT_INPUT_REGEX = /^(radio|checkbox|range|file|submit|reset|color|image|button)$/i;
+    var SKIP_INPUT_ATTR = ['value', 'checked', 'disabled', 'readonly', 'placeholder', 'type', 'class', 'style', 'id', 'autofocus', 'autocomplete', 'autocorrect'];
+    function copyInputAttributes(srcElement, destElement) {
+        // copy attributes from one element to another
+        // however, skip over a few of them as they're already
+        // handled in the angular world
+        var attrs = srcElement.attributes;
+        for (var i = 0; i < attrs.length; i++) {
+            var attr = attrs[i];
+            if (SKIP_INPUT_ATTR.indexOf(attr.name) === -1) {
+                destElement.setAttribute(attr.name, attr.value);
+            }
+        }
+    }
+    exports.copyInputAttributes = copyInputAttributes;
+});
+//# sourceMappingURL=dom.js.map

@@ -27,8 +27,8 @@ export declare class RendererAnimationPlayer implements AnimationPlayer {
     parentPlayer: AnimationPlayer | null;
     private _started;
     constructor(id: string, element: any, options: AnimationOptions, _renderer: AnimationRenderer);
-    private _listen;
-    private _command;
+    private _listen(eventName, callback);
+    private _command(command, ...args);
     onDone(fn: () => void): void;
     onStart(fn: () => void): void;
     onDestroy(fn: () => void): void;

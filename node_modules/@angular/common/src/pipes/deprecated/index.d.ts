@@ -8,7 +8,7 @@
 import { Provider } from '@angular/core';
 import { DeprecatedDatePipe } from './date_pipe';
 import { DeprecatedCurrencyPipe, DeprecatedDecimalPipe, DeprecatedPercentPipe } from './number_pipe';
-export { DeprecatedCurrencyPipe, DeprecatedDatePipe, DeprecatedDecimalPipe, DeprecatedPercentPipe, };
+export { DeprecatedCurrencyPipe, DeprecatedDatePipe, DeprecatedDecimalPipe, DeprecatedPercentPipe };
 /**
  * A collection of deprecated i18n pipes that require intl api
  *

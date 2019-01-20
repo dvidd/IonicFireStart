@@ -8,41 +8,30 @@ const DllEntryPlugin = require("./DllEntryPlugin");
 const LibManifestPlugin = require("./LibManifestPlugin");
 const FlagInitialModulesAsUsedPlugin = require("./FlagInitialModulesAsUsedPlugin");
 
-const validateOptions = require("schema-utils");
-const schema = require("../schemas/plugins/DllPlugin.json");
-
-/** @typedef {import("../declarations/plugins/DllPlugin").DllPluginOptions} DllPluginOptions */
-
 class DllPlugin {
-	/**
-	 * @param {DllPluginOptions} options options object
-	 */
 	constructor(options) {
-		validateOptions(schema, options, "Dll Plugin");
 		this.options = options;
 	}
 
 	apply(compiler) {
-		compiler.hooks.entryOption.tap("DllPlugin", (context, entry) => {
-			const itemToPlugin = (item, name) => {
-				if (Array.isArray(item)) {
+		compiler.plugin("entry-option", (context, entry) => {
+			function itemToPlugin(item, name) {
+				if(Array.isArray(item))
 					return new DllEntryPlugin(context, item, name);
-				}
-				throw new Error("DllPlugin: supply an Array as entry");
-			};
-			if (typeof entry === "object" && !Array.isArray(entry)) {
+				else
+					throw new Error("DllPlugin: supply an Array as entry");
+			}
+			if(typeof entry === "object" && !Array.isArray(entry)) {
 				Object.keys(entry).forEach(name => {
-					itemToPlugin(entry[name], name).apply(compiler);
+					compiler.apply(itemToPlugin(entry[name], name));
 				});
 			} else {
-				itemToPlugin(entry, "main").apply(compiler);
+				compiler.apply(itemToPlugin(entry, "main"));
 			}
 			return true;
 		});
-		new LibManifestPlugin(this.options).apply(compiler);
-		if (!this.options.entryOnly) {
-			new FlagInitialModulesAsUsedPlugin("DllPlugin").apply(compiler);
-		}
+		compiler.apply(new LibManifestPlugin(this.options));
+		compiler.apply(new FlagInitialModulesAsUsedPlugin());
 	}
 }
 

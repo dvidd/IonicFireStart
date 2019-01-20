@@ -1,8 +1,6 @@
 # randomatic [![NPM version](https://img.shields.io/npm/v/randomatic.svg?style=flat)](https://www.npmjs.com/package/randomatic) [![NPM monthly downloads](https://img.shields.io/npm/dm/randomatic.svg?style=flat)](https://npmjs.org/package/randomatic) [![NPM total downloads](https://img.shields.io/npm/dt/randomatic.svg?style=flat)](https://npmjs.org/package/randomatic) [![Linux Build Status](https://img.shields.io/travis/jonschlinkert/randomatic.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert/randomatic)
 
-> Generate randomized strings of a specified length using simple character sequences. The original generate-password.
-
-Please consider following this project's author, [Jon Schlinkert](https://github.com/jonschlinkert), and consider starring the project to show your :heart: and support.
+> Generate randomized strings of a specified length, fast. Only the length is necessary, but you can optionally generate patterns using any combination of numeric, alpha-numeric, alphabetical, special or custom characters.
 
 ## Install
 
@@ -22,13 +20,10 @@ var randomize = require('randomatic');
 
 ```js
 randomize(pattern, length, options);
-randomize.isCrypto;
 ```
 
-* `pattern` **{String}**: (required) The pattern to use for randomizing
-* `length` **{Number}**: (optional) The length of the string to generate
-* `options` **{Object}**: (optional) See available [options](#options)
-* `randomize.isCrypto` will be `true` when a cryptographically secure function is being used to generate random numbers. The value will be `false` when the function in use is `Math.random`.
+* `pattern` **{String}**: The pattern to use for randomizing
+* `length` **{Object}**: The length of the string to generate
 
 ### pattern
 
@@ -42,10 +37,10 @@ To generate a 10-character randomized string using all available characters:
 
 ```js
 randomize('*', 10);
-//=> 'x2_^-5_T[$'
+//=>
 
 randomize('Aa0!', 10);
-//=> 'LV3u~BSGhw'
+//=>
 ```
 
 * `a`: Lowercase alpha characters (`abcdefghijklmnopqrstuvwxyz'`)
@@ -57,7 +52,7 @@ randomize('Aa0!', 10);
 
 ### length
 
-> The length of the string to generate
+> the length of the string to generate
 
 **Examples:**
 
@@ -76,10 +71,6 @@ If `length` is left undefined, the length of the pattern in the first parameter 
 
 These are just examples, [see the tests](./test.js) for more use cases and examples.
 
-## options
-
-> These are options that can be passed as the third argument.
-
 #### chars
 
 Type: `String`
@@ -92,18 +83,6 @@ Define a custom string to be randomized.
 
 * `randomize('?', 20, {chars: 'jonschlinkert'})` will generate a 20-character randomized string from the letters contained in `jonschlinkert`.
 * `randomize('?', {chars: 'jonschlinkert'})` will generate a 13-character randomized string from the letters contained in `jonschlinkert`.
-
-#### exclude
-
-Type: `String|Array`
-
-Default: `undefined`
-
-Specify a string or array of characters can are excluded from the possible characters used to generate the randomized string.
-
-**Example:**
-
-* `randomize('*', 20, { exclude: '0oOiIlL1' })` will generate a 20-character randomized string using all of possible characters except for `0oOiIlL1`.
 
 ## Usage Examples
 
@@ -120,26 +99,27 @@ _The order in which the characters are defined is insignificant._
 
 ## About
 
-<details>
-<summary><strong>Contributing</strong></summary>
+### Related projects
+
+* [pad-left](https://www.npmjs.com/package/pad-left): Left pad a string with zeros or a specified string. Fastest implementation. | [homepage](https://github.com/jonschlinkert/pad-left "Left pad a string with zeros or a specified string. Fastest implementation.")
+* [pad-right](https://www.npmjs.com/package/pad-right): Right pad a string with zeros or a specified string. Fastest implementation. | [homepage](https://github.com/jonschlinkert/pad-right "Right pad a string with zeros or a specified string. Fastest implementation.")
+* [repeat-string](https://www.npmjs.com/package/repeat-string): Repeat the given string n times. Fastest implementation for repeating a string. | [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fastest implementation for repeating a string.")
+
+### Contributing
 
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](../../issues/new).
 
-</details>
+### Contributors
 
-<details>
-<summary><strong>Running Tests</strong></summary>
+| **Commits** | **Contributor** | 
+| --- | --- |
+| 41 | [jonschlinkert](https://github.com/jonschlinkert) |
+| 1 | [TrySound](https://github.com/TrySound) |
+| 1 | [Drag0s](https://github.com/Drag0s) |
+| 1 | [paulmillr](https://github.com/paulmillr) |
+| 1 | [sunknudsen](https://github.com/sunknudsen) |
 
-Running and reviewing unit tests is a great way to get familiarized with a library and its API. You can install dependencies and run tests with the following command:
-
-```sh
-$ npm install && npm test
-```
-
-</details>
-
-<details>
-<summary><strong>Building docs</strong></summary>
+### Building docs
 
 _(This project's readme.md is generated by [verb](https://github.com/verbose/verb-generate-readme), please don't edit the readme directly. Any changes to the readme must be made in the [.verb.md](.verb.md) readme template.)_
 
@@ -149,45 +129,26 @@ To generate the readme, run the following command:
 $ npm install -g verbose/verb#dev verb-generate-readme && verb
 ```
 
-</details>
+### Running tests
 
-### Related projects
+Running and reviewing unit tests is a great way to get familiarized with a library and its API. You can install dependencies and run tests with the following command:
 
-You might also be interested in these projects:
-
-* [pad-left](https://www.npmjs.com/package/pad-left): Left pad a string with zeros or a specified string. Fastest implementation. | [homepage](https://github.com/jonschlinkert/pad-left "Left pad a string with zeros or a specified string. Fastest implementation.")
-* [pad-right](https://www.npmjs.com/package/pad-right): Right pad a string with zeros or a specified string. Fastest implementation. | [homepage](https://github.com/jonschlinkert/pad-right "Right pad a string with zeros or a specified string. Fastest implementation.")
-* [repeat-string](https://www.npmjs.com/package/repeat-string): Repeat the given string n times. Fastest implementation for repeating a string. | [homepage](https://github.com/jonschlinkert/repeat-string "Repeat the given string n times. Fastest implementation for repeating a string.")
-
-### Contributors
-
-| **Commits** | **Contributor** |  
-| --- | --- |  
-| 56 | [jonschlinkert](https://github.com/jonschlinkert) |  
-| 6  | [doowb](https://github.com/doowb) |  
-| 4  | [kivlor](https://github.com/kivlor) |  
-| 2  | [realityking](https://github.com/realityking) |  
-| 2  | [ywpark1](https://github.com/ywpark1) |  
-| 1  | [TrySound](https://github.com/TrySound) |  
-| 1  | [drag0s](https://github.com/drag0s) |  
-| 1  | [paulmillr](https://github.com/paulmillr) |  
-| 1  | [sunknudsen](https://github.com/sunknudsen) |  
-| 1  | [faizulhaque-tp](https://github.com/faizulhaque-tp) |  
-| 1  | [michaelrhodes](https://github.com/michaelrhodes) |  
+```sh
+$ npm install && npm test
+```
 
 ### Author
 
 **Jon Schlinkert**
 
-* [GitHub Profile](https://github.com/jonschlinkert)
-* [Twitter Profile](https://twitter.com/jonschlinkert)
-* [LinkedIn Profile](https://linkedin.com/in/jonschlinkert)
+* [github/jonschlinkert](https://github.com/jonschlinkert)
+* [twitter/jonschlinkert](https://twitter.com/jonschlinkert)
 
 ### License
 
-Copyright © 2018, [Jon Schlinkert](https://github.com/jonschlinkert).
+Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert).
 Released under the [MIT License](LICENSE).
 
 ***
 
-_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.8.0, on October 23, 2018._
+_This file was generated by [verb-generate-readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on June 09, 2017._

@@ -34,13 +34,13 @@ export declare class DirectiveNormalizer {
     constructor(_resourceLoader: ResourceLoader, _urlResolver: UrlResolver, _htmlParser: HtmlParser, _config: CompilerConfig);
     clearCache(): void;
     clearCacheFor(normalizedDirective: CompileDirectiveMetadata): void;
-    private _fetch;
+    private _fetch(url);
     normalizeTemplate(prenormData: PrenormalizedTemplateMetadata): SyncAsync<CompileTemplateMetadata>;
-    private _preParseTemplate;
-    private _preparseLoadedTemplate;
-    private _normalizeTemplateMetadata;
-    private _normalizeLoadedTemplateMetadata;
-    private _inlineStyles;
-    private _loadMissingExternalStylesheets;
-    private _normalizeStylesheet;
+    private _preParseTemplate(prenomData);
+    private _preparseLoadedTemplate(prenormData, template, templateAbsUrl);
+    private _normalizeTemplateMetadata(prenormData, preparsedTemplate);
+    private _normalizeLoadedTemplateMetadata(prenormData, preparsedTemplate, stylesheets);
+    private _inlineStyles(styleUrls, stylesheets, targetStyles);
+    private _loadMissingExternalStylesheets(styleUrls, loadedStylesheets?);
+    private _normalizeStylesheet(stylesheet);
 }

@@ -10,52 +10,24 @@ const RequireIncludeDependencyParserPlugin = require("./RequireIncludeDependency
 const ParserHelpers = require("../ParserHelpers");
 
 class RequireIncludePlugin {
+
 	apply(compiler) {
-		compiler.hooks.compilation.tap(
-			"RequireIncludePlugin",
-			(compilation, { normalModuleFactory }) => {
-				compilation.dependencyFactories.set(
-					RequireIncludeDependency,
-					normalModuleFactory
-				);
-				compilation.dependencyTemplates.set(
-					RequireIncludeDependency,
-					new RequireIncludeDependency.Template()
-				);
+		compiler.plugin("compilation", (compilation, params) => {
+			const normalModuleFactory = params.normalModuleFactory;
 
-				const handler = (parser, parserOptions) => {
-					if (
-						parserOptions.requireInclude !== undefined &&
-						!parserOptions.requireInclude
-					)
-						return;
+			compilation.dependencyFactories.set(RequireIncludeDependency, normalModuleFactory);
+			compilation.dependencyTemplates.set(RequireIncludeDependency, new RequireIncludeDependency.Template());
 
-					new RequireIncludeDependencyParserPlugin().apply(parser);
-					parser.hooks.evaluateTypeof
-						.for("require.include")
-						.tap(
-							"RequireIncludePlugin",
-							ParserHelpers.evaluateToString("function")
-						);
-					parser.hooks.typeof
-						.for("require.include")
-						.tap(
-							"RequireIncludePlugin",
-							ParserHelpers.toConstantDependency(
-								parser,
-								JSON.stringify("function")
-							)
-						);
-				};
+			params.normalModuleFactory.plugin("parser", (parser, parserOptions) => {
 
-				normalModuleFactory.hooks.parser
-					.for("javascript/auto")
-					.tap("RequireIncludePlugin", handler);
-				normalModuleFactory.hooks.parser
-					.for("javascript/dynamic")
-					.tap("RequireIncludePlugin", handler);
-			}
-		);
+				if(typeof parserOptions.requireInclude !== "undefined" && !parserOptions.requireInclude)
+					return;
+
+				parser.apply(new RequireIncludeDependencyParserPlugin());
+				parser.plugin("evaluate typeof require.include", ParserHelpers.evaluateToString("function"));
+				parser.plugin("typeof require.include", ParserHelpers.toConstantDependency(JSON.stringify("function")));
+			});
+		});
 	}
 }
 module.exports = RequireIncludePlugin;

@@ -17,12 +17,11 @@ class HarmonyCompatibilityDependency extends NullDependency {
 }
 
 HarmonyCompatibilityDependency.Template = class HarmonyExportDependencyTemplate {
-	apply(dep, source, runtime) {
+	apply(dep, source) {
 		const usedExports = dep.originModule.usedExports;
-		if (usedExports !== false && !Array.isArray(usedExports)) {
-			const content = runtime.defineEsModuleFlagStatement({
-				exportsArgument: dep.originModule.exportsArgument
-			});
+		if(usedExports && !Array.isArray(usedExports)) {
+			const exportName = dep.originModule.exportsArgument || "exports";
+			const content = `Object.defineProperty(${exportName}, "__esModule", { value: true });\n`;
 			source.insert(-10, content);
 		}
 	}

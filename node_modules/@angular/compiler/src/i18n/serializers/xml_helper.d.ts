@@ -49,4 +49,3 @@ export declare class Text implements Node {
 export declare class CR extends Text {
     constructor(ws?: number);
 }
-export declare function escapeXml(text: string): string;

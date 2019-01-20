@@ -11,7 +11,6 @@
 #include <unordered_map>
 #include <unordered_set>
 #include "memory/SharedPtr.hpp"
-#include "sass/functions.h"
 
 /////////////////////////////////////////////
 // Forward declarations for the AST visitors.
@@ -133,9 +132,6 @@ namespace Sass {
   class Map;
   typedef Map* Map_Ptr;
   typedef Map const* Map_Ptr_Const;
-  class Function;
-  typedef Function* Function_Ptr;
-  typedef Function const* Function_Ptr_Const;
 
   class Mixin_Call;
   typedef Mixin_Call* Mixin_Call_Ptr;
@@ -162,6 +158,9 @@ namespace Sass {
   class Variable;
   typedef Variable* Variable_Ptr;
   typedef Variable const* Variable_Ptr_Const;
+  class Textual;
+  typedef Textual* Textual_Ptr;
+  typedef Textual const* Textual_Ptr_Const;
   class Number;
   typedef Number* Number_Ptr;
   typedef Number const* Number_Ptr_Const;
@@ -315,7 +314,6 @@ namespace Sass {
   IMPL_MEM_OBJ(Expression);
   IMPL_MEM_OBJ(List);
   IMPL_MEM_OBJ(Map);
-  IMPL_MEM_OBJ(Function);
   IMPL_MEM_OBJ(Binary_Expression);
   IMPL_MEM_OBJ(Unary_Expression);
   IMPL_MEM_OBJ(Function_Call);
@@ -323,6 +321,7 @@ namespace Sass {
   IMPL_MEM_OBJ(Custom_Warning);
   IMPL_MEM_OBJ(Custom_Error);
   IMPL_MEM_OBJ(Variable);
+  IMPL_MEM_OBJ(Textual);
   IMPL_MEM_OBJ(Number);
   IMPL_MEM_OBJ(Color);
   IMPL_MEM_OBJ(Boolean);
@@ -377,11 +376,6 @@ namespace Sass {
   struct CompareNodes {
     template <class T>
     bool operator() (const T& lhs, const T& rhs) const {
-      // code around sass logic issue. 1px == 1 is true
-      // but both items are still different keys in maps
-      if (dynamic_cast<Number*>(lhs.ptr()))
-        if (dynamic_cast<Number*>(rhs.ptr()))
-          return lhs->hash() == rhs->hash();
       return !lhs.isNull() && !rhs.isNull() && *lhs == *rhs;
     }
   };
@@ -416,13 +410,7 @@ namespace Sass {
   typedef std::deque<Complex_Selector_Obj> ComplexSelectorDeque;
   typedef std::set<Simple_Selector_Obj, OrderNodes> SimpleSelectorSet;
   typedef std::set<Complex_Selector_Obj, OrderNodes> ComplexSelectorSet;
-  typedef std::set<Compound_Selector_Obj, OrderNodes> CompoundSelectorSet;
   typedef std::unordered_set<Simple_Selector_Obj, HashNodes, CompareNodes> SimpleSelectorDict;
-
-  typedef std::vector<Sass_Import_Entry>* ImporterStack;
-
-  // only to switch implementations for testing
-  #define environment_map std::map
 
   // ###########################################################################
   // explicit type conversion functions

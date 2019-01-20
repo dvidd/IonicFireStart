@@ -4,11 +4,12 @@
 */
 "use strict";
 const ModuleDependency = require("./ModuleDependency");
+const DepBlockHelpers = require("./DepBlockHelpers");
+const webpackMissingPromiseModule = require("./WebpackMissingModule").promise;
 
 class ImportDependency extends ModuleDependency {
-	constructor(request, originModule, block) {
+	constructor(request, block) {
 		super(request);
-		this.originModule = originModule;
 		this.block = block;
 	}
 
@@ -18,16 +19,35 @@ class ImportDependency extends ModuleDependency {
 }
 
 ImportDependency.Template = class ImportDependencyTemplate {
-	apply(dep, source, runtime) {
-		const content = runtime.moduleNamespacePromise({
-			block: dep.block,
-			module: dep.module,
-			request: dep.request,
-			strict: dep.originModule.buildMeta.strictHarmonyModule,
-			message: "import()"
-		});
+	apply(dep, source, outputOptions, requestShortener) {
+		const depBlock = dep.block;
+		const promise = DepBlockHelpers.getDepBlockPromise(depBlock, outputOptions, requestShortener, "import()");
+		const comment = this.getOptionalComment(outputOptions.pathinfo, requestShortener.shorten(dep.request));
 
-		source.replace(dep.block.range[0], dep.block.range[1] - 1, content);
+		const content = this.getContent(promise, dep, comment);
+		source.replace(depBlock.range[0], depBlock.range[1] - 1, content);
+	}
+
+	getOptionalComment(pathinfo, shortenedRequest) {
+		if(!pathinfo) {
+			return "";
+		}
+
+		return `/*! ${shortenedRequest} */ `;
+	}
+
+	getContent(promise, dep, comment) {
+		if(promise && dep.module) {
+			const stringifiedId = JSON.stringify(dep.module.id);
+			return `${promise}.then(__webpack_require__.bind(null, ${comment}${stringifiedId}))`;
+		}
+
+		if(dep.module) {
+			const stringifiedId = JSON.stringify(dep.module.id);
+			return `new Promise(function(resolve) { resolve(__webpack_require__(${comment}${stringifiedId})); })`;
+		}
+
+		return webpackMissingPromiseModule(dep.request);
 	}
 };
 

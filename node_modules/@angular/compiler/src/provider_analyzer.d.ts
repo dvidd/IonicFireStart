@@ -40,11 +40,11 @@ export declare class ProviderElementContext {
     readonly transformProviders: ProviderAst[];
     readonly transformedDirectiveAsts: DirectiveAst[];
     readonly queryMatches: QueryMatch[];
-    private _addQueryReadsTo;
-    private _getQueriesFor;
-    private _getOrCreateLocalProvider;
-    private _getLocalDependency;
-    private _getDependency;
+    private _addQueryReadsTo(token, defaultValue, queryReadTokens);
+    private _getQueriesFor(token);
+    private _getOrCreateLocalProvider(requestingProviderType, token, eager);
+    private _getLocalDependency(requestingProviderType, dep, eager?);
+    private _getDependency(requestingProviderType, dep, eager?);
 }
 export declare class NgModuleProviderAnalyzer {
     private reflector;
@@ -54,6 +54,6 @@ export declare class NgModuleProviderAnalyzer {
     private _errors;
     constructor(reflector: CompileReflector, ngModule: CompileNgModuleMetadata, extraProviders: CompileProviderMetadata[], sourceSpan: ParseSourceSpan);
     parse(): ProviderAst[];
-    private _getOrCreateLocalProvider;
-    private _getDependency;
+    private _getOrCreateLocalProvider(token, eager);
+    private _getDependency(dep, eager, requestorSourceSpan);
 }

@@ -1,10 +1,3 @@
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
 import { KeyValueChangeRecord, KeyValueChanges, KeyValueDiffer, KeyValueDifferFactory } from './keyvalue_differs';
 export declare class DefaultKeyValueDifferFactory<K, V> implements KeyValueDifferFactory {
     constructor();
@@ -47,9 +40,9 @@ export declare class DefaultKeyValueDiffer<K, V> implements KeyValueDiffer<K, V>
      * - This method updates `this._appendAfter`,
      * - The return value is the new value for the insertion pointer.
      */
-    private _insertBeforeOrAppend;
-    private _getOrCreateRecordForKey;
-    private _maybeAddToChanges;
-    private _addToAdditions;
-    private _addToChanges;
+    private _insertBeforeOrAppend(before, record);
+    private _getOrCreateRecordForKey(key, value);
+    private _maybeAddToChanges(record, newValue);
+    private _addToAdditions(record);
+    private _addToChanges(record);
 }

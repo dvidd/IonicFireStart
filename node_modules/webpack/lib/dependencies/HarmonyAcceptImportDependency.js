@@ -6,9 +6,8 @@
 const HarmonyImportDependency = require("./HarmonyImportDependency");
 
 class HarmonyAcceptImportDependency extends HarmonyImportDependency {
-	constructor(request, originModule, parserScope) {
-		super(request, originModule, NaN, parserScope);
-		this.weak = true;
+	constructor(request, importedVar, range) {
+		super(request, importedVar, range);
 	}
 
 	get type() {
@@ -16,8 +15,8 @@ class HarmonyAcceptImportDependency extends HarmonyImportDependency {
 	}
 }
 
-HarmonyAcceptImportDependency.Template = class HarmonyAcceptImportDependencyTemplate extends HarmonyImportDependency.Template {
-	apply(dep, source, runtime) {}
+HarmonyAcceptImportDependency.Template = class HarmonyAcceptImportDependencyTemplate {
+	apply(dep, source, outputOptions, requestShortener) {}
 };
 
 module.exports = HarmonyAcceptImportDependency;

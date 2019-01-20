@@ -8,63 +8,50 @@ const ConstDependency = require("./dependencies/ConstDependency");
 
 const NullFactory = require("./NullFactory");
 
-/** @typedef {import("./Compiler")} Compiler */
+const jsonLoaderPath = require.resolve("json-loader");
+const matchJson = /\.json$/i;
 
 class CompatibilityPlugin {
-	/**
-	 * Apply the plugin
-	 * @param {Compiler} compiler Webpack Compiler
-	 * @returns {void}
-	 */
+
 	apply(compiler) {
-		compiler.hooks.compilation.tap(
-			"CompatibilityPlugin",
-			(compilation, { normalModuleFactory }) => {
-				compilation.dependencyFactories.set(ConstDependency, new NullFactory());
-				compilation.dependencyTemplates.set(
-					ConstDependency,
-					new ConstDependency.Template()
-				);
+		compiler.plugin("compilation", (compilation, params) => {
+			compilation.dependencyFactories.set(ConstDependency, new NullFactory());
+			compilation.dependencyTemplates.set(ConstDependency, new ConstDependency.Template());
 
-				normalModuleFactory.hooks.parser
-					.for("javascript/auto")
-					.tap("CompatibilityPlugin", (parser, parserOptions) => {
-						if (
-							parserOptions.browserify !== undefined &&
-							!parserOptions.browserify
-						)
-							return;
+			params.normalModuleFactory.plugin("parser", (parser, parserOptions) => {
 
-						parser.hooks.call
-							.for("require")
-							.tap("CompatibilityPlugin", expr => {
-								// support for browserify style require delegator: "require(o, !0)"
-								if (expr.arguments.length !== 2) return;
-								const second = parser.evaluateExpression(expr.arguments[1]);
-								if (!second.isBoolean()) return;
-								if (second.asBool() !== true) return;
-								const dep = new ConstDependency("require", expr.callee.range);
-								dep.loc = expr.loc;
-								if (parser.state.current.dependencies.length > 1) {
-									const last =
-										parser.state.current.dependencies[
-											parser.state.current.dependencies.length - 1
-										];
-									if (
-										last.critical &&
-										last.options &&
-										last.options.request === "." &&
-										last.userRequest === "." &&
-										last.options.recursive
-									)
-										parser.state.current.dependencies.pop();
-								}
-								parser.state.current.addDependency(dep);
-								return true;
-							});
+				if(typeof parserOptions.browserify !== "undefined" && !parserOptions.browserify)
+					return;
+
+				parser.plugin("call require", (expr) => {
+					// support for browserify style require delegator: "require(o, !0)"
+					if(expr.arguments.length !== 2) return;
+					const second = parser.evaluateExpression(expr.arguments[1]);
+					if(!second.isBoolean()) return;
+					if(second.asBool() !== true) return;
+					const dep = new ConstDependency("require", expr.callee.range);
+					dep.loc = expr.loc;
+					if(parser.state.current.dependencies.length > 1) {
+						const last = parser.state.current.dependencies[parser.state.current.dependencies.length - 1];
+						if(last.critical && last.request === "." && last.userRequest === "." && last.recursive)
+							parser.state.current.dependencies.pop();
+					}
+					parser.state.current.addDependency(dep);
+					return true;
+				});
+			});
+
+			params.normalModuleFactory.plugin("after-resolve", (data, done) => {
+				// if this is a json file and there are no loaders active, we use the json-loader in order to avoid parse errors
+				// @see https://github.com/webpack/webpack/issues/3363
+				if(matchJson.test(data.request) && data.loaders.length === 0) {
+					data.loaders.push({
+						loader: jsonLoaderPath
 					});
-			}
-		);
+				}
+				done(null, data);
+			});
+		});
 	}
 }
 module.exports = CompatibilityPlugin;

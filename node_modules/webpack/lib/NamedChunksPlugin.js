@@ -5,6 +5,7 @@
 "use strict";
 
 class NamedChunksPlugin {
+
 	static defaultNameResolver(chunk) {
 		return chunk.name || null;
 	}
@@ -14,13 +15,13 @@ class NamedChunksPlugin {
 	}
 
 	apply(compiler) {
-		compiler.hooks.compilation.tap("NamedChunksPlugin", compilation => {
-			compilation.hooks.beforeChunkIds.tap("NamedChunksPlugin", chunks => {
-				for (const chunk of chunks) {
-					if (chunk.id === null) {
+		compiler.plugin("compilation", (compilation) => {
+			compilation.plugin("before-chunk-ids", (chunks) => {
+				chunks.forEach((chunk) => {
+					if(chunk.id === null) {
 						chunk.id = this.nameResolver(chunk);
 					}
-				}
+				});
 			});
 		});
 	}

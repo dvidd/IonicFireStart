@@ -1,0 +1,10 @@
+import { Observable } from 'rxjs/Observable';
+import { DatabaseQuery, ChildEvent, SnapshotAction } from '../interfaces';
+import 'rxjs/add/operator/scan';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/distinctUntilChanged';
+export declare function listChanges<T>(ref: DatabaseQuery, events: ChildEvent[]): Observable<SnapshotAction[]>;
