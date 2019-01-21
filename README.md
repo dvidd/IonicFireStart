@@ -1,4 +1,4 @@
-# ionic3-firebase-auth
+# ionic 4 firebase started
 An Ionic 4 firebase starter.
 
 This is how it should look at the final step
