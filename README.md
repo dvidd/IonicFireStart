@@ -1,5 +1,5 @@
-# ionic 4 firebase started
-An Ionic 4 firebase starter.
+# ionic 4 firebase started kid 
+An Ionic 4 firebase starter. With the new Routing Module of Ionic 4 
 
 This is how it should look at the final step
 
