@@ -1,0 +1,25 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content padding text-center>
+  <img style="margin:auto;" src="assets/icon/favicon.png" alt="">
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <ion-button fill="solid" expand="block" color="dark" (click)="login()">Login</ion-button>
+  <ion-button fill="solid" expand="block" color="dark" (click)="loginGmail()">Gmail</ion-button>
+  <p (click)="iraRegister()">No tienes Cuenta pues registrate aqui</p>
+</ion-content>

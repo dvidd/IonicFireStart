@@ -1,8 +1,5 @@
 {
-  "name": "supermodular2",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular",
-  "id": "51793f4b"
+  "name": "Yourchat",
+  "integrations": {},
+  "type": "angular"
 }

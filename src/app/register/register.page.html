@@ -1,0 +1,24 @@
+<ion-content padding text-center>
+  <img style="margin:auto;" src="assets/icon/favicon.png" alt="">
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password" [(ngModel)]="cpassword"></ion-input>
+      </ion-item>
+
+  </ion-list>
+  <ion-button fill="solid" expand="block" color="dark" (click)="register()">Register</ion-button>
+  <ion-button fill="solid" expand="block" color="dark" (click)="registerGmail()">Register with Gmail</ion-button>
+  <p>Ya tienes Cuenta entra aqui</p>
+</ion-content>

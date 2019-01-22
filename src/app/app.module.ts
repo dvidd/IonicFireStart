@@ -1,59 +1,34 @@
-import { AgmCoreModule } from '@agm/core';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { NgxErrorsModule } from '@ultimate/ngxerrors';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { StatusBar } from '@ionic-native/status-bar';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { Config } from '../config';
+import { RouteReuseStrategy } from '@angular/router';
 
-import { ComponentsModule } from '../pages/components/components.module';
-import { GoogleMapsModule } from '../pages/google-maps/google-maps.module';
-import { HomeModule } from '../pages/home/home.module';
-import { SlideBoxModule } from '../pages/slide-box/slide-box.module';
-import { WordpressModule } from '../pages/wordpress/wordpress.module';
-import { MyApp } from './app.component';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { firebaseConfig } from '../config';
-import { LoginPage } from '../pages/login/login';
-import { AuthService } from '../services/auth.service';
-import { SignupPage } from '../pages/signup/signup';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+
+//firebase
+import Config from './firebase';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
-	declarations: [
-		MyApp,
-		LoginPage,
-		SignupPage
-	],
-	imports: [
-		BrowserModule,
-		HttpModule,
-		IonicModule.forRoot(MyApp),
-		AgmCoreModule.forRoot(),
-
-		AngularFireModule.initializeApp(firebaseConfig.fire),
-
-		ComponentsModule,
-		NgxErrorsModule,
-		GoogleMapsModule,
-		HomeModule,
-		SlideBoxModule,
-		WordpressModule
-	],
-	bootstrap: [IonicApp],
-	entryComponents: [
-		MyApp,
-		LoginPage,
-		SignupPage
-	],
-	providers: [
-		Config,
-		StatusBar,
-		{provide: ErrorHandler, useClass: IonicErrorHandler},
-		AngularFireAuth,
-		AuthService
-	]
+  declarations: [AppComponent],
+  entryComponents: [],
+  imports: [BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    AngularFireModule.initializeApp(Config),
+    AngularFireAuthModule
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }
