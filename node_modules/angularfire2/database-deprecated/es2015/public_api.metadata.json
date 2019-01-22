@@ -1,1 +1,0 @@
-[{"__symbolic":"module","version":4,"metadata":{},"exports":[{"from":"./database"},{"from":"./firebase_list_factory"},{"from":"./firebase_list_observable"},{"from":"./firebase_object_factory"},{"from":"./firebase_object_observable"},{"from":"./query_observable"},{"from":"./database.module"}]}]

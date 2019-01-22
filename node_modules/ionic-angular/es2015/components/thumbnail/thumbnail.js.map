@@ -1,1 +1,0 @@
-{"version":3,"sources":["thumbnail.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAA,EAAU,MAAO,eAAA,CAAgB;AAE1C;;;;;;;GAOG;AAEH,MAAM;;AAEC,oBAAU,GAA0B;IAC3C,EAAE,IAAI,EAAE,SAAS,EAAE,IAAI,EAAE,CAAC;gBACxB,QAAQ,EAAE,eAAe;aAC1B,EAAG,EAAE;CACL,CAAC;AACF,kBAAkB;AACX,wBAAc,GAAmE,MAAM,EAC7F,CAAC","file":"thumbnail.js","sourceRoot":""}

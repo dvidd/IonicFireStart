@@ -1,1 +1,0 @@
-[{"__symbolic":"module","version":4,"metadata":{},"exports":[{"from":"./database"},{"from":"./list/changes"},{"from":"./list/create-reference"},{"from":"./list/snapshot-changes"},{"from":"./list/state-changes"},{"from":"./list/audit-trail"},{"from":"./observable/fromRef"},{"from":"./database.module"}]}]
