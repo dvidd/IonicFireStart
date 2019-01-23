@@ -1,8 +1,18 @@
-# YourchatApp
+# Ionic 4 Firebase Kit started
 
-Ionic 4 y firebase aplicacion multiplataforma.
+Ionic 4 y firebase multiplatforma started kit with login and register with firebase
+This is a simple way to get a register and login with ionic 4 and firebase, we use the new router module 
 
-<a href="http://yourchat.es">Yourchat.es</a>
+## Setup 
 
 
-Cambio en el readme
+* npm install 
+
+* ionic serve 
+
+You can tested in Ionic devapp
+
+<a src="https://ionicframework.com/docs/appflow/devapp/">Here</a>
+
+
+
