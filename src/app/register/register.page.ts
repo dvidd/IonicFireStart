@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage {
 
-  username: string = '';
+  email: string = '';
   password: string = '';
   cpassword: string = '';
 
@@ -18,14 +18,14 @@ export class RegisterPage {
 
   async register() {
 
-    const { username, password, cpassword } = this;
+    const { email, password, cpassword } = this;
 
     if (password !== cpassword) {
       return console.error('las contraseñas no son iguales');
     }
 
     try {
-      const res = this.afr.auth.createUserWithEmailAndPassword(username, password);
+      const res = this.afr.auth.createUserWithEmailAndPassword(email, password);
       console.log(res);
       this.rout.navigateByUrl('/login');
     } catch (error) {
