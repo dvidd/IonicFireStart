@@ -12,7 +12,7 @@ This is a simple way to get a register and login with ionic 4 and firebase, we u
 
 You can tested in Ionic devapp
 
-<a src="https://ionicframework.com/docs/appflow/devapp/">Here</a>
+<a href="https://ionicframework.com/docs/appflow/devapp/">Here</a>
 
 
 
