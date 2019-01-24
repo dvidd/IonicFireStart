@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage {
 
-  email: string = '';
-  password: string = '';
-  cpassword: string = '';
+  email: string ;
+  password: string ;
+  cpassword: string ;
 
   constructor(public afr: AngularFireAuth, public rout: Router) { }
 
@@ -46,6 +46,9 @@ export class RegisterPage {
     }
 
 
+  }
+  goLogin() {
+    this.rout.navigateByUrl('/');
   }
 
 }

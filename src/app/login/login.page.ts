@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginPage {
 
-  username: string = '';
-  password: string = '';
+  username: string ;
+  password: string ;
 
   constructor(public afs: AngularFireAuth, public rout: Router) { }
 
@@ -37,7 +37,7 @@ export class LoginPage {
     }
   }
 
-  iraRegister() {
+  goRegister() {
     this.rout.navigateByUrl('/register');
   }
 
