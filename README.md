@@ -37,6 +37,6 @@ You have to change the firebase and put your Own configuration like here
  
 ### Register 
    <img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/Captura de pantalla 2019-01-25 a las 0.34.18.png?raw=true">
-   <br>
-### Main 
+<br>
+### Main Page
  <img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/Captura de pantalla 2019-01-25 a las 0.37.22.png?raw=true">
