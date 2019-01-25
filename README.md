@@ -30,6 +30,7 @@ Then you chat to put your firebase configuration to the /src/firebase.ts file
 This is how the app looks 
 
 <br>
+
 ### Login
 
 <img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/Captura%20de%20pantalla%202019-01-25%20a%20las%200.34.12.png?raw=true">
