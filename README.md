@@ -1,13 +1,13 @@
 <img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/icon/ionic_firebase-logo.png?raw=true">
 
-# Ionic 4 Firebase Kit started Login 
+# Ionic 4 Firebase Kit Login
 
 Ionic 4 y firebase multiplatforma started kit with login and register with firebase
 This is a simple way to get a register and login with ionic 4 and firebase, we use the new router module.
 
 Make the login and register fast 
 
-## Setup 
+## Setup
 
 
 * npm install 
