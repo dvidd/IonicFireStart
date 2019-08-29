@@ -41,7 +41,7 @@ export class AppComponent {
           }
         },
         () => {
-          this.rout.navigateByUrl('/login');
+          // this.rout.navigateByUrl('/login');
         }
       );
   }

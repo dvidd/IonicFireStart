@@ -1,0 +1,159 @@
+h4 {
+    color:#222428;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.titulo {
+    color: #FCD000;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h1 {
+    margin-top: 100px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    color:#FCD000;
+    margin-bottom: 100px;
+}
+
+.boton ion-button {
+    height: 39px;
+    border-radius: 50px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.sep {
+    margin-top: 10px;
+}
+
+// :host {
+//     ion-content {
+//         --background: url('/assets/background.png') no-repeat;
+//     }
+// }
+// ion-content ::ng-deep ion-scroll {
+//     background-image: url('/assets/background.png')!important;
+//     background-repeat: no-repeat!important;
+//     background-position: center;
+//     background-size: contain;
+// }
+h2 {
+    font-size: 1.5rem;
+    color: #232B38;
+}
+
+h3 {
+    color: #C5CCCD;
+    font-weight: 500;
+}
+
+.input-card {
+    border-radius: 5rem;
+    background: #F5F6F7;
+    box-shadow: 0 3px 80px rgba(39, 68, 74, 0.2);
+}
+
+form.input-box {
+    border: 2px solid #C5CCCD;
+    border-radius: 1rem;
+    background: #FFFFFF;
+    transition: .2s all;
+}
+
+form.input-box:focus-within {
+    border: 2px solid #02C4D9;
+}
+
+form.input-box:focus-within.error {
+    border: 2px solid #F54D3D;
+}
+
+input {
+    border: none;
+    background: transparent;
+    padding: 1.125rem 1rem;
+    width: 95%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    transition: .2s all;
+}
+
+input:not(:last-child) {
+    border-bottom: 2px solid #ECEEEE;
+}
+
+input::placeholder {
+    color: #9DA8AB;
+}
+
+input:focus {
+    outline: none;
+    color: #08242A;
+    padding: 2rem 1rem;
+}
+
+input:focus::placeholder {
+    color: #758589;
+}
+
+input.error {
+    color: #F54D3D;
+}
+
+input.success {
+    color: #02C4D9;
+}
+
+.buttone {
+    position: relative;
+    border: none;
+    padding: 1rem 3rem;
+    margin: 1rem;
+    border-radius: 99999px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    transition: .2s all;
+    transition-timing-function: ease;
+}
+
+.buttone:hover {
+    transform: translatey(3px);
+}
+
+.buttone:focus {
+    outline: none;
+}
+
+.buttone.teal {
+    background-color: #02C4D9;
+    box-shadow: 0 7px 50px rgba(2, 196, 217, 0.5);
+    color: #FFFFFF;
+}
+
+.buttone.teal:hover {
+    box-shadow: 0 2px 10px rgba(2, 196, 217, 0.5);
+}
+
+.buttone.google {
+    background-color: #FFFFFF;
+    box-shadow: 0 3px 20px rgba(39, 68, 74, 0.2);
+    color: #506569;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1rem;
+}
+
+.buttone.google>img {
+    height: 20px;
+    width: 20px;
+}
+
+.buttone.google:hover {
+    box-shadow: 0 1px 5px rgba(39, 68, 74, 0.2);
+}
