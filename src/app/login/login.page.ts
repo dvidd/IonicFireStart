@@ -28,9 +28,8 @@ export class LoginPage {
       const res = await this.afs.auth.signInWithEmailAndPassword(username, password);
       console.log(res);
       setTimeout(() => {
-        this.rout.navigateByUrl('tabs/tab1');
+        this.rout.navigateByUrl('');
       }, 1000);
-      
     } catch (error) {
       console.log(error);
       if (error.code === 'auth/wrong-password') {

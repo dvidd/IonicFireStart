@@ -34,7 +34,7 @@ export class RegisterPage {
         await this.afr.auth.createUserWithEmailAndPassword(email, password).then(data => {
           console.log(data);
           setTimeout( () => {
-            this.rout.navigate(['tabs/tab1']);
+            this.rout.navigate(['']);
           }, 1000);
         });
 
