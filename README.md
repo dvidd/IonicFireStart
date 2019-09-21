@@ -7,15 +7,6 @@ This is a simple way to get a register and login with ionic 4 and firebase, we u
 
 Make the login and register fast 
 
-## Setup
-
-
-* npm install 
-
-* ionic serve 
-
-You can tested in Ionic <a href="https://ionicframework.com/docs/appflow/devapp/">Ionic devapp</a>
-
 
 ## Setup firebase 
 
@@ -33,20 +24,34 @@ This is how the app looks
 
 ### Login
 
-<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/Captura%20de%20pantalla%202019-01-25%20a%20las%200.34.12.png?raw=true">
+<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/photo3.png?raw=true">
 
 <br>
 
-### Register 
+### Edit profile 
 
-<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/Captura%20de%20pantalla%202019-01-25%20a%20las%200.34.18.png?raw=true">
+<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/photo4.png?raw=true">
+
+### Profile
+
+
+<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/photo2.png?raw=true">
+
 
 ### Main 
 
-We use the tabs started template of ionic but you can easy change by deleting tabs or add more
+<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/photo1.png?raw=true">
 
-<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/Captura%20de%20pantalla%202019-01-25%20a%20las%200.37.22.png?raw=true">
 
+
+## Setup
+
+
+* npm install 
+
+* ionic serve 
+
+You can tested in Ionic <a href="https://ionicframework.com/docs/appflow/devapp/">Ionic devapp</a>
 
 
 
