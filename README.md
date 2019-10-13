@@ -38,12 +38,6 @@ This is how the app looks
 <img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/photo2.png?raw=true">
 
 
-### Main 
-
-<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/photo1.png?raw=true">
-
-
-
 ## Setup
 
 
