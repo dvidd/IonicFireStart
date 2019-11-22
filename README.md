@@ -23,7 +23,7 @@ This is how the app looks
 <br>
 
 
-<img src="https://github.com/daviddbarrero/Ionic-4-firebase/blob/master/src/assets/all.png">
+<img src="https://github.com/daviddbarrero/Ionic-4-firebase/blob/master/src/assets/all1.png">
 
 <br>
 
