@@ -24,7 +24,7 @@ This is how the app looks
 
 ### Login
 
-<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/photo2.png?raw=true">
+<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/photo.png?raw=true">
 
 <br>
 
