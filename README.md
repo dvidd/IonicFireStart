@@ -22,9 +22,8 @@ This is how the app looks
 
 <br>
 
-### Login
 
-<img src="https://raw.githubusercontent.com/daviddbarrero/Ionic-4-firebase/master/src/assets/all.png">
+<img src="https://github.com/daviddbarrero/Ionic-4-firebase/blob/master/src/assets/all.png">
 
 <br>
 
