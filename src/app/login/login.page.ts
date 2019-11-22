@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
@@ -50,29 +49,29 @@ export class LoginPage {
        }
     }
   }
-  async loginGmail() {
-    try {
-      const res = await this.afs.auth.signInWithPopup(new auth.GoogleAuthProvider());
-      console.log(res);
-      this.rout.navigateByUrl('tabs/tab1');
-    } catch (error) {
-      if (error.code === 'auth/wrong-password') {
-        this.error('Incorrect Password');
-      }  if (error.code === 'auth/user-not-found') {
-        this.error('User dont found');
-      }
-      if (error.code === 'auth/email-already-in-use') {
-        this.error('User already use');
-      }
-      if ( error.code === 'auth/argument-error') {
-        this.error('Argument error');
-       }
-       if ( error.code === 'auth/invalid-email') {
-        this.error('Invalid error');
-       }
-      console.log(error);
-    }
-  }
+  // async loginGmail() {
+  //   try {
+  //     const res = await this.afs.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  //     console.log(res);
+  //     this.rout.navigateByUrl('tabs/tab1');
+  //   } catch (error) {
+  //     if (error.code === 'auth/wrong-password') {
+  //       this.error('Incorrect Password');
+  //     }  if (error.code === 'auth/user-not-found') {
+  //       this.error('User dont found');
+  //     }
+  //     if (error.code === 'auth/email-already-in-use') {
+  //       this.error('User already use');
+  //     }
+  //     if ( error.code === 'auth/argument-error') {
+  //       this.error('Argument error');
+  //      }
+  //      if ( error.code === 'auth/invalid-email') {
+  //       this.error('Invalid error');
+  //      }
+  //     console.log(error);
+  //   }
+  // }
 
   goRegister() {
     this.rout.navigateByUrl('/register');
