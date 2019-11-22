@@ -24,19 +24,9 @@ This is how the app looks
 
 ### Login
 
-<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/photo3.png?raw=true">
+<img src="https://raw.githubusercontent.com/daviddbarrero/Ionic-4-firebase/master/src/assets/all.png">
 
 <br>
-
-### Edit profile 
-
-<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/photo4.png?raw=true">
-
-### Profile
-
-
-<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/photo2.png?raw=true">
-
 
 ## Setup
 
