@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -19,9 +20,13 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public aut: AngularFireAuth,
-    private rout: Router
+    private rout: Router,
+    private theme: ThemeService
   ) {
     this.initializeApp();
+    if ( localStorage.getItem('theme') === 'dark') {
+      this.theme.enableDark();
+    }
   }
 
   initializeApp() {
@@ -35,7 +40,7 @@ export class AppComponent {
       .subscribe(
         user => {
           if (user) {
-            this.rout.navigateByUrl('');
+            // this.rout.navigateByUrl('');
           } else {
             this.rout.navigateByUrl('/login');
           }

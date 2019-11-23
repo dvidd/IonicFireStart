@@ -3,7 +3,7 @@ import { Component , OnInit} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
-import { ServicesService } from '../services.service';
+import { ServicesService } from '../services/services.service';
 
 @Component({
   selector: 'app-main',
@@ -20,12 +20,12 @@ export class MainPage implements OnInit {
     }
 
   ngOnInit() {
-    this.logueado();
+    this.logued();
   }
 
 
 
-  logueado() {
+  logued() {
     this.aut.authState
       .subscribe(
         user => {

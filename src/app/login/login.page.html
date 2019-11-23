@@ -1,35 +1,32 @@
-<!-- <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header> -->
 
 <ion-content padding text-center>
-    <img style="margin:auto;" src="assets/icon/ionic_firebase-logo.png" alt="">
-    <h4>Login
-    </h4>
-    <h3 class="goodfont">Ionic  Firestarter</h3>
-    <ion-list margin-top margin-bottom>
-  
-        <ion-item>
-            <ion-input type="text" tabindex="20" (keyup.enter)="moveFocus(b)" placeholder="Email" [(ngModel)]="username" required></ion-input>
-  
-        </ion-item>
-  
-        <ion-item>
-            <ion-input (keyup.enter)="login()" [type]="passwordType" #b placeholder="Password" [(ngModel)]="password" required></ion-input>
-            <ion-icon (click)='hideShowPassword()' name="eye" item-right></ion-icon>
-        </ion-item>
-  
-    </ion-list>
-    <br>
-    <ion-button class="goodfont boton" margin-bottom mode="ios"  expand="block"  (click)="gotoslides()">Login</ion-button>
-    <br><br>
-    <p class="register-text" (click)="goRegister()">Dont have account?<a> Register</a> </p>
-  
-     <div margin-top margin-bottom (click)="loginGmail()" class="tc flex jusify-center align-center flex-wrap w-100">
-        <div class="w-100 tc flex align-center justify-center">
-            <button class="buttone google flex justify-center align-center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" class="flex self-center pr2"  > Login with google</button>
-        </div>
-    </div> 
+    <div  class="form">
+        <img style="margin:auto;" src="assets/icon/ionic_firebase-logo.png" alt="">
+        <h4>Login
+        </h4>
+        <h3 class="goodfont">Ionic  Firestarter</h3>
+        <ion-list margin-top margin-bottom>
+    
+            <ion-item>
+                <ion-input type="text" tabindex="20" (keyup.enter)="moveFocus(b)" placeholder="Email" [(ngModel)]="username" required></ion-input>
+    
+            </ion-item>
+    
+            <ion-item>
+                <ion-input (keyup.enter)="login()" [type]="passwordType" #b placeholder="Password" [(ngModel)]="password" required></ion-input>
+                <ion-icon (click)='hideShowPassword()' name="eye" item-right></ion-icon>
+            </ion-item>
+    
+        </ion-list>
+        <br>
+        <ion-button class="goodfont boton" margin-bottom mode="ios"  expand="block"  (click)="gotoslides()">Login</ion-button>
+        <br><br>
+        <p class="register-text" (click)="goRegister()">Dont have account?<a> Register</a> </p>
+    
+        <div margin-top margin-bottom (click)="loginGmail()" class="tc flex jusify-center align-center flex-wrap w-100">
+            <div class="w-100 tc flex align-center justify-center">
+                <button class="buttone google flex justify-center align-center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" class="flex self-center pr2"  > Login with google</button>
+            </div>
+        </div> 
+    </div>
 </ion-content>

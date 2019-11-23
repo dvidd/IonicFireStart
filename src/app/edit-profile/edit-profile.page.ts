@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { LoadingController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { ServicesService } from '../services.service';
+import { ServicesService } from '../services/services.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -31,7 +31,7 @@ export class EditProfilePage implements OnInit {
     private route: ActivatedRoute,
     private services: ServicesService,
     private afs: AngularFireStorage,
-    public loadingController: LoadingController,
+    private loadingController: LoadingController,
     private aut: AngularFireAuth) {
   }
 
@@ -96,7 +96,7 @@ export class EditProfilePage implements OnInit {
       name: name,
       phone: phone,
       mail: this.mail,
-      img: image || 'assets/user.svg',
+      img: image || this.img,
       adress: adress,
       uid: this.uid
     };
@@ -105,13 +105,13 @@ export class EditProfilePage implements OnInit {
       this.services.crearUser(data).then(
         res => {
           console.log('Upload' + res);
-          this.rout.navigateByUrl(`profile`);
+          this.rout.navigateByUrl(`/profile`);
         });
     } else {
       this.services.updateUser(data, this.id).then(
         res => {
           console.log('Upload' + res);
-          this.rout.navigateByUrl(`profile`);
+          this.rout.navigateByUrl(`/profile`);
         });
     }
 
