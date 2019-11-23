@@ -7,6 +7,8 @@ This is a simple way to get a register and login with ionic 4 and firebase, we u
 
 Make the login and register fast 
 
+## demo : https://ionic4firebase-st.firebaseapp.com/
+
 
 ## Setup firebase 
 
@@ -37,6 +39,7 @@ This is how the app looks
 You can tested in Ionic <a href="https://ionicframework.com/docs/appflow/devapp/">Ionic devapp</a>
 
 
+## demo : https://ionic4firebase-st.firebaseapp.com/
 
 
 
