@@ -39,7 +39,7 @@ export class MainPage implements OnInit {
           }
         },
         () => {
-          this.router.navigateByUrl('/login');
+          // this.router.navigateByUrl('/login');
         }
       );
   }
