@@ -102,7 +102,7 @@ export class EditProfilePage implements OnInit {
     };
     console.log(data);
     if (this.cp === false) {
-      this.services.crearUser(data).then(
+      this.services.createUser(data).then(
         res => {
           console.log('Upload' + res);
           this.rout.navigateByUrl(`/profile`);

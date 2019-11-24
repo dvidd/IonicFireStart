@@ -41,7 +41,7 @@ export class ServicesService {
 
 
 
-  crearUser(value) {
+  createUser(value) {
     return new Promise<any>((resolve, reject) => {
       this.afs.collection(`users/${value.uid}/profile`).add({
         name: value.name,

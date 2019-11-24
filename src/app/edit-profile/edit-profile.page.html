@@ -6,13 +6,9 @@
 </ion-header>
 
 <ion-content padding>
-  <!-- <div text-center>
-    <img *ngIf="img"  class="circle" src="{{img}}" width="200px"> <br><br>
-    <img *ngIf="!img" src="assets/frame.svg" width="200px"> <br><br>
-
-    
-  </div> -->
-  <div text-center>
+  <div class="form">
+  
+  <div   text-center>
    <img *ngIf="img && !urlImage" src="{{img}}" class="circle"> 
     <img *ngIf="urlImage"  [src]="urlImage | async" class="circle" > 
    
@@ -54,5 +50,5 @@
   <br><br>
   <ion-button mode="ios" size="large" (click)="save(name, phone,adress)" class="main-container" color="light" expand="block">
     Save</ion-button>
-
+  </div>
 </ion-content>
