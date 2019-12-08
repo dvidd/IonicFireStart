@@ -7,7 +7,7 @@ This is a simple way to get a register and login with ionic 4 and firebase, we u
 
 Make the login and register fast 
 
-## demo : https://ionic4firebase-st.firebaseapp.com/
+## demo : https://app-firebase-started.web.app/
 
 
 ## Setup firebase 

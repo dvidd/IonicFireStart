@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "www",
+    "site": "app-firebase-started",
     "ignore": [
       "firebase.json",
       "**/.*",
