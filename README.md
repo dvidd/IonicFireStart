@@ -39,7 +39,7 @@ This is how the app looks
 You can tested in Ionic <a href="https://ionicframework.com/docs/appflow/devapp/">Ionic devapp</a>
 
 
-## demo : https://ionic4firebase-st.firebaseapp.com/
+## demo : https://app-firebase-started.web.app/
 
 
 
