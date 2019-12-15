@@ -1,4 +1,4 @@
-<img src="https://github.com/davidbarrero38/Ionic-4-firebase/blob/master/src/assets/icon/ionic_firebase-logo.png?raw=true">
+<img src="https://github.com/dvidd/Ionic-4-firebase/blob/master/src/assets/ionic4.png?raw=true">
 
 # Ionic 4 Firebase Kit Login Register
 
