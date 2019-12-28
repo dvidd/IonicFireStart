@@ -122,6 +122,7 @@ var ServicesService = /** @class */ (function () {
     ServicesService.prototype.goto = function (id) {
         this.rout.navigateByUrl(id);
     };
+    // User stuff
     ServicesService.prototype.getProfile = function (id) {
         var _this = this;
         this.itemsCollection = this.afs.collection("users/" + id + "/profile/");
@@ -134,7 +135,7 @@ var ServicesService = /** @class */ (function () {
             return _this.info;
         }));
     };
-    ServicesService.prototype.crearUser = function (value) {
+    ServicesService.prototype.createUser = function (value) {
         var _this = this;
         return new Promise(function (resolve, reject) {
             _this.afs.collection("users/" + value.uid + "/profile").add({
@@ -151,6 +152,32 @@ var ServicesService = /** @class */ (function () {
     };
     ServicesService.prototype.updateUser = function (value, id) {
         return this.afs.collection('users').doc(value.uid).collection('profile').doc(id).set(value);
+    };
+    // Entry stuff
+    ServicesService.prototype.AddEntry = function (description) {
+        var _this = this;
+        // uniq generetad id 
+        var id = Math.random().toString(36).substring(2);
+        return new Promise(function (resolve, reject) {
+            _this.afs.collection("entrys").doc(id).set({
+                description: description,
+                id: id,
+                date: Date.now()
+            });
+            _this.rout.navigateByUrl("profile");
+        });
+    };
+    ServicesService.prototype.getEntrys = function () {
+        var _this = this;
+        this.itemsCollection = this.afs.collection("entrys");
+        return this.itemsCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (info) {
+            _this.info = [];
+            for (var _i = 0, info_2 = info; _i < info_2.length; _i++) {
+                var infos = info_2[_i];
+                _this.info.unshift(infos);
+            }
+            return _this.info;
+        }));
     };
     ServicesService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

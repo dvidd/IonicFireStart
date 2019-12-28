@@ -62,7 +62,7 @@ var MainPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header no-border>\n  <ion-toolbar no-border>\n      <ion-title>\n          Ionic 4 Firestart\n      </ion-title>\n  <ion-buttons slot=\"start\" >\n      <ion-button [routerLink]=\"['/profile']\" >\n        <ion-icon color=\"primary\" slot=\"icon-only\" name=\"contact\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\n\n  <h1>Welcome! </h1>\n  <br>\n  <br>\n  <!-- Animation -->\n\n  \n  \n  \n\n</ion-content>"
+module.exports = "<ion-header no-border>\n  <ion-toolbar no-border>\n      <ion-title>\n          Ionic 4 Firestart\n      </ion-title>\n  <ion-buttons slot=\"start\" >\n      <ion-button [routerLink]=\"['/profile']\" >\n        <ion-icon color=\"primary\" slot=\"icon-only\" name=\"contact\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\n  <div class=\"form\">\n  \n    <ion-card color=\"light\" mode=\"ios\">\n\n      <ion-card-content *ngFor=\"let item of item\">\n        <h1 class=\"goodfont\">Welcome back {{item.payload.doc.data().name }} !</h1>\n      </ion-card-content>\n    </ion-card>\n    <br>\n    <br>\n    <!-- Not working right now!!!  -->\n   \n  </div>\n\n  <!-- Animation -->\n\n  \n  \n  \n\n</ion-content>"
 
 /***/ }),
 

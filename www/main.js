@@ -1232,7 +1232,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/davidbarrero/Desktop/100/47 Ionic 4 Firebase /Ionic-4-firebase/Ionic-4-firebase/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/davidbarrero/Desktop/Github/Ionic-4-firebase/src/main.ts */"./src/main.ts");
 
 
 /***/ })

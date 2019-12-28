@@ -43,3 +43,10 @@ You can tested in Ionic <a href="https://ionicframework.com/docs/appflow/devapp/
 
 
 
+## TODO 
+
+* Social media main page
+* Profile with @ 
+* Explore page
+* Follow post
+

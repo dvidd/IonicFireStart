@@ -46,6 +46,12 @@
     </ion-input>
   </ion-item>
 
+  <ion-item>
+    <ion-label position="floating">Floating Label</ion-label>
+    <ion-input></ion-input>
+    <ion-icon name="eye" slot="end"></ion-icon>
+  </ion-item>
+
   <input #imageProd type="hidden" [value]="urlImage | async" style="color:black;">
   <br><br>
   <ion-button mode="ios" size="large" (click)="save(name, phone,adress)" class="main-container" color="light" expand="block">
