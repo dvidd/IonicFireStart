@@ -23,6 +23,7 @@ export class ServicesService {
     this.rout.navigateByUrl(id);
   }
 
+  // User stuff
 
   getProfile(id) {
     this.itemsCollection = this.afs.collection<any>(`users/${id}/profile/`);
@@ -57,9 +58,43 @@ export class ServicesService {
   }
 
 
-
   updateUser(value, id?) {
-   return this.afs.collection('users').doc(value.uid).collection('profile').doc(id).set(value);
+    return this.afs.collection('users').doc(value.uid).collection('profile').doc(id).set(value);
+   }
+
+   // Entry stuff
+
+  AddEntry(description) {
+    // uniq generetad id 
+    const id = Math.random().toString(36).substring(2);
+    return new Promise<any>((resolve, reject) => {
+      this.afs.collection(`entrys`).doc(id).set({
+        description: description,
+        id: id,
+        date: Date.now()
+      });
+      this.rout.navigateByUrl(`profile`);
+    });
   }
+
+  
+
+  getEntrys() {
+    this.itemsCollection = this.afs.collection<any>(`entrys`);
+
+    return this.itemsCollection.snapshotChanges().pipe(map((info: any[]) => {
+      this.info = [];
+
+      for (const infos of info) {
+        this.info.unshift(infos);
+      }
+
+      return this.info;
+    }));
+  }
+
+
+
+
 
 }
