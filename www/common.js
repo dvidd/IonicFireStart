@@ -145,7 +145,8 @@ var ServicesService = /** @class */ (function () {
                 img: value.img,
                 uid: value.uid,
                 adress: value.adress,
-                date: Date.now()
+                date: Date.now(),
+                username: value.username,
             });
             _this.rout.navigateByUrl("profile");
         });

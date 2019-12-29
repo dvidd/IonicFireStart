@@ -62,7 +62,7 @@ var EditProfilePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header no-border>\n  <ion-toolbar no-border>\n   \n    <ion-title>Edit Profile</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <div class=\"form\">\n  \n  <div   text-center>\n   <img *ngIf=\"img && !urlImage\" src=\"{{img}}\" class=\"circle\"> \n    <img *ngIf=\"urlImage\"  [src]=\"urlImage | async\" class=\"circle\" > \n   \n    <br>\n    <br>\n    <img *ngIf=\"!urlImage && !img\"  src=\"assets/user.svg\" width=\"200px\"> <br>\n    </div>\n\n\n  <div margin-bottom margin-top text-center>\n    <label class=\"custom-file-upload\" style=\"margin:auto;max-width:400px\">\n      <input id=\"file-upload\" placeholder=\"Seleciona imagen\" type=\"file\" accept=\".png, .jpg\"\n        (change)=\"onUpload($event)\" />\n      <ion-icon margin-right name=\"cloud-download\"></ion-icon> Select profile photo\n    </label>\n  </div>\n\n  <br>\n    <h3>Profile info</h3>\n\n  <br>\n  <ion-item margin-bottom margin-bottom >\n    <ion-input (keyup.enter)=\"moveFocus(b)\" type=\"text\" placeholder=\"Name\" [(ngModel)]=\"name\"></ion-input>\n  </ion-item>\n  <ion-item margin-bottom margin-bottom >\n    <ion-input #b (keyup.enter)=\"moveFocus(d)\" type=\"text\" placeholder=\"Phone\" [(ngModel)]=\"phone\"></ion-input>\n  </ion-item>\n\n  <ion-item margin-bottom margin-bottom >\n    <ion-input [(ngModel)]=\"mail\" disabled></ion-input>\n  </ion-item>\n\n  <ion-item margin-bottom margin-bottom >\n    <ion-input #d (keyup.enter)=\"save(name, phone,adress)\" type=\"text\" placeholder=\"Direcction\" [(ngModel)]=\"adress\">\n    </ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label position=\"floating\">Floating Label</ion-label>\n    <ion-input></ion-input>\n    <ion-icon name=\"eye\" slot=\"end\"></ion-icon>\n  </ion-item>\n\n  <input #imageProd type=\"hidden\" [value]=\"urlImage | async\" style=\"color:black;\">\n  <br><br>\n  <ion-button mode=\"ios\" size=\"large\" (click)=\"save(name, phone,adress)\" class=\"main-container\" color=\"light\" expand=\"block\">\n    Save</ion-button>\n  </div>\n</ion-content>"
+module.exports = "<ion-header no-border>\n  <ion-toolbar no-border>\n   \n    <ion-title>Edit Profile</ion-title>\n    <ion-buttons slot=\"end\" padding>\n      <ion-button (click)=\"save(name, phone,adress, username)\"  slot=\"end\">Save</ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <div class=\"form\">\n  \n  <div   text-center>\n   <img *ngIf=\"img && !urlImage\" src=\"{{img}}\" class=\"circle\"> \n    <img *ngIf=\"urlImage\"  [src]=\"urlImage | async\" class=\"circle\" > \n   \n    <br>\n    <br>\n    <img *ngIf=\"!urlImage && !img\"  src=\"assets/user.svg\" width=\"200px\"> <br>\n    </div>\n\n\n  <div margin-bottom margin-top text-center>\n    <label class=\"custom-file-upload\" style=\"margin:auto;max-width:400px\">\n      <input id=\"file-upload\" placeholder=\"Seleciona imagen\" type=\"file\" accept=\".png, .jpg\"\n        (change)=\"onUpload($event)\" />\n      <ion-icon margin-right name=\"cloud-download\"></ion-icon> Select profile photo\n    </label>\n  </div>\n\n  <br>\n    <h3 class=\"goodfont\">Profile info</h3>\n\n  <br>\n  <ion-item>\n    <ion-input [(ngModel)]=\"username\" (keyup.enter)=\"moveFocus(b)\" placeholder=\"username\"></ion-input>\n    <ion-icon name=\"at\" slot=\"start\"></ion-icon>\n  </ion-item>\n  <br>\n  <ion-item margin-bottom margin-bottom >\n    <ion-input (keyup.enter)=\"moveFocus(c)\" type=\"text\" #b placeholder=\"Name\" [(ngModel)]=\"name\"></ion-input>\n  </ion-item>\n  <ion-item margin-bottom margin-bottom >\n    <ion-input #c (keyup.enter)=\"moveFocus(d)\" type=\"text\" placeholder=\"Phone\" [(ngModel)]=\"phone\"></ion-input>\n  </ion-item>\n\n  <ion-item margin-bottom margin-bottom >\n    <ion-input [(ngModel)]=\"mail\" disabled></ion-input>\n  </ion-item>\n\n  <ion-item margin-bottom margin-bottom >\n    <ion-input #d (keyup.enter)=\"save(name, phone,adress)\" type=\"text\" placeholder=\"Direcction\" [(ngModel)]=\"adress\">\n    </ion-input>\n  </ion-item>\n\n\n\n  <input #imageProd type=\"hidden\" [value]=\"urlImage | async\" style=\"color:black;\">\n  <br><br>\n  <!-- <ion-button mode=\"ios\" size=\"large\" class=\"main-container\" color=\"light\" expand=\"block\">\n    Save</ion-button> -->\n  </div>\n</ion-content>"
 
 /***/ }),
 
@@ -183,6 +183,7 @@ var EditProfilePage = /** @class */ (function () {
                                 _this.phone = data[0].payload.doc.data().phone;
                                 _this.adress = data[0].payload.doc.data().adress;
                                 _this.img = data[0].payload.doc.data().img;
+                                _this.username = data[0].payload.doc.data().username;
                                 console.log('profil full');
                             }
                             else {
@@ -209,7 +210,7 @@ var EditProfilePage = /** @class */ (function () {
         this.presentLoading();
         task.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["finalize"])(function () { return _this.urlImage = ref.getDownloadURL(); })).subscribe();
     };
-    EditProfilePage.prototype.save = function (name, phone, adress) {
+    EditProfilePage.prototype.save = function (name, phone, adress, username) {
         var _this = this;
         console.log(this.cp);
         var image = this.inputimageProd.nativeElement.value;
@@ -219,7 +220,8 @@ var EditProfilePage = /** @class */ (function () {
             mail: this.mail,
             img: image || this.img,
             adress: adress,
-            uid: this.uid
+            uid: this.uid,
+            username: username || 'null'
         };
         console.log(data);
         if (this.cp === false) {
