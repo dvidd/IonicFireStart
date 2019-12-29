@@ -24,6 +24,7 @@ export class EditProfilePage implements OnInit {
   uploadPercent: Observable<number>;
   urlImage: Observable<string>;
   item: any;
+  username: string;
 
   cp: Boolean;
 
@@ -65,6 +66,7 @@ export class EditProfilePage implements OnInit {
         this.phone = data[0].payload.doc.data().phone;
         this.adress = data[0].payload.doc.data().adress;
         this.img = data[0].payload.doc.data().img;
+        this.username =  data[0].payload.doc.data().username;
         console.log('profil full');
       } else {
         this.cp = false;
@@ -89,7 +91,7 @@ export class EditProfilePage implements OnInit {
   }
 
 
-  save(name, phone, adress) {
+  save(name, phone, adress, username) {
     console.log(this.cp);
     const image = this.inputimageProd.nativeElement.value;
     const data = {
@@ -98,7 +100,8 @@ export class EditProfilePage implements OnInit {
       mail: this.mail,
       img: image || this.img,
       adress: adress,
-      uid: this.uid
+      uid: this.uid,
+      username: username || 'null'
     };
     console.log(data);
     if (this.cp === false) {

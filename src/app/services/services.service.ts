@@ -51,7 +51,8 @@ export class ServicesService {
         img: value.img,
         uid: value.uid,
         adress: value.adress,
-        date: Date.now()
+        date: Date.now(),
+        username: value.username,
       });
       this.rout.navigateByUrl(`profile`);
     });

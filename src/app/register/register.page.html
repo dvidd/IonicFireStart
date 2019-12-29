@@ -1,8 +1,10 @@
 <ion-content padding text-center>
     
     <div  class="form">
-        
         <img style="margin:auto;" src="assets/icon/ionic_firebase-logo.png" alt="">
+        <h4>Register
+        </h4>
+        <h3 class="goodfont">Ionic  Firestarter</h3>
         <ion-list>
             <ion-item>
                 <ion-input type="text" placeholder="Email" (keyup.enter)="moveFocus(b)" [(ngModel)]="email"></ion-input>
@@ -22,7 +24,7 @@
 
         </ion-list>
         <br>
-        <ion-button fill="solid" expand="block" color="primary" (click)="register()">Registrer</ion-button>
+        <ion-button class="goodfont boton"  mode="ios" fill="solid" expand="block" color="primary" (click)="register()">Registrer</ion-button>
         <br>
         <p class="register-text" (click)="goLogin()"> You have a account ?<a> Login</a> </p>
     </div>
