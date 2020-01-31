@@ -18,7 +18,7 @@ You have to allow authoritation and enable gmail login and email and password li
 
 Then you chat to put your firebase configuration to the /src/firebase.ts file 
 
-## Desing and UI 
+## Desing and UI
 
 This is how the app looks 
 
