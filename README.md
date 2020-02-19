@@ -5,7 +5,7 @@
 Ionic 4 & firebase multiplatform started kit with login and register with firebase
 This is a simple way to get a register and login with ionic 4 and firebase, we use the new router module.
 
-Make the login and register fast f
+Make the login and register fast
 
 ## demo : https://app-firebase-started.web.app/
 
