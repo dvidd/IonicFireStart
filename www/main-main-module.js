@@ -62,7 +62,7 @@ var MainPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header no-border>\n  <ion-toolbar no-border>\n      <ion-title>\n          Ionic 4 Firestart\n      </ion-title>\n  <ion-buttons slot=\"start\" >\n      <ion-button [routerLink]=\"['/profile']\" >\n        <ion-icon color=\"primary\" slot=\"icon-only\" name=\"contact\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n\n  <div class=\"form\">\n  \n    <ion-card color=\"\" mode=\"ios\">\n\n      <ion-card-content *ngFor=\"let item of item\">\n        <h1 class=\"goodfont\">Welcome back {{item.payload.doc.data().name }} !</h1>\n      </ion-card-content>\n    </ion-card>\n    <br>\n    <br>\n    <!-- Not working right now!!!  -->\n   \n  </div>\n\n  <!-- Animation -->\n\n  \n  \n  \n\n</ion-content>"
+module.exports = "<ion-header no-border>\n  <ion-toolbar no-border>\n    <ion-title>\n      Ionic 4 Firestart\n    </ion-title>\n    <ion-buttons slot=\"start\">\n      <ion-button [routerLink]=\"['/profile']\">\n        <ion-icon color=\"primary\" slot=\"icon-only\" name=\"contact\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <div class=\"form\">\n    <ion-card color=\"\" mode=\"ios\">\n      <ion-card-content *ngFor=\"let item of item\">\n        <h1 class=\"goodfont\">\n          ¡Welcome back {{ item.payload.doc.data().name }}!\n        </h1>\n        <ion-button class=\"btn\">Click to Open camera</ion-button>\n      </ion-card-content>\n    </ion-card>\n    <br />\n    <br />\n    <div id=\"webcam-container\"></div>\n    <div id=\"label-container\"></div>\n  </div>\n\n  <!-- Animation -->\n</ion-content>\n"
 
 /***/ }),
 
@@ -145,21 +145,59 @@ var MainPage = /** @class */ (function () {
         this.router = router;
         this.services = services;
     }
+    // // Load the image model and setup the webcam
+    // async initModel() {
+    //   const modelURL = this.URL + "model.json";
+    //   const metadataURL = this.URL + "metadata.json";
+    //   // load the model and metadata
+    //   // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+    //   // or files from your local hard drive
+    //   // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+    //   this.model = await tmImage.load(modelURL, metadataURL);
+    //   this.maxPredictions = this.model.getTotalClasses();
+    //   // Convenience function to setup a webcam
+    //   const flip = true; // whether to flip the webcam
+    //   this.webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+    //   await this.webcam.setup(); // request access to the webcam
+    //   await this.webcam.play();
+    //   window.requestAnimationFrame(loop);
+    //   // append elements to the DOM
+    //   document.getElementById("webcam-container").appendChild(this.webcam.canvas);
+    //   this.labelContainer = document.getElementById("label-container");
+    //   for (let i = 0; i < this.maxPredictions; i++) {
+    //     // and class labels
+    //     this.labelContainer.appendChild(document.createElement("div"));
+    //   }
+    // }
+    // async loop() {
+    //   this.webcam.update(); // update the webcam frame
+    //   await this.predict();
+    //   window.requestAnimationFrame(loop);
+    // }
+    // // run the webcam image through the image model
+    // async predict() {
+    //   // predict can take in an image, video or canvas html element
+    //   const prediction = await this.model.predict(this.webcam.canvas);
+    //   for (let i = 0; i < this.maxPredictions; i++) {
+    //     const classPrediction =
+    //       prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+    //       this.labelContainer.childNodes[i].innerHTML = classPrediction;
+    //   }
+    // }
     MainPage.prototype.ngOnInit = function () {
         this.logued();
     };
     MainPage.prototype.logued = function () {
         var _this = this;
-        this.aut.authState
-            .subscribe(function (user) {
+        this.aut.authState.subscribe(function (user) {
             if (user) {
-                console.log('loged');
+                console.log("loged");
                 _this.id = user.uid;
                 console.log(_this.id);
                 _this.getProfile(_this.id);
             }
             else {
-                _this.router.navigateByUrl('/login');
+                _this.router.navigateByUrl("/login");
             }
         }, function () {
             // this.router.navigateByUrl('/login');
@@ -174,7 +212,7 @@ var MainPage = /** @class */ (function () {
                     case 1:
                         res = _a.sent();
                         console.log(res);
-                        this.router.navigateByUrl('/login');
+                        this.router.navigateByUrl("/login");
                         return [2 /*return*/];
                 }
             });
@@ -187,11 +225,11 @@ var MainPage = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.services.getProfile(id).subscribe(function (data) {
                             if (data.length === 0) {
-                                console.log('profile empty');
+                                console.log("profile empty");
                                 _this.router.navigateByUrl("edit-profile");
                             }
                             else {
-                                console.log('Profile not empty');
+                                console.log("Profile not empty");
                                 console.log(data);
                                 _this.item = data;
                             }
@@ -208,12 +246,13 @@ var MainPage = /** @class */ (function () {
     };
     MainPage = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-main',
+            selector: "app-main",
             template: __webpack_require__(/*! ./main.page.html */ "./src/app/main/main.page.html"),
             styles: [__webpack_require__(/*! ./main.page.scss */ "./src/app/main/main.page.scss")]
         }),
         __metadata("design:paramtypes", [_angular_fire_auth__WEBPACK_IMPORTED_MODULE_1__["AngularFireAuth"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_services_service__WEBPACK_IMPORTED_MODULE_3__["ServicesService"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+            _services_services_service__WEBPACK_IMPORTED_MODULE_3__["ServicesService"]])
     ], MainPage);
     return MainPage;
 }());
